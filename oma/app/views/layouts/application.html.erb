@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= h(@meta_title) || "#{controller.action_name.capitalize} #{controller.controller_name}" %> | Oregon Montessori Association</title>
+  <%= tag(:meta, 'http-equiv' => 'description', :content => h(strip_tags(@meta_description))) if @meta_description %>
+
+  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'uni-form' %>
+
+  <%= javascript_include_tag 'jquery' %>
+  <%= javascript_include_tag 'uni-form' %>
+  <%= javascript_include_tag 'jquery.tablesorter' %>
+  
+  <script type="text/javascript">
+  $(document).ready(function() 
+      { 
+          $('table').tablesorter({widgets: ['zebra']}); 
+      } 
+  );
+  </script>
+
+  <%= yield :head %>
+</head>
+
+<body class="<%= controller.controller_name %> <%= controller.action_name %>">
+
+<div id="wrapper">
+  <div id="branding">
+    <%= link_to(image_tag('logo.jpg', :id => 'logo', :width => 240, :height => 130), root_path, :title => 'Return to home page') %>
+    <%= image_tag 'banner.jpg', :id => 'banner', :width => 640, :height => 130 %>
+  </div> <!-- /branding -->
+  
+
+  <div id="primary_content">
+    <%= show_flash %>
+
+    <%= content_tag(:h1, @meta_title) if @meta_title -%>
+
+    <%= yield  %>
+  </div> <!-- /primary_content -->
+  
+  <div id="secondary_content">
+    <%= render :partial => "shared/member_navigation" %>
+    
+    <%= render :partial => "shared/navigation" %>
+  </div> <!-- /secondary-content -->
+  
+  <%= render :partial => "shared/footer" %>
+</div> <!-- /wrapper -->
+
+</body>
+</html>

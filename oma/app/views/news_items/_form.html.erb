@@ -1,0 +1,7 @@
+<%= text_editor %>
+
+<%- f.fieldset 'Event' do -%>
+  <%= f.text_field :name, :size => 40, :required => true %>
+  <%= f.text_area :description, :required => true, :hint => 'Please use only 3rd level headings (###) in the description' %>
+  <%= f.date_select :the_date, :order => [:month, :day, :year], :required => true %>
+<%- end -%>

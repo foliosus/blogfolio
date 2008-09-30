@@ -1,0 +1,9 @@
+<% uni_form_for(@school) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => "form", :locals => {:f => f} %>
+
+  <p><%= f.submit "Update" %></p>
+<% end %>
+
+<p><%= link_to 'Show', @school %> | <%= link_to 'Back', schools_path %></p>

@@ -1,0 +1,30 @@
+<%- f.fieldset 'School' do -%>
+  <%= f.text_field :name, :required => true %>
+<%- end -%>
+
+<%= render :partial => "shared/address_form", :locals => {:f => f} %>
+
+<%- f.fieldset 'Participation' do -%>
+  <%- f.multiple_field_group :label => 'Contact by email?' do -%>
+  <%= f.check_box :contact_by_email, :label => 'Yes please' %>
+  <%- end -%>
+  <%- f.multiple_field_group :label => 'I want to be a', :first => true do -%>
+    <%= f.check_box :volunteer, :label => 'Volunteer' %>
+    <%= f.check_box :speaker, :label => 'Speaker' %>
+    <p class="formHint">Would you donate time to help OMA or be a part of the OMA speakers' bureau?</p>
+  <%- end -%>
+<%- end -%>
+
+<%- if logged_in? && @current_user.can_create_membership? -%>
+  <%- f.fieldset 'Attached member' do -%>
+    <div class="ctrlHolder odd">
+      <label for="member_id">Member</label>
+      <%= select_tag :member_id, options_for_select([['Please choose...',nil]] + @members.collect{|m| [m.full_name(true), m.id] }, @school.member.nil? ? nil : @school.member.id) %>
+      <p class="formHint">If the individual you are looking for isn't listed here, please <%= link_to 'make sure they are listed in the database', members_path, :title => 'Check the database now' %>.</p>
+    </div>
+  <%- end -%>
+  
+  <%= render :partial => "shared/membership_form", :locals => {:f => f} %>
+
+  <%= render :partial => "shared/notes_form", :locals => {:f => f} %>
+<%- end -%>

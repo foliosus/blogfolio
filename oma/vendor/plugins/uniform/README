@@ -1,0 +1,54 @@
+= Uniform
+
+The Uniform plugin creates a new form builder that uses a standard HTML markup structure, based on Uni-Form (http://dnevnikeklektika.com/uni-form).  The builder has two functions for each form item: one with and one without the unform wrappers, to allow developers to mix and match.
+
+The plugin will also check against the model class for column lengths when outputting text fields, to specify the <code>max_length</code> attribute appropriately.  Both <code>max_length</code> and <code>size</code> can be overridden.
+
+For example, the following view code:
+
+  <% uni_form_for :person, :url => {:action => 'update'} do |f| -%>
+    <%- f.fieldset do -%>
+      <legend>Name</legend>
+      <%= f.text_field :last_name, :label => 'Last name', :hint => "Only alphabetic characters, ' and - are allowed", :required => true %>
+    <%- end -%>
+  <% end -%>
+
+renders as:
+
+  <form action="/update/1" method="post">
+    <fieldset class="inlineLabels">
+      <div class="ctrlHolder odd">
+        <label for="person_last_name"><em>*</em>Last name</label>
+        <input id="person_last_name" name="person[last_name]" type="text" tabindex="1" size="40" maxlength="40" value="Smith">
+        <p class="formHint">Only alphabetic characters, ' and - are allowed</p>
+      </div>
+    </fieldset>
+  </form>
+
+Text passed in through <code>:label</code> is put in the <code><label></code> tag. <code>:required => true</code> yields the <code><em>*</em></code> in the label. The <code>tabindex</code> is rendered automatically. All fields in the form will be tabindexed in order of appearance. For text fields, the <code>size</code> and <code>maxlength</code> attributes are generated using the field length from the database.  <code>:hint</code> is optional.  If not specified, the resulting <code><p class="formHint"></p></code> isn't rendered.
+
+The <code>ctrlHolder</code> divs alternate <code>odd</code> and <code>even</code> classes.  To force a reset of the odd/even cycle, pass <code>:odd => true</code>.
+
+All fields should be put inside fieldsets. They may take the classes <code>inlineLabels</code> or <code>blockLabels</code>.  The former makes a column of labels followed by a column of form fields. The latter makes all of the form elements line up on the left of the form, with the fields appearing below their labels.
+
+Sometimes it is desirable to have multiple fields appear together, for example when inputting a name:
+
+  <%- f.multiple_field_group :label => 'Name', :required => true, :first => true do -%>
+    <%= f.text_field :first_name, :label => 'First' %>
+    <%= f.text_field :middle_initial, :label => 'Middle initial', :size => 2 %>
+    <%= f.text_field :last_name, :size => 15, :label => 'Last', :hint => 'First, middle and last names' %>
+  <%- end -%>
+
+renders:
+
+  <div class="ctrlHolder odd">
+	  <label for="person_name"><em>*</em>Name</label>
+    <input id="person_first_name" maxlength="15" name="person[first_name]" size="15" tabindex="1" type="text">
+    <input id="person_middle_initial" maxlength="15" name="person[middle_initial]" size="2" tabindex="2" type="text">
+    <input id="person_last_name" maxlength="60" name="person[last_name]" size="15" tabindex="3" type="text">
+    <p class="formHint">First, middle and last names</p>
+  </div>
+
+By grouping the fields in the same <code>ctrlHolder</code> they can be styled to appear on a single line with a single hint.
+
+Copyright (c) 2008 Reed College, released under the MIT license

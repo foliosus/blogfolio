@@ -1,0 +1,44 @@
+<div id="events">
+  <h2>Events</h2>
+  <ul>
+    <%- for event in @events do -%>
+    <li>
+      <h3><%= link_to h(event.name), event %></h3>
+      <p class="date"><%= event.the_date.to_s(:long) %> <%= event.the_time %></p>
+      <p><%= teaser(event) %></p>
+      <%= content_tag(:p, "Contact: " + event.contact) if event.contact?%>
+    </li>
+    <%- end -%>
+  </ul>
+</div>
+
+<div id="classifieds">
+  <h2>Classifieds</h2>
+  <ul>
+    <%- for classified in @classifieds do -%>
+    <li>
+      <h3><%= link_to h(classified.title), classified %></h3>
+      <%= teaser(classified) %>
+    </li>
+    <%- end -%>
+  </ul>
+</div>
+
+<div id="news">
+  <h2>News</h2>
+  <ul>
+    <%- for news_item in @news_items do -%>
+    <li>
+      <h3><%= link_to h(news_item.name), news_item %></h3>
+      <p class="date"><%= news_item.the_date.to_s(:long) %></p>
+      <p><%= teaser(news_item) %></p>
+    </li>
+    <%- end -%>
+  </ul>
+</div>
+
+<%- content_for :membership do -%>
+<%= link_to(image_tag('index_membership.jpg', :width => 200, :height => 131, :alt => 'Join the OMA today!'), static_page_path('join')) %>
+
+<p><%= link_to 'Become a member', static_page_path('join'), :title => 'Join today!' %> and get connected to thriving, nationally-recognized Montessori community! The OMA has been serving Montessori teachers, administrators, assistants and parents for nearly thirty years. Help support the work of the OMA as we continue to advance the Montessori movement in Oregon.</p>
+<%- end -%>

@@ -1,0 +1,26 @@
+<%- if @classifieds.length == 0 %>
+<p>Sorry!  There are no classifieds in the system that matched your criteria.</p>
+<%- else -%>
+  <%= content_tag(:p, link_to('Post a new ad', new_classified_path, :title => "Create a new classified")) if logged_in? && @current_user.has_role?(:member) %>
+
+  <%- for classified in @classifieds do -%>
+    <h2><%=h classified.title %></h2>
+
+    <%= markdown(classified.description) %>
+
+    <h3>Contact information</h3>
+
+    <p><%= classified.contact %><br />
+    <%= phone_number(classified.phone) + "<br />" if classified.phone? %><%= link_to(h(classified.url), h(classified.url)) + "<br />" if classified.url? %><%= mail_to(h(classified.email)) if classified.email? %></p>
+
+    <%- if logged_in? && (@current_user.can_update_classified? || classified.can_be_edited_by?(@current_user)) -%>
+    <%= links = []
+        links << link_to('Edit', edit_classified_path(classified)) if @current_user.can_update_classified? || classified.can_be_edited_by?(@current_user)
+        links << link_to('Destroy', classified, :confirm => 'Are you sure?', :method => :delete) if @current_user.can_delete_classified? || classified.can_be_edited_by?(@current_user)
+        content_tag(:p, links.join(' | ')) if links.length > 0
+    %>
+    <%- end -%>
+  <%- end -%>
+<%- end -%>
+
+<p><%= link_to 'Return to home page', root_url, :alt => 'Return to OMA home' %></p>

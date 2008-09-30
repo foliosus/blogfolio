@@ -1,0 +1,13 @@
+development:
+  adapter: mysql
+  database: oma_development
+  username: rails_user
+  password: Pete5On
+  host: localhost
+
+test:
+  adapter: mysql
+  database: oma_test
+  username: rails_user
+  password: Pete5On
+  host: localhost

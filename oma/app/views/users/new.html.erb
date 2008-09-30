@@ -1,0 +1,12 @@
+<% @user.password = @user.password_confirmation = nil %>
+
+<%- uni_form_for @user do |f| -%>
+  <%= f.error_messages %>
+  
+  <%- f.fieldset 'User identity' do -%>
+    <%= f.select :member_id, @members.collect{|m| [m.full_name(true), m.id] }, :prompt => 'Please choose one...' %>
+    <%= f.text_field :email, :size => 40, :required => true %>
+  <%- end -%>
+  
+  <%= submit_tag 'Create user' %>
+<%- end -%>

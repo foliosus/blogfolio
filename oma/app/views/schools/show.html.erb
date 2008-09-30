@@ -1,0 +1,15 @@
+<h2>Contact information</h2>
+
+<p><%= @school.full_address.collect{|a| h(a)}.join('<br />') %></p>
+
+<p><%=h @school.phone %></p>
+
+<%= content_tag(:p, link_to(h(@school.url), @school.url, :title => "Visit #{h(@school.name)} web site")) if @school.url? %>
+
+<h2>Notes</h2>
+<%= simple_format @school.notes || 'None' %>
+
+<h2>Map</h2>
+<%= render :partial => "school_map", :locals => {:schools => [@school]} %>
+
+<p><%= link_to('Edit', edit_school_path(@school)) + ' | ' if @current_user && @current_user.can_update_school? %><%= link_to 'Back', schools_path %></p>

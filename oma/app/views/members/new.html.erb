@@ -1,0 +1,13 @@
+<h3>Interested in a school membership?</h3>
+
+<p>Please fill out the <%= link_to 'school membership application', new_school_url, :title => 'Apply for school membership' %> if you're interested in an institutional membership.</p>
+
+<% uni_form_for(@member) do |f| %>
+  <%= f.error_messages %>
+  
+  <%= render :partial => "form", :locals => {:f => f} %>
+
+  <p><%= f.submit "Create" %></p>
+<% end %>
+
+<p><%= link_to 'Back', members_path %></p>

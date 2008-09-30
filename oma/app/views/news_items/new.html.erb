@@ -1,0 +1,11 @@
+<h1>New news item</h1>
+
+<% uni_form_for(@news_item) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => "form", :locals => {:f => f} %>
+  
+  <%= f.submit "Create" %>
+<% end %>
+
+<p><%= link_to 'Back', news_items_path %></p>

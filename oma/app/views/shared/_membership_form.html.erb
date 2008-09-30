@@ -1,0 +1,13 @@
+<%- f.fieldset 'Membership' do -%>
+  <%= f.select :category, Member::CATEGORIES.collect{|c| [c.to_s.capitalize, c.to_s]}, :label => 'Status', :first => true, :required => true %>
+  <%- f.multiple_field_group :label => 'New payment' do -%>
+    <%- fields_for(@membership) do |m_form| -%>
+      <%= m_form.select :year, (Membership.current_year..(Membership.current_year + 3)).collect{|y| ["#{y} - #{y + 1}", y] unless f.object.memberships.collect{|m| m.year}.include?(y) }.compact, :include_blank => true %> <%= m_form.text_field :payment, :max_length => 3, :size => 3 %>
+    <%- end -%>
+    <p class="formHint">Payment values are in whole dollars</p>
+  <%- end -%>
+  <%- prior_memberships = f.object.memberships.reject{|m| m.new_record?} %>
+  <%- f.multiple_field_group :label => "History (#{pluralize prior_memberships.length, 'year'})" do -%>
+    <%= prior_memberships.sort.collect{|m| "#{m.year_range} (#{number_to_currency(m.payment)}) #{link_to 'destroy', {:action => :destroy_membership, :id => m}, :confirm => 'Are you sure?', :method => :post}"}.join('<br />') %>
+  <%- end unless prior_memberships.blank? -%>
+<%- end -%>

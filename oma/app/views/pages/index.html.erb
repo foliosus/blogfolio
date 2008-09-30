@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th>URL</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+  <% for page in @pages %>
+    <tr class="<%= cycle 'odd', 'even' %>">
+      <td><%= link_to page.full_path, page.full_path, :title => "See #{h(page.name)}" %>
+      <td><%=h page.name %></td>
+      <td><%=h page.description %></td>
+      <td><%= link_to 'Show', page.full_path %></td>
+      <td><%= link_to('Edit', edit_page_path(page)) if @current_user.can_update_page? %></td>
+      <td><%= link_to('Destroy', page, :confirm => 'Are you sure?', :method => :delete) if @current_user.can_delete_page? %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to('New page', new_page_path) if @current_user.can_create_page? %></p>

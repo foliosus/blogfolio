@@ -1,0 +1,18 @@
+<%- f.fieldset 'Name' do -%>
+  <%= f.text_field :first_name, :required => true, :hint => controller.action_name == 'edit' ? @member_update.member.first_name : nil %>
+  <%= f.text_field :last_name, :required => true, :hint => controller.action_name == 'edit' ? @member_update.member.last_name : nil %>
+<%- end -%>
+
+<%= render :partial => "shared/address_form", :locals => {:f => f} %>
+
+<%- f.fieldset 'Participation' do -%>
+  <%- f.multiple_field_group :label => 'I want to be a', :first => true do -%>
+    <%= f.check_box :volunteer, :label => 'Volunteer' %>
+    <%= f.check_box :speaker, :label => 'Speaker' %>
+    <p class="formHint"><%- if controller.controller_name == 'member_updates' && controller.action_name == 'edit' -%>
+      Originally checked: <%= @member_update.member.volunteer ? 'volunteer' : nil %> <%= @member_update.member.speaker ? 'speaker' : nil %>
+    <%- else -%>
+      Would you donate time to help OMA or be a part of the OMA speakers' bureau?
+    <%- end -%></p>
+  <%- end -%>
+<%- end -%>

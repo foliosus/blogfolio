@@ -1,0 +1,1475 @@
+  [4;36;1mSQL (0.000213)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000000)[0m   [0mMysql::Error: Table 'oma_test.pages' doesn't exist: SELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000179)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000768)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000296)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000179)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000753)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000275)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000176)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000760)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000236)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000178)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000745)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000238)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000628)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000287)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000464)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000254)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000127)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000224)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000128)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000313)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000183)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000215)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000131)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000210)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000132)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000233)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000217)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000214)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000130)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000199)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000124)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000193)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000154)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000219)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000675)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Load (0.000588)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000471)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000160)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000817)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000558)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000582)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('400b102876ddede731980f2efe8a9aad2de7b33a', NULL, '2008-09-17 05:08:55', 'dfcf253934f1f0620f24685afb3d6c9afe04a68d', NULL, '097bdc44695e779f9602055498786ac6d75173b2', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:08:55')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/097bdc44695e779f9602055498786ac6d75173b2
+  [4;36;1mSQL (0.000499)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000807)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000230)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000523)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000741)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('2d7c4c4bb6c8a3083793a0997669f2b6d22e2d14', NULL, '2008-09-17 05:08:55', '263ea4563ab68c445d063cd675cfa1b336d5639b', NULL, 'b7fbbc81c871ec6aae570c2bfb9e5d7c1e296fb9', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:08:55')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/b7fbbc81c871ec6aae570c2bfb9e5d7c1e296fb9
+  [4;35;1mUser Load (0.000728)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 965482544) [0m
+  [4;36;1mSQL (0.001151)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000243)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000600)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+WARNING: Can't mass-assign these protected attributes: login
+  [4;35;1mSQL (0.000608)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Load (0.000434)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin2' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000338)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000240)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000522)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000990)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:08:55', `remember_token` = '99803a462cbc7826680c5a1f606fc3bb220068c0', `updated_at` = '2008-09-17 05:08:55' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.001001)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000234)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000583)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000590)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 05:08:55', `remember_token` = 'c88cbb289c4de058e064f23c6489a1ffb1de69a7', `updated_at` = '2008-09-17 05:08:55' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.000805)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000244)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000792)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000723)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 05:08:55', `remember_token` = '0938ce7b080f13207ab2995fbec2a6ee5b2055a2', `updated_at` = '2008-09-17 05:08:55' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.001191)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000258)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000602)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000514)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;35;1mSQL (0.000455)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000328)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000354)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000598)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000583)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000541)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('4d78b73ed469a8cccee8d89544bbb108d5311181', NULL, '2008-09-17 05:08:55', '4d9022f3aad52c2b20e710dff2a62191f0c853ce', NULL, 'd8d0929532e536407065ecd089b5e896e0ec1867', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:08:55')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: 2053b28b
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/d8d0929532e536407065ecd089b5e896e0ec1867
+  [4;35;1mSQL (0.000959)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000158)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000424)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000618)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mSQL (0.000364)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000198)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000271)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000735)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000721)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000841)[0m   [0;1mUPDATE `users` SET `crypted_password` = '32899258c24c5bf78181a1381accf3a5397309b9', `updated_at` = '2008-09-17 05:08:55' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000643)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.010369)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000223)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000570)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000605)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:08:55', `remember_token` = 'dd3e13274c2b73ad4936d65ea8a87b915df0063a', `updated_at` = '2008-09-17 05:08:55' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001103)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000209)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000608)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000610)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:08:55', `remember_token` = '8d47bc55d6d41ebeee583062da5d1d237bf4333e', `updated_at` = '2008-09-17 05:08:55' WHERE `id` = 745185059[0m
+  [4;36;1mUser Update (0.000475)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-09-17 05:08:55' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.000937)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000180)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000765)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000203)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000272)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000231)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000124)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000251)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000213)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000222)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000124)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000236)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000127)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000314)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000241)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000227)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000123)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000221)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000122)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000215)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000125)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000216)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000122)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000229)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000155)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000241)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000541)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Load (0.000445)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000391)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000249)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000418)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000378)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000574)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('d589b4c69054572462ee3c4a433a17d55f095080', NULL, '2008-09-17 05:12:03', '5a17c53fc137aada6ffb2a7bd335698d09a05093', NULL, '7ecf568fe8de729bf3c2f7d9c42a127c70e016c3', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:12:03')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/7ecf568fe8de729bf3c2f7d9c42a127c70e016c3
+  [4;36;1mSQL (0.000646)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000866)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000246)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000523)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000425)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('bbf634c534272533821ce0b233daa8321cdbfa84', NULL, '2008-09-17 05:12:03', 'f21f6e24058981a9833c24121a85eaca3f228b13', NULL, '63b9012f40b935b90e77fc1c37641b728f89f92b', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:12:03')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/63b9012f40b935b90e77fc1c37641b728f89f92b
+  [4;35;1mUser Load (0.000795)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 965482544) [0m
+  [4;36;1mSQL (0.001040)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000264)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000693)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+WARNING: Can't mass-assign these protected attributes: login
+  [4;35;1mSQL (0.000669)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Load (0.000876)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin2' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000321)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000239)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000524)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000491)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:12:03', `remember_token` = 'de45cea71b1d93a1671d00cda0c63f6ca5176161', `updated_at` = '2008-09-17 05:12:03' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.000841)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000236)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000593)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000594)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 05:12:03', `remember_token` = '942fe7fc469739f0d0fd7f62a97b6726da9185ca', `updated_at` = '2008-09-17 05:12:03' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.000967)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000243)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000613)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000457)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 05:12:03', `remember_token` = '90de10ac5eeea9aa8f7f9a7a7a01939760286341', `updated_at` = '2008-09-17 05:12:03' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.003802)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000251)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000575)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000623)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;35;1mSQL (0.000440)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000199)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000279)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000418)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000543)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000583)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('9cee18c25b34982c41e966e67afe3d399f35c327', NULL, '2008-09-17 05:12:03', 'cbc07fd291fa1f7272def4effa7f19459d07dafa', NULL, '78c20ae8b292d82fffc0428ea857e3a1cc9a97c4', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:12:03')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: 3fb41b00
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/78c20ae8b292d82fffc0428ea857e3a1cc9a97c4
+  [4;35;1mSQL (0.001382)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000247)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000439)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000376)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mSQL (0.000403)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000197)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000243)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000591)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000621)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000462)[0m   [0;1mUPDATE `users` SET `crypted_password` = '32899258c24c5bf78181a1381accf3a5397309b9', `updated_at` = '2008-09-17 05:12:03' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000450)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000955)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000199)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000513)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000623)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:12:03', `remember_token` = '3651136ec7cd2cf65e405cee4c747b36909e5b1a', `updated_at` = '2008-09-17 05:12:03' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000839)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000231)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000599)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000756)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:12:03', `remember_token` = 'aa5b66d4dd3fd838aee5f49d2cd3dfa8624bb8f0', `updated_at` = '2008-09-17 05:12:03' WHERE `id` = 745185059[0m
+  [4;36;1mUser Update (0.000779)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-09-17 05:12:03' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.001231)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000180)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000733)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000098)[0m   [0;1mBEGIN[0m
+  [4;35;1mMember Columns (0.004102)[0m   [0mSHOW FIELDS FROM `members`[0m
+  [4;36;1mSQL (0.000313)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000315)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000177)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000226)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000133)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000231)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000298)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000237)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000130)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000217)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000264)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000241)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000291)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000240)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000127)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000215)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000125)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000217)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000124)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000218)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000149)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000226)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000603)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000378)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000203)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000468)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000379)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000941)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('be3bb5d139bde3c7178baa87161503448cbb9f77', NULL, '2008-09-17 05:16:41', '3e9d750509fc63b3b9539af1d5ed93d39f13d4a5', NULL, '5deceb0a9942bc2c5b4dd831e91a81dd27145727', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:16:41')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/5deceb0a9942bc2c5b4dd831e91a81dd27145727
+  [4;36;1mSQL (0.000529)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000845)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000745)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000521)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000447)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('077f83c1547b0cde4bd96dbb144554122451ee70', NULL, '2008-09-17 05:16:41', 'b7cf3055ab9a1d2485b144e732e407e3ad8557f1', NULL, 'b6c6d48243571894e90ebdaf9a1216f56a0007bc', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:16:41')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/b6c6d48243571894e90ebdaf9a1216f56a0007bc
+  [4;35;1mUser Load (0.000606)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 965482544) [0m
+  [4;36;1mSQL (0.000852)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000240)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000572)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000544)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin2@foo.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000685)[0m   [0;1mUPDATE `users` SET `email` = 'quentin2@foo.com', `updated_at` = '2008-09-17 05:16:41' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000521)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin2@foo.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.001234)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000233)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000523)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000464)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:16:41', `remember_token` = 'b56d9089fb2366632d5ace780cf2ff54a62adb6a', `updated_at` = '2008-09-17 05:16:41' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001095)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000531)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000617)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000836)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 05:16:41', `remember_token` = '490f581791b785219d454bd9af751ee26d8275d2', `updated_at` = '2008-09-17 05:16:41' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001068)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000250)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000788)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000487)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 05:16:41', `remember_token` = 'bd3ab277490bb6e6118eeef7ca6558c4eb6e51e4', `updated_at` = '2008-09-17 05:16:41' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.003779)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000285)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000501)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000301)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;36;1mSQL (0.000553)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000203)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000229)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000511)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000372)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000587)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('08251f625cce498f9981b7a81bedfe2b01923320', NULL, '2008-09-17 05:16:42', '3fd29472a951eae3e6d5a48e6471ffe50dfb2a24', NULL, '86eac2a36d36e57bc6d5759ff502848f106042be', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:16:42')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: 6efdce03
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/86eac2a36d36e57bc6d5759ff502848f106042be
+  [4;36;1mSQL (0.001138)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000237)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000436)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000369)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mSQL (0.000318)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000224)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000237)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000577)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mSQL (0.000641)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;35;1mUser Update (0.000460)[0m   [0mUPDATE `users` SET `crypted_password` = '32899258c24c5bf78181a1381accf3a5397309b9', `updated_at` = '2008-09-17 05:16:42' WHERE `id` = 745185059[0m
+  [4;36;1mUser Load (0.000600)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.001008)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000223)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000625)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000587)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:16:42', `remember_token` = 'c3faae6277c67f49f52504754c6d99a237beccc9', `updated_at` = '2008-09-17 05:16:42' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.000773)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000258)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000714)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000525)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:16:42', `remember_token` = '3b4c49137452f3630be857bbbff6184257c47fcb', `updated_at` = '2008-09-17 05:16:42' WHERE `id` = 745185059[0m
+  [4;35;1mUser Update (0.000928)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-09-17 05:16:42' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001378)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000181)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000778)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000098)[0m   [0;1mBEGIN[0m
+  [4;35;1mMember Columns (0.003507)[0m   [0mSHOW FIELDS FROM `members`[0m
+  [4;36;1mSQL (0.000314)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000163)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000120)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000235)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000129)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000225)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000124)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000240)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000125)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000219)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000246)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000270)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000241)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000222)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000125)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000223)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000125)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000230)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000150)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000222)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000152)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000218)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000545)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Load (0.000484)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000215)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000236)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000483)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000553)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000596)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('201ff72a282406a3b6895d1e71886304b5ab973e', NULL, '2008-09-17 05:21:57', 'd5eacbe5b2ae0bc4ad836361be18e028973e4e12', NULL, 'ce0853e4392c39f2204bda73a885d5554faae2d9', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:21:57')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/ce0853e4392c39f2204bda73a885d5554faae2d9
+  [4;35;1mSQL (0.000513)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000865)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000248)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000560)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000640)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('060d5d9bccd01bc85411f4768e1e6dd99146fc6b', NULL, '2008-09-17 05:21:57', 'ca2d0df2b0ab48733e70c157e9ec53de28866801', NULL, '658e73a17a635d4d236eb5e0aeec6c36c4bc927e', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:21:57')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/658e73a17a635d4d236eb5e0aeec6c36c4bc927e
+  [4;36;1mUser Load (0.000605)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 965482544) [0m
+  [4;35;1mSQL (0.007327)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000245)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000599)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mSQL (0.000375)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin2@foo.com' AND `users`.id <> 745185059) [0m
+  [4;35;1mUser Update (0.000533)[0m   [0mUPDATE `users` SET `email` = 'quentin2@foo.com', `updated_at` = '2008-09-17 05:21:57' WHERE `id` = 745185059[0m
+  [4;36;1mUser Load (0.000648)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin2@foo.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.001007)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000260)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000731)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000621)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:21:57', `remember_token` = 'f9d7cfd641b8cb0d1d58fa3a734b613cf6c6695c', `updated_at` = '2008-09-17 05:21:57' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.000967)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000243)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000784)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000599)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 05:21:57', `remember_token` = 'f89a4e3a0590bcfbb8258d217080edd2df0d6783', `updated_at` = '2008-09-17 05:21:57' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.002320)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000408)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000619)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000457)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 05:21:57', `remember_token` = '392291456a57ae5db161ef534ca9001b40ad5161', `updated_at` = '2008-09-17 05:21:57' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.001055)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000227)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000497)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000445)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;35;1mSQL (0.000422)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000194)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000251)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000451)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000616)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000684)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('390d954fc2a2336386810a168b9bf1b20e5f922b', NULL, '2008-09-17 05:21:57', '85b941c585ad6a6c94a4487f7d84a4b416a76e21', NULL, '9dbdfc2d4811ec77140ac2543338689ce172753a', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:21:57')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: cca4bd0d
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/9dbdfc2d4811ec77140ac2543338689ce172753a
+  [4;35;1mSQL (0.000995)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000224)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000575)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000418)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mSQL (0.000332)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000193)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000211)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000611)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000416)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000585)[0m   [0;1mUPDATE `users` SET `crypted_password` = '32899258c24c5bf78181a1381accf3a5397309b9', `updated_at` = '2008-09-17 05:21:57' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000456)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000993)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000228)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000666)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000624)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:21:57', `remember_token` = 'd9d6b69824ce0f7778e4cbd8e92db1059a8909ce', `updated_at` = '2008-09-17 05:21:57' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000764)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000236)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000594)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000738)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:21:57', `remember_token` = 'd7d62c79bb34aaaf20a9d98c6d9a2551aaea8fe6', `updated_at` = '2008-09-17 05:21:57' WHERE `id` = 745185059[0m
+  [4;36;1mUser Update (0.001064)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-09-17 05:21:57' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.001344)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000184)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000826)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000097)[0m   [0;1mBEGIN[0m
+  [4;35;1mMember Columns (0.004164)[0m   [0mSHOW FIELDS FROM `members`[0m
+  [4;36;1mSQL (0.000329)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000254)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000125)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000224)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000126)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000223)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000123)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000218)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000126)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000219)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000129)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000219)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000124)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000227)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000125)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000222)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000126)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000219)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000212)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000262)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000171)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000229)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000547)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Load (0.000732)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000279)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000231)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000482)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000500)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000701)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('ba8b7ae8dc14aa2fafca574efa0bb5146aecb144', NULL, '2008-09-17 05:39:43', '3f712960a79040ec66b98d81c074524d01942a45', NULL, 'e4aa2149c7d9b1a5775b4fdc790191de561914b0', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:39:43')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/e4aa2149c7d9b1a5775b4fdc790191de561914b0
+  [4;35;1mSQL (0.000520)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000856)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000525)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000510)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000576)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('0c16ea3c2f8f101bbf3ee49d588c13233416858f', NULL, '2008-09-17 05:39:43', 'd8aaecb2e7e20980d0861b394996f7916c049bd1', NULL, 'f7fa142e2ea507512bcb271c4b38a433730c303a', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:39:43')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/f7fa142e2ea507512bcb271c4b38a433730c303a
+  [4;36;1mUser Load (0.000607)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 965482544) [0m
+  [4;35;1mSQL (0.000789)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000246)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000563)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mSQL (0.000430)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin2@foo.com' AND `users`.id <> 745185059) [0m
+  [4;35;1mUser Update (0.000952)[0m   [0mUPDATE `users` SET `email` = 'quentin2@foo.com', `updated_at` = '2008-09-17 05:39:43' WHERE `id` = 745185059[0m
+  [4;36;1mUser Load (0.000834)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin2@foo.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.001140)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000264)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000625)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000633)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:39:43', `remember_token` = 'ae025f851f554c7686f89afbf5e6bc7982ad70d4', `updated_at` = '2008-09-17 05:39:43' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.001002)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000268)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000609)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000465)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 05:39:43', `remember_token` = '83e2a1258454ff3abdf534d5af7110e41ed1c2d6', `updated_at` = '2008-09-17 05:39:43' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.000921)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000235)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000922)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000656)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 05:39:43', `remember_token` = 'eb61bd0e78295a3e6152a288a1700b1adf7bc7c3', `updated_at` = '2008-09-17 05:39:43' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.000897)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000237)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000412)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000403)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;35;1mSQL (0.000361)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000190)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000254)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000507)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000569)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000641)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('865bf2a5fc7439dadbaeb2fe8e72f37a7b8922c0', NULL, '2008-09-17 05:39:44', '9e514df10559ad480978f3a85abe45c148463205', NULL, '7beb336a7592ef1591051678cebb6cd70363e708', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:39:44')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: b3566c1d
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/7beb336a7592ef1591051678cebb6cd70363e708
+  [4;35;1mSQL (0.000960)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000221)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000424)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000370)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mSQL (0.000317)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000194)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000241)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000612)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000407)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000580)[0m   [0;1mUPDATE `users` SET `crypted_password` = '32899258c24c5bf78181a1381accf3a5397309b9', `updated_at` = '2008-09-17 05:39:44' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000515)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000777)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000200)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000585)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000463)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:39:44', `remember_token` = 'e191c77e234e4910a67cb7faafb004eca15b845a', `updated_at` = '2008-09-17 05:39:44' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001023)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000194)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000596)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.001270)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:39:44', `remember_token` = 'd5e44cdaad5587f2e1b3fdfc7a3df689d732669b', `updated_at` = '2008-09-17 05:39:44' WHERE `id` = 745185059[0m
+  [4;36;1mUser Update (0.002054)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-09-17 05:39:44' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.001413)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000186)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000462)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000284)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000476)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000184)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000434)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000191)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000446)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000281)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000693)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000178)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000567)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000095)[0m   [0;1mBEGIN[0m
+  [4;35;1mMember Columns (0.003648)[0m   [0mSHOW FIELDS FROM `members`[0m
+  [4;36;1mSQL (0.000423)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000235)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000687)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000181)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000651)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000164)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000599)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Load (0.000671)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000239)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000249)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000484)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000481)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000566)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('64c4d10ad5b714c9583771935c3073ec868d579e', NULL, '2008-09-17 05:55:09', 'ae175b38b322ce093873f9282be18ecfae13bbc5', NULL, '39e19f72b9626e44bcf35883f6325b313103dc26', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:55:09')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/39e19f72b9626e44bcf35883f6325b313103dc26
+  [4;36;1mSQL (0.000518)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000776)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000340)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000576)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000677)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('3c30f7e68536056df4082500c3bf418dd4911e58', NULL, '2008-09-17 05:55:09', 'a80419827fd5b1f4fec8160aee03e152a863ebcf', NULL, 'e725eb31403287a5e8abe9196b763662af9e8557', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:55:09')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/e725eb31403287a5e8abe9196b763662af9e8557
+  [4;35;1mUser Load (0.000738)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 965482547) [0m
+  [4;36;1mSQL (0.000890)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000214)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000778)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000652)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin2@foo.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000602)[0m   [0;1mUPDATE `users` SET `email` = 'quentin2@foo.com', `updated_at` = '2008-09-17 05:55:09' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000789)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin2@foo.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.001000)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000243)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000604)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000584)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:55:09', `remember_token` = 'f9de1855e3f09e294e2861ddf8f5d27bbdd3c148', `updated_at` = '2008-09-17 05:55:09' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001936)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000249)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000673)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000561)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 05:55:09', `remember_token` = '0e5ccccefc26159df189f1df7d2b63c38afb45e0', `updated_at` = '2008-09-17 05:55:09' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000778)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000248)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000727)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000756)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 05:55:09', `remember_token` = 'acaf13bc3af0a89f9be607f6fe69bef340711167', `updated_at` = '2008-09-17 05:55:09' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001200)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000944)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000684)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000462)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;36;1mSQL (0.000607)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000324)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000226)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000597)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000492)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000414)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('9f1b5021df2480c6f10109096e66b18a3f4ba7f8', NULL, '2008-09-17 05:55:09', '014c6db7ab45651cd9aef98df5a924b4f28ccc75', NULL, 'dd795f41eff6936b45faead5c9758420ab974892', NULL, NULL, 1, 'quire@example.com', '2008-09-17 05:55:09')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: 8fa80822
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/dd795f41eff6936b45faead5c9758420ab974892
+  [4;36;1mSQL (0.001168)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000254)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000522)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000624)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mSQL (0.000522)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000295)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000230)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000508)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mSQL (0.000409)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;35;1mUser Update (0.000462)[0m   [0mUPDATE `users` SET `crypted_password` = '32899258c24c5bf78181a1381accf3a5397309b9', `updated_at` = '2008-09-17 05:55:09' WHERE `id` = 745185059[0m
+  [4;36;1mUser Load (0.000661)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000942)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000249)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000659)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000602)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:55:09', `remember_token` = '0d4dc5172314b0d5c8e9a4ec5d0f18e46c8f60c8', `updated_at` = '2008-09-17 05:55:09' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.006059)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000248)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000567)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000544)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 05:55:09', `remember_token` = '4fac255bdd2e34084f2532296973cb42d7282716', `updated_at` = '2008-09-17 05:55:09' WHERE `id` = 745185059[0m
+  [4;35;1mUser Update (0.000464)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-09-17 05:55:09' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001069)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000180)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000737)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000183)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000451)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000177)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000434)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000240)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000851)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000194)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000459)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000101)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000474)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Load (0.000750)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000365)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000256)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000423)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000387)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000423)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('dd964d0200221d75247da21e0182865bfcbf2e64', NULL, '2008-09-17 06:00:37', 'dc40803e7d4af93b957dc5f5727a16b5a6d0c332', NULL, '5a6f913189589da303f715a253c1d1280c78aab8', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:00:37')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/5a6f913189589da303f715a253c1d1280c78aab8
+  [4;36;1mSQL (0.000533)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000831)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000236)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000562)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000718)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('22dacafb097f4532e20bc0d92f74be92b7c130cc', NULL, '2008-09-17 06:00:37', 'd7d0da568e96b8f6d58a3d507636862a91d8493c', NULL, '674eabe0681bc346726b5d8835561d6f39aaa9e7', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:00:37')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/674eabe0681bc346726b5d8835561d6f39aaa9e7
+  [4;35;1mUser Load (0.000613)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 965482550) [0m
+  [4;36;1mSQL (0.014871)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000233)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000605)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000373)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin2@foo.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000691)[0m   [0;1mUPDATE `users` SET `email` = 'quentin2@foo.com', `updated_at` = '2008-09-17 06:00:37' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000527)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin2@foo.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000929)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000265)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000598)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000806)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:00:37', `remember_token` = '49f72f7dfea581cdff0975bf2d44b7ca43507e1b', `updated_at` = '2008-09-17 06:00:37' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000892)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000228)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000604)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000630)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 06:00:37', `remember_token` = '392d3d39c6b58c0a2f91bfefe9df45f9d279f480', `updated_at` = '2008-09-17 06:00:37' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000953)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000225)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000724)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000739)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 06:00:37', `remember_token` = '238876684283f7b11b6566a60aca15ad719a6c46', `updated_at` = '2008-09-17 06:00:37' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.002709)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000239)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000498)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000295)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;36;1mSQL (0.000303)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000192)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000247)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000450)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000563)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000565)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('5c7286ab80eadd2c227c65b02f54250a0d6c2578', NULL, '2008-09-17 06:00:37', '4b7f873568ea7861b65631d4da1dd06214193d67', NULL, '9ac7fae5f75f422e01ca78ee0d6a72f1db1f7f43', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:00:37')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: 95dfc3d2
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/9ac7fae5f75f422e01ca78ee0d6a72f1db1f7f43
+  [4;36;1mSQL (0.001218)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000240)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000573)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000619)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mSQL (0.000500)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000210)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000274)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000536)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mSQL (0.000427)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;35;1mUser Update (0.000454)[0m   [0mUPDATE `users` SET `crypted_password` = '32899258c24c5bf78181a1381accf3a5397309b9', `updated_at` = '2008-09-17 06:00:37' WHERE `id` = 745185059[0m
+  [4;36;1mUser Load (0.000521)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000884)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000220)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000614)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000514)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:00:37', `remember_token` = '2e9b1895e5e14d670890f35efe555a56c2daef69', `updated_at` = '2008-09-17 06:00:37' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.000847)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000235)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000518)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000617)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:00:37', `remember_token` = 'a0cd719a752d5ccabdc3ba82a066b305ad1c52db', `updated_at` = '2008-09-17 06:00:37' WHERE `id` = 745185059[0m
+  [4;35;1mUser Update (0.000563)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-09-17 06:00:37' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000894)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000186)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000468)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000179)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000545)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000178)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000441)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000181)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000457)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000180)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000450)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000185)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000445)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000192)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000475)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000188)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000539)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000301)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000497)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000183)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000573)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000165)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000647)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Load (0.000987)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000337)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000242)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000538)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000577)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.001593)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('1052b0ec30d05a14a367fb1709d93946826749aa', NULL, '2008-09-17 06:19:20', '601eb81c1e1aa91f6c3662e58489d1cae0342273', NULL, '546a6298754783b453442d3c344815db5e97eb7b', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:19:20')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/546a6298754783b453442d3c344815db5e97eb7b
+  [4;36;1mSQL (0.000534)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000787)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000347)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000740)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000543)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('b12772c9bcb5aeafabb8362eef66b17a97198240', NULL, '2008-09-17 06:19:20', '0e22892b569542f9fdd255805c78e3f270fc3169', NULL, '9a015860702ab65bde833bf8f67fa4fbfce8eb3d', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:19:20')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/9a015860702ab65bde833bf8f67fa4fbfce8eb3d
+  [4;35;1mUser Load (0.000638)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 965482553) [0m
+  [4;36;1mSQL (0.000939)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000262)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000591)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000398)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin2@foo.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000678)[0m   [0;1mUPDATE `users` SET `email` = 'quentin2@foo.com', `updated_at` = '2008-09-17 06:19:20' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000532)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin2@foo.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.001038)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000255)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000614)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000638)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:19:20', `remember_token` = '8ed4465ec81ea5080e934dfeec7a153428f90f1e', `updated_at` = '2008-09-17 06:19:20' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000841)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000256)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000588)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000604)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 06:19:20', `remember_token` = '57e175ee6187925a6c4c876b2e59ac46c9ae3a6f', `updated_at` = '2008-09-17 06:19:20' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000971)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000241)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000796)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000963)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 06:19:20', `remember_token` = '79de009048085efee5506548ef43136d9128f22e', `updated_at` = '2008-09-17 06:19:20' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.003174)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000245)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000721)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000539)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;36;1mSQL (0.000399)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000198)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000241)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000477)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000514)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000451)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('6cef0e341e01a0051dabc29ef2744554b4f61f37', NULL, '2008-09-17 06:19:20', '79ab218f01cfd50c6456c0dd8b896655e7889636', NULL, '3a01ef32c82b17fdb584c99c0d14e0423120a4a3', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:19:20')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: bab5b466
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/3a01ef32c82b17fdb584c99c0d14e0423120a4a3
+  [4;36;1mSQL (0.001255)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000241)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000579)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.001704)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mSQL (0.000583)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000322)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000441)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000693)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mSQL (0.000639)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;35;1mUser Update (0.000659)[0m   [0mUPDATE `users` SET `crypted_password` = '32899258c24c5bf78181a1381accf3a5397309b9', `updated_at` = '2008-09-17 06:19:20' WHERE `id` = 745185059[0m
+  [4;36;1mUser Load (0.000731)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000961)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000247)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000650)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000929)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:19:20', `remember_token` = '9d3d03aebb4e3f979eda8c4dc0835ff40fc51613', `updated_at` = '2008-09-17 06:19:20' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.001643)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000287)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000646)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Update (0.000760)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:19:20', `remember_token` = 'd5906af6e94c3aa0969adfb7ca468d694e397118', `updated_at` = '2008-09-17 06:19:21' WHERE `id` = 745185059[0m
+  [4;35;1mUser Update (0.000900)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-09-17 06:19:21' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001034)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000176)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000435)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000103)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000484)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Load (0.000651)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000231)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000257)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000472)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000365)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000571)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('9fbb5d52531edc5a5ae5be71cfe1e94c3a1164f5', NULL, '2008-09-17 06:22:05', 'e16ef1740b083d3bd756e899cae00b6b45d06d9c', NULL, 'e2bdd612b67ad19840a1c2f2003fc20ffb662246', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:22:05')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/e2bdd612b67ad19840a1c2f2003fc20ffb662246
+  [4;36;1mSQL (0.000529)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000776)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000213)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000506)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000443)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('de70ea3b4a14afa64c323f8cbf90618635d229af', NULL, '2008-09-17 06:22:05', '97ba1e7dabd6175e52f533e94afb2cfd4b2da73a', NULL, 'd0eb732b8f8b6a3d2b0e93c5fbf1e89d86aa905a', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:22:05')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/d0eb732b8f8b6a3d2b0e93c5fbf1e89d86aa905a
+  [4;35;1mUser Load (0.000640)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 965482556) [0m
+  [4;36;1mSQL (0.000793)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000216)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000608)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000588)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin2@foo.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000832)[0m   [0;1mUPDATE `users` SET `email` = 'quentin2@foo.com', `updated_at` = '2008-09-17 06:22:05' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000707)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin2@foo.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.001042)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000281)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000683)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000753)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:22:05', `remember_token` = 'abf1eba03850f32133afd33c8381c322d9d0977d', `updated_at` = '2008-09-17 06:22:05' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000973)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000276)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000608)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000604)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 06:22:05', `remember_token` = '197e9a72b17ae33ac4d22fd0e056004a879676ad', `updated_at` = '2008-09-17 06:22:05' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000933)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000256)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000718)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000752)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 06:22:05', `remember_token` = 'fff5a4fc09e43e4469c53b11311b0f3352b97c3b', `updated_at` = '2008-09-17 06:22:05' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000876)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000328)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000534)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000389)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;36;1mSQL (0.000570)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000219)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000278)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000566)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000781)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000577)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('dc97441895ace27024ec151dfb11914ea819f9dd', NULL, '2008-09-17 06:22:05', 'd839354b4438a1f48c7432fcce668246cbe59a67', NULL, 'cd811348c184ce1eb776782b7afb371c60097684', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:22:05')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: 0dc5ef8c
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/cd811348c184ce1eb776782b7afb371c60097684
+  [4;36;1mSQL (0.000594)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com' AND `users`.id <> 965482557) [0m
+  [4;35;1mSQL (0.001186)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000244)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000588)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000637)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mSQL (0.000518)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000295)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000244)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000573)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000579)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000467)[0m   [0;1mUPDATE `users` SET `crypted_password` = '32899258c24c5bf78181a1381accf3a5397309b9', `updated_at` = '2008-09-17 06:22:05' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000649)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000888)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000294)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000598)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000470)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:22:05', `remember_token` = '399bb1752bdda1fc30a4ce4707b30c5d2a646659', `updated_at` = '2008-09-17 06:22:05' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001196)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000239)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000597)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000476)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:22:05', `remember_token` = 'b8fff66219a4d6194e2265173a6555721d629a83', `updated_at` = '2008-09-17 06:22:05' WHERE `id` = 745185059[0m
+  [4;36;1mUser Update (0.000485)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-09-17 06:22:05' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.000869)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000178)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000585)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000098)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000463)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Load (0.000686)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000254)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000235)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000616)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000502)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000567)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('f0be8e9b91db7544f99298eced0f7c2470a689ae', NULL, '2008-09-17 06:22:39', '4f90bed486087a9eed152b31db2e3a183716ba16', NULL, '21b21f2eb5b1b3fac4a993fcb02e6b205476beee', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:22:39')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/21b21f2eb5b1b3fac4a993fcb02e6b205476beee
+  [4;36;1mSQL (0.000750)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.001088)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000265)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000671)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000694)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('63dd16d373efec2e3de0528fd460ca5b19f6f2a5', NULL, '2008-09-17 06:22:39', 'c7214bde2b8028a6bd099cafc13e3e9fd3cd4fa6', NULL, '8f7fae91179dbd2bce0824c265ebb7cbd0e4f3f7', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:22:39')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/8f7fae91179dbd2bce0824c265ebb7cbd0e4f3f7
+  [4;35;1mUser Load (0.000696)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 965482559) [0m
+  [4;36;1mSQL (0.003555)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000246)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000502)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000391)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin2@foo.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.001587)[0m   [0;1mUPDATE `users` SET `email` = 'quentin2@foo.com', `updated_at` = '2008-09-17 06:22:39' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000774)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin2@foo.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.001231)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000381)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000842)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000612)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:22:39', `remember_token` = '2ee16d1cca49bc6fe6f6beae759465f022043fbb', `updated_at` = '2008-09-17 06:22:39' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000924)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000256)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000678)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000612)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 06:22:39', `remember_token` = 'b80048f3fe1214ef94bb8365f4f41674f5e6247c', `updated_at` = '2008-09-17 06:22:39' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001885)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000208)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000617)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000457)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 06:22:39', `remember_token` = 'a38dba813a078efc5e9be5ef39286a7a90618d26', `updated_at` = '2008-09-17 06:22:39' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000920)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000236)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000729)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000522)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;36;1mSQL (0.000609)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000397)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000340)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000514)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000650)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000530)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('020ed56dfb934fb2c1694b659edcbc712a082919', NULL, '2008-09-17 06:22:39', 'c95179d5bef2072c64c286c1a5059a7fc08b3b2a', NULL, 'adc4efc8aab88d9f780eb35433bd5cd7c225ec15', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:22:39')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: a7c5b8b7
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/adc4efc8aab88d9f780eb35433bd5cd7c225ec15
+  [4;36;1mSQL (0.000595)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com' AND `users`.id <> 965482560) [0m
+  [4;35;1mSQL (0.001421)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000255)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000586)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000840)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mSQL (0.000610)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000429)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000689)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000727)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000542)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000775)[0m   [0;1mUPDATE `users` SET `crypted_password` = '32899258c24c5bf78181a1381accf3a5397309b9', `updated_at` = '2008-09-17 06:22:39' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000873)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.001097)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000524)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000821)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000785)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:22:39', `remember_token` = 'a44b3b5c945744027394d136cd27fab1947db74d', `updated_at` = '2008-09-17 06:22:39' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001406)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000246)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000505)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000638)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:22:39', `remember_token` = '38d5779baa624cd57aa48f4e3a71770bca2cc625', `updated_at` = '2008-09-17 06:22:39' WHERE `id` = 745185059[0m
+  [4;36;1mUser Update (0.000532)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-09-17 06:22:39' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.001068)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000275)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000566)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000175)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.000977)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;36;1mUser Load (0.000672)[0m   [0;1mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;35;1mSQL (0.000257)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000255)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000473)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000458)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mUser Create (0.000423)[0m   [0mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('2c8e43c0aaebcfe0961cea6db1460118be782380', NULL, '2008-09-17 06:24:39', '3c536ef49a7fe186b6f952e7d4fcdbcdd3613201', NULL, '9015810dfa5dc4713f764a2defb4383d262ab991', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:24:39')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/9015810dfa5dc4713f764a2defb4383d262ab991
+  [4;36;1mSQL (0.000527)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000813)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000247)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000519)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;36;1mUser Create (0.000556)[0m   [0;1mINSERT INTO `users` (`salt`, `activated_at`, `updated_at`, `crypted_password`, `remember_token_expires_at`, `activation_code`, `role`, `remember_token`, `force_password_reset`, `email`, `created_at`) VALUES('79e1bbe5b094c2d72e769fbea4da5ab136b1cc4c', NULL, '2008-09-17 06:24:39', '5a06c34e76de5c19b7e69798a70e40642c4d8d08', NULL, '9dececf0e56f884c1ac89a368cf32022adf7f8a9', NULL, NULL, 1, 'quire@example.com', '2008-09-17 06:24:39')[0m
+Sent mail to quire@example.com
+
+From: Oregon Montessori Association <oma@oregonmontessori.org>
+To: quire@example.com
+Subject: [OMA] Please activate your new account
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: quire@example.com
+  Password: quire69
+
+Visit this url to activate your account:
+
+  http://www.oregonmontessori.org/activate/9dececf0e56f884c1ac89a368cf32022adf7f8a9
+  [4;35;1mUser Load (0.000628)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 965482562) [0m
+  [4;36;1mSQL (0.000796)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000269)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000520)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000538)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin2@foo.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000600)[0m   [0;1mUPDATE `users` SET `email` = 'quentin2@foo.com', `updated_at` = '2008-09-17 06:24:39' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000517)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin2@foo.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000959)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000235)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000753)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000599)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:24:39', `remember_token` = '8dadc8c6308b7c086c37084a4a56fd20f3b20ed8', `updated_at` = '2008-09-17 06:24:39' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001659)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000243)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000588)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000592)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 06:24:39', `remember_token` = 'd269c7fedb93688302fba10ca2ca709dd456e296', `updated_at` = '2008-09-17 06:24:39' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001158)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000246)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.001119)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.001086)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-09-24 06:24:39', `remember_token` = '2b8fdf7f1352248938a1db85210a46e3a132f078', `updated_at` = '2008-09-17 06:24:39' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.001251)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000242)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.000473)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000373)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email IS NULL) [0m
+  [4;36;1mSQL (0.000469)[0m   [0;1mSELECT count(*) AS count_all FROM `users` [0m
+  [4;35;1mSQL (0.000312)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000259)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000564)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000544)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = '') [0m
+  [4;35;1mSQL (0.000440)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000224)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.000587)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000598)[0m   [0;1mSELECT `email` FROM `users` WHERE (`users`.email = 'quire@example.com') [0m
+  [4;35;1mSQL (0.000802)[0m   [0mSELECT count(*) AS count_all FROM `users` [0m
+  [4;36;1mSQL (0.000323)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000232)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000517)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mSQL (0.000530)[0m   [0mSELECT `email` FROM `users` WHERE (`users`.email = 'quentin@example.com' AND `users`.id <> 745185059) [0m
+  [4;36;1mUser Update (0.000662)[0m   [0;1mUPDATE `users` SET `crypted_password` = '32899258c24c5bf78181a1381accf3a5397309b9', `updated_at` = '2008-09-17 06:24:39' WHERE `id` = 745185059[0m
+  [4;35;1mUser Load (0.000516)[0m   [0mSELECT * FROM `users` WHERE (email = 'quentin@example.com' and activated_at IS NOT NULL) LIMIT 1[0m
+  [4;36;1mSQL (0.000833)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000232)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000503)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000637)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:24:39', `remember_token` = '4667f0de8312a34074c695bb49599d23e5763098', `updated_at` = '2008-09-17 06:24:39' WHERE `id` = 745185059[0m
+  [4;36;1mSQL (0.000844)[0m   [0;1mROLLBACK[0m
+  [4;35;1mSQL (0.000294)[0m   [0mBEGIN[0m
+  [4;36;1mUser Load (0.000588)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 745185059) [0m
+  [4;35;1mUser Update (0.000624)[0m   [0mUPDATE `users` SET `remember_token_expires_at` = '2008-10-01 06:24:39', `remember_token` = '35ccd98ba5135728d50b25c963fda47ac73171eb', `updated_at` = '2008-09-17 06:24:39' WHERE `id` = 745185059[0m
+  [4;36;1mUser Update (0.000719)[0m   [0;1mUPDATE `users` SET `remember_token_expires_at` = NULL, `remember_token` = NULL, `updated_at` = '2008-09-17 06:24:39' WHERE `id` = 745185059[0m
+  [4;35;1mSQL (0.000943)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.000263)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000643)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000238)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000338)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000000)[0m   [0mMysql::Error: Table 'oma_test.pages' doesn't exist: SELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000226)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000000)[0m   [0mMysql::Error: Table 'oma_test.pages' doesn't exist: SELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000183)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000655)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.001112)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.056088)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.007413)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.001029)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.000975)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreatePages (20080823194743)
+  [4;35;1mSQL (0.000000)[0m   [0mMysql::Error: Table 'pages' already exists: CREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `url` varchar(255) NOT NULL, `name` varchar(255) NOT NULL, `description` varchar(255) NOT NULL, `content` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000231)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000000)[0m   [0mMysql::Error: Table 'oma_test.pages' doesn't exist: SELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000290)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000846)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000838)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.019801)[0m   [0mCREATE TABLE `classifieds` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255) DEFAULT '' NOT NULL, `description` text NOT NULL, `url` varchar(255), `email` varchar(255), `phone` varchar(10), `contact` text NOT NULL, `member_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.001006)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.004200)[0m   [0mCREATE TABLE `events` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT '' NOT NULL, `description` text NOT NULL, `location` varchar(255), `the_date` date NOT NULL, `the_time` varchar(255) DEFAULT '' NOT NULL, `contact` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000871)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.005583)[0m   [0mCREATE TABLE `member_updates` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `first_name` varchar(40), `last_name` varchar(40), `phone` varchar(10), `email` varchar(60), `address` varchar(60), `address2` varchar(60), `city` varchar(25), `state` varchar(2), `zip` varchar(5), `volunteer` tinyint(1), `speaker` tinyint(1), `category_id` int(11), `member_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000983)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.003949)[0m   [0mCREATE TABLE `members` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `first_name` varchar(40) DEFAULT '' NOT NULL, `last_name` varchar(40) DEFAULT '' NOT NULL, `phone` varchar(10), `email` varchar(60), `address` varchar(60) DEFAULT '' NOT NULL, `address2` varchar(60), `city` varchar(25) DEFAULT '' NOT NULL, `state` varchar(2) DEFAULT 'OR' NOT NULL, `zip` varchar(5) DEFAULT '' NOT NULL, `volunteer` tinyint(1) DEFAULT 0 NOT NULL, `speaker` tinyint(1) DEFAULT 0 NOT NULL, `user_id` int(11), `created_at` datetime, `updated_at` datetime, `school_id` int(11), `category` varchar(255) DEFAULT 'new' NOT NULL, `notes` text) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.001469)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.019918)[0m   [0mCREATE TABLE `memberships` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `member_id` int(11) NOT NULL, `year` int(11) NOT NULL, `payment` int(11) DEFAULT 0 NOT NULL, `created_at` datetime, `updated_at` datetime, `member_type` varchar(255) DEFAULT '' NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.001315)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.004561)[0m   [0mCREATE TABLE `news_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255) DEFAULT '' NOT NULL, `description` text NOT NULL, `the_date` date NOT NULL, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.000976)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.018068)[0m   [0mCREATE TABLE `newsletters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `the_date` date, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.002775)[0m   [0;1mDROP TABLE `pages`[0m
+  [4;35;1mSQL (0.001071)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.003610)[0m   [0;1mCREATE TABLE `pages` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `url` varchar(255) DEFAULT '' NOT NULL, `name` varchar(255) DEFAULT '' NOT NULL, `description` varchar(255) DEFAULT '' NOT NULL, `content` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.001125)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.030432)[0m   [0;1mCREATE TABLE `schools` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(60) DEFAULT '' NOT NULL, `phone` varchar(10), `email` varchar(60), `url` varchar(60), `address` varchar(60) DEFAULT '' NOT NULL, `address2` varchar(60), `city` varchar(25) DEFAULT '' NOT NULL, `state` varchar(2) DEFAULT 'OR' NOT NULL, `zip` varchar(5) DEFAULT '' NOT NULL, `contact_by_email` tinyint(1) DEFAULT 1 NOT NULL, `volunteer` tinyint(1) DEFAULT 0 NOT NULL, `speaker` tinyint(1) DEFAULT 0 NOT NULL, `infants` int(11) DEFAULT 0, `primary` int(11) DEFAULT 0, `lower_elementary` int(11) DEFAULT 0, `upper_elementary` int(11) DEFAULT 0, `high_school` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime, `latitude` decimal(11,7) NOT NULL, `longitude` decimal(11,7) NOT NULL, `category` varchar(255), `notes` text) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.004027)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.008246)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(100) DEFAULT '' NOT NULL, `crypted_password` varchar(40) DEFAULT '' NOT NULL, `salt` varchar(40) DEFAULT '' NOT NULL, `remember_token` varchar(40), `remember_token_expires_at` datetime, `activation_code` varchar(40), `activated_at` datetime, `role` varchar(12), `created_at` datetime, `updated_at` datetime, `force_password_reset` tinyint(1) DEFAULT 1) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.055338)[0m   [0mCREATE UNIQUE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [4;36;1mSQL (0.004190)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.021677)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.019934)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.001443)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.016004)[0m   [0;1mSELECT version FROM `schema_migrations`[0m
+  [4;35;1mSQL (0.001311)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20080921234702')[0m
+  [4;36;1mSQL (0.006581)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('20080823194743')[0m
+  [4;35;1mSQL (0.001251)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20080823195647')[0m
+  [4;36;1mSQL (0.000952)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('20080823195900')[0m
+  [4;35;1mSQL (0.001021)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20080823200150')[0m
+  [4;36;1mSQL (0.000974)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('20080826053528')[0m
+  [4;35;1mSQL (0.000906)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20080905044042')[0m
+  [4;36;1mSQL (0.000989)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('20080905045047')[0m
+  [4;35;1mSQL (0.000996)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20080907201643')[0m
+  [4;36;1mSQL (0.007294)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('20080913170238')[0m
+  [4;35;1mSQL (0.000870)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20080913210925')[0m
+  [4;36;1mSQL (0.000653)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('20080914044454')[0m
+  [4;35;1mSQL (0.000647)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20080916035351')[0m
+  [4;36;1mSQL (0.000969)[0m   [0;1mINSERT INTO `schema_migrations` (version) VALUES ('20080919053510')[0m
+  [4;35;1mSQL (0.009496)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('20080920200549')[0m
+  [4;36;1mSQL (0.000186)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000493)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000248)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000183)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000591)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000250)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000265)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000595)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000197)[0m   [0;1mBEGIN[0m
+  [4;35;1mMember Columns (0.004151)[0m   [0mSHOW FIELDS FROM `members`[0m
+  [4;36;1mSQL (0.000276)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.000188)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000707)[0m   [0mSELECT * FROM `pages` [0m
+  [4;36;1mSQL (0.000097)[0m   [0;1mBEGIN[0m
+WARNING: Can't mass-assign these protected attributes: role
+  [4;35;1mSQL (0.000267)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.001244)[0m   [0;1mSHOW TABLES[0m
+  [4;36;1mSQL (0.000197)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mPage Load (0.000624)[0m   [0mSELECT * FROM `pages` [0m

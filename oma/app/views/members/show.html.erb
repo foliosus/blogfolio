@@ -1,0 +1,30 @@
+<h2>Contact information</h2>
+
+<h3>Address</h3>
+<p><%= @member.full_address.join('<br />') %></p>
+
+<h3>Phone</h3>
+<p><%=h @member.phone %></p>
+
+<h3>E-mail</h3>
+<p><%= @member.email? ? mail_to(@member.email) : 'None' %></p>
+
+<%- if logged_in? && @current_user.has_role?(:secretary) -%>
+  <h2>Membership history</h2>
+  <ul>
+    <%- for membership in @member.memberships.sort -%>
+    <li><%=h membership.year_range %> (<%= number_to_currency(membership.payment) %>)</li>
+    <%- end -%>
+  </ul>
+  
+  <h2>Notes</h2>
+  <%= simple_format @member.notes || 'None' %>
+  
+  <%- unless @member.user.nil? -%>
+  <h2>User account</h2>
+  <p>Current role: <%=h @member.user.role %></p>
+  <p><%= link_to 'Reset password', reset_password_user_path(@member.user_id), :method => :post, :title => 'Reset the member\'s user account password and send them a new activation email' %></p>
+  <%- end -%>
+<%- end -%>
+
+<p><%= link_to('Edit', edit_member_path(@member)) + ' | ' if logged_in? && @current_user.can_update_member? %><%= link_to 'Back', members_path %></p>

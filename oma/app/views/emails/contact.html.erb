@@ -1,0 +1,14 @@
+<p>Malis albucius fabellas in sed, mei esse aliquam epicuri id. Quas saepe antiopam no his. Nec autem graeci consectetuer te, noluisse euripidis no sit. Eam nostrud alterum et, ne pri movet semper verterem. His prima noster eu.</p>
+
+<p>Vis ex graeco saperet, ad his fugit paulo voluptaria. Brute voluptatum reprimique vel ut, at cum sumo suscipit imperdiet. Cu soleat laboramus necessitatibus cum, ius et affert assentior, at summo temporibus qui. In vix posse albucius gloriatur, at nam denique aliquando delicatissimi. Cibo omnium iudicabit usu cu, ne commodo civibus necessitatibus has.</p>
+
+<%- uni_form_for :email, @email, :url => {:action => :send_contact} do |f| -%>
+  <%= f.error_messages %>
+  
+  <%- f.fieldset 'Message' do -%>
+    <%= f.text_field :from, :hint => 'Your email address', :required => true %>
+    <%= f.text_field :subject, :max_length => 60, :required => true %>
+    <%= f.text_area :body, :label => 'Message', :required => true %>
+  <%- end -%>
+  <p><%= f.submit 'Send it!' %></p>
+<%- end -%>

@@ -1,0 +1,10 @@
+<%= text_editor -%>
+
+<%- f.fieldset 'News' do -%>
+  <%= f.text_field :name, :size => 40, :required => true %>
+  <%= f.text_area :description, :required => true %>
+  <%= f.text_field :location, :size => 40, :required => true %>
+  <%= f.date_select :the_date, :order => [:month, :day, :year], :required => true, :label => 'Date' %>
+  <%= f.text_field :the_time, :size => 40, :label => 'Time' %>
+  <%= f.text_field :contact, :size => 40, :label => 'Contact information' %>
+<%- end -%>

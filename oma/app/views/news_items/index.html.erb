@@ -1,0 +1,14 @@
+<%= content_tag(:p, link_to('New news', new_news_item_path, :title => "Create a news item")) if logged_in? && @current_user.can_create_news_item? %>
+
+<%- if @news_items.length == 0 -%>
+<p>Sorry! No news items matched your criteria.</p>
+<%- else -%>
+  <% for news_item in @news_items %>
+    <h2><%=h news_item.name %></h2>
+    <p class="date"><%=h news_item.the_date.to_s(:long) %></p>
+    <%= markdown(news_item.description) %>
+    <%- if logged_in? && @current_user.can_update_news_item? -%>
+      <p><%= link_to 'Edit', edit_news_item_path(news_item), :title => 'Make changes to this news item' %> | <%= link_to 'Destroy', news_item, :confirm => 'Are you sure?', :method => :delete %></p>
+    <%- end -%>
+  <%- end -%>
+<%- end -%>

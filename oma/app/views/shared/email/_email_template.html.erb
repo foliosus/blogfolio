@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta name="robots" content="none" />
+  <title></title>
+  <style type="text/css">
+  /*--------- LINKS ---------*/
+
+  a {
+  	text-decoration: none;
+  	border-bottom: 1px solid;
+  }
+  a:link {
+    color: #3c5e8e;
+  }
+  a:visited {
+  	color: #738c64;
+  }
+  a:hover {
+  	color: #317511;
+  }
+  a:active {
+  	color: #317511;
+  }
+
+  /*--------- COMMON ---------*/
+
+  body {
+  	margin: 0px;
+  }
+  #email_wrapper {
+  	color: #6b2213;
+  	background: #bfcddf;
+  	margin: 0px;
+  	padding: 0px;
+  	width: 100%;
+  	font-family: Helvetica, Arial, sans-serif;
+  	line-height: 1.5em;
+  	text-align: center;
+  }
+  div {
+  	margin: 0px;
+  	padding: 0px;
+  }
+  h1,h2,h3,h4,h5 {
+  	padding: 0px;
+  	font-weight: normal;
+  	margin-bottom: 1px;
+  }
+  h1, h2 { font-family: Georgia, 'Times New Roman', serif; color: #3c5e8e; }
+  h1 {font-size: 24px;}
+  h2 {font-size: 20px;}
+  h3 {font-size: 16px;}
+  h4 {font-size: 12px; font-weight: bold;}
+  img {
+  	border: 0px;
+  }
+  li,p {
+  	font-size: 12px;
+  }
+  ul {
+  	padding-left: 15px;
+  	padding-right: 15px;
+  	margin-bottom: 18px;
+  }
+
+  /*--------- BOXES ---------*/
+
+  #wrapper {
+  	width: 700px;
+  	margin-left: auto;
+  	margin-right: auto;
+  	text-align: left;
+  	background-color: #fff;
+  }
+  #legal {
+  	border-top: 1px solid #3c5e8e;
+  	padding: 10px 0px 0px 0px;
+  	margin: 0px;
+  	clear: both;
+  	background-color: #bfcddf;
+  }
+  #legal p {
+  	font-size: 11px;
+  	color: #666;
+  	margin: 0px 30px 0px 30px;
+  	padding-bottom: 20px;
+  }
+  #sidebar img {
+  	padding: 4px;
+  	margin: 0px 20px 20px 30px;
+  }
+  #skip_links {
+  	display: none;
+  	height: 0px;
+  	width: 0px;
+  	overflow: hidden;
+  	position: absolute; /* Mac IE */
+  }
+  #secondary_content {
+  	padding-top: 30px;
+  	float: left;
+  	width: 211px;
+  }
+  #secondary_content p {
+  	font-size: 11px;
+  }
+  #secondary_content h4, #secondary_content p, #secondary_content img {
+  	margin: 0px 20px 10px 30px;
+  }
+  #secondary_content h4 {
+  	margin-bottom: 0px;
+  	font-size: 14px;
+  }
+  #secondary_content a {
+    border-bottom: none;
+  }
+  #secondary_content ul {
+  	margin: 0px 20px 10px 20px;
+  }
+  #main_content {
+  	float: right;
+  	margin: 0px;
+  	padding: 20px 0px 20px 0px;
+  	border-left: 1px solid #3c5e8e;
+  	border-right: 1px solid #3c5e8e;
+  	width: 486px;
+  	background-color: #d0e9c0;
+  }
+  #main_content h1,
+  #main_content h2,
+  #main_content h3,
+  #main_content h4,
+  #main_content p, #main_content ul {
+  	margin: 0px 30px 10px 20px;
+  }
+  #banner {
+  	width: 700px;
+  	height: 80px;
+  	background: #3c5e8e;
+  }
+  #banner h1 {
+    font-size: 30px;
+  	float: left;
+  	margin: 30px 0px 0px 20px;
+  	color: #fff;
+  }
+  </style>
+</head>
+<body>
+  <span id="skip_links"><a href="#main_content">scroll down to content</a></span>
+  <div id="email_wrapper">
+  	<div id="wrapper">
+  		<div id="banner">
+  			<h1>Oregon Montessori Association</h1>
+  		</div>
+  		<div id="main_content">
+        <%= markdown(text) %>
+  		</div> <!-- /main_content -->
+  		<div id="secondary_content">
+  		  <a href="<%= root_url %>" title="Visit the OMA site"><img src="<%= root_url %>email_images/logo.jpg" width="160" height="89" alt="OMA logo" /></a>
+  			<p>OMA's mission is to advance the Montessori educational movement in Oregon</p>
+  		</div>
+  		<div id="legal">
+  			<p>You received this e-mail because you are a member of the <%= link_to 'Oregon Montessori Association', root_url, :title => 'Visit the OMA site' %>. If you no longer wish to receive e-mails like this one, or if you received this e-mail in error, please <%= link_to 'contact OMA', contact_url %>.<br />
+  				All content Copyright &#169; Oregon Montessori Association and may not be reproduced. All rights reserved.</p>
+  		</div>
+  	</div> <!-- /wrapper -->
+  </div> <!-- /email_wrapper-->
+</body>
+</html>

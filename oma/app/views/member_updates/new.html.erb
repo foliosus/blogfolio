@@ -1,0 +1,9 @@
+<% uni_form_for(@member_update) do |f| %>
+  <%= f.error_messages %>
+  
+  <%= render :partial => "form", :locals => {:f => f} %>
+
+  <p><%= f.submit "Send the changes in for review" %></p>
+<% end %>
+
+<p><%= link_to 'Home', root_url %></p>

@@ -1,0 +1,16 @@
+<%= content_tag(:p, link_to('New event', new_event_path, :title => "Create a new event")) if logged_in? && @current_user.can_create_event? %>
+
+<%- if @events.length == 0 -%>
+<p>Sorry! No events matched your criteria.</p>
+<%- else -%>
+  <% for event in @events %>
+  <h2><%=h event.name %></h2>
+  <p class="date"><%=h event.the_date.to_s(:long) %></p>
+  
+  <%= markdown(event.description) %>
+
+    <%- if logged_in? && @current_user.can_update_event? -%>
+    <p><%= link_to 'Edit', edit_event_path(event) %> | <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></p>
+    <%- end -%>
+  <% end %>
+<%- end -%>

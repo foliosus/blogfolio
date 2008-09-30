@@ -1,0 +1,1 @@
+<p><%= link_to('Edit', edit_member_update_path(@member_update)) + ' | ' if @current_user.can_update_member_update?  %><%= link_to 'Back', member_updates_path %></p>

@@ -1,0 +1,21 @@
+<%= markdown(@classified.description) %>
+
+<h3>Contact information</h3>
+
+<p><%= @classified.contact %><br />
+<%= phone_number(@classified.phone) + "<br />" if @classified.phone? %><%= link_to(h(@classified.url), h(@classified.url)) + "<br />" if @classified.url? %><%= mail_to(h(@classified.email)) if @classified.email? %></p>
+
+<p>
+<%- if logged_in? -%>
+  <%- case -%>
+  <%- when @current_user.can_update_classified? -%>
+    <%= link_to('Edit', edit_classified_path(@classified), :title => 'Make changes to this ad') %> | 
+    <%= link_to('Back', classifieds_path, :title => "Return to classified ads listing") if @current_user.can_delete_classified? %>
+  <%- when @current_user.has_role?(:member) -%>
+    <%= link_to('Edit', edit_classified_path(@classified), :title => 'Make changes to this ad') + ' | ' if @current_user.member == @classified.member %>
+    <%= link_to('Back', member_classifieds_path(@current_user.member), :title => "Return to your classified ads list") %>
+  <%- end -%>
+<%- else -%>
+<%= link_to 'Back', classifieds_path, :title => "Return to classified ads listing" %>
+<%- end -%>
+</p>

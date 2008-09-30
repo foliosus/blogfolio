@@ -1,0 +1,14 @@
+<%= text_editor %>
+
+<%- f.fieldset 'Classified', :class => 'blockLabels' do -%>
+  <%= f.text_field :title, :size => 40, :required => true %>
+  <%= f.text_area :description, :required => true, :hint => 'Please use only 3rd level headers (###) in the body of the ad' %>
+<%- end -%>
+
+<%- f.fieldset 'Contact information', :class => 'blockLabels' do -%>
+  <%= f.text_area :contact, :label => 'Contact information', :required => true, :rows => 4 %>
+  <%= f.text_field :url, :size => 40, :label => 'Website' %>
+  <%= f.text_field :email, :size => 40 %>
+  <%= f.text_field :phone, :size => 10 %>
+  <%= f.hidden_field :member_id %>
+<%- end -%>
