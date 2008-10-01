@@ -7,7 +7,11 @@
   <title><%= h(@meta_title) || "#{controller.action_name.capitalize} #{controller.controller_name}" %> | Oregon Montessori Association</title>
   <%= tag(:meta, 'http-equiv' => 'description', :content => h(strip_tags(@meta_description))) if @meta_description %>
 
-  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag 'ocean_sage' %>
+  <!--[if lte IE 7]>
+    <%= stylesheet_link_tag 'ie_fixes' %>
+  <![endif]-->
+  
 
   <%= javascript_include_tag 'jquery' %>
   

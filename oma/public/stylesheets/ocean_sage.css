@@ -342,22 +342,6 @@ thead th.headerSortDown {
     margin-left: 0.5em;
   }
   
-  /* Hacks to get the login forms to look right in IE6 & IE7 */
-  * html .sessions #primary_content form,
-  *:first-child+html .sessions #primary_content form {
-    width: 240px;
-  }
-  
-  /* More hacks */
-  * html #member_navigation input,
-  .sessions #primary_content input,
-  *:first-child+html #member_navigation input,
-  *:first-child+html .sessions #primary_content input {
-    display: block;
-    margin-bottom: 1.5em;
-    margin-right: 1.5em;
-  }
-  
   #member_navigation .submit,
   .sessions #primary_content .submit {
     display: block;

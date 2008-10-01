@@ -225,3 +225,9 @@
 2008-09-29 21:41:31: (server.c.1361) [note] graceful shutdown started 
 2008-09-29 21:41:31: (server.c.1475) server stopped by UID = 501 PID = 5033 
 2008-09-29 21:41:36: (log.c.75) server started 
+2008-09-30 20:44:20: (log.c.97) server started 
+2008-09-30 23:06:27: (log.c.97) server started 
+2008-09-30 23:06:32: (server.c.1350) [note] graceful shutdown started 
+2008-09-30 23:06:32: (server.c.1464) server stopped by UID = 501 PID = 5033 
+2008-09-30 23:08:00: (log.c.97) server started 
+2008-09-30 23:27:07: (log.c.97) server started 
