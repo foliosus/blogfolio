@@ -19,7 +19,7 @@
         
         // Put a marker on the map for each school
         <%- for school in schools -%>
-        $('#school_<%= school.id %> td:nth-child(2)').addMapLink('<%= "<h3>#{h school.name}</h3><p>#{school.full_address.collect{|a| h(a)}.join('<br />')}<br />#{h school.phone}</p>#{school.url? ? content_tag(:p, link_to(h(school.url), school.url)) : nil}" %>', <%= number_with_precision(school.latitude, 6) %>, <%= number_with_precision(school.longitude, 6) %>);
+        $('#school_<%= school.id %> td:nth-child(2)').addMapLink('<%= escape_javascript("<h3>#{h school.name}</h3><p>#{school.full_address.collect{|a| h(a)}.join('<br />')}<br />#{h school.phone}</p>#{school.url? ? content_tag(:p, link_to(h(school.url), school.url)) : nil}") %>', <%= number_with_precision(school.latitude, 6) %>, <%= number_with_precision(school.longitude, 6) %>);
         <%- end -%>
         
         // Remove the "show" links since we don't need them

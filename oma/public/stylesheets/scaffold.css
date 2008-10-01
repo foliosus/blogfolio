@@ -137,6 +137,7 @@ body {
 
   #branding #banner {
     float: right;
+    display: inline;
     border: 1px solid #3c5e8e;
   }
 
@@ -147,11 +148,13 @@ body {
 #primary_content {
   width: 640px;
   float: right;
+  display: inline;
 }
 
 #secondary_content {
   width: 240px;
   float: left;
+  display: inline;
 }
 
 #footer {
@@ -172,7 +175,10 @@ body {
   }
 
 #communication p {
-  padding: 1em;
+	font-size: 1.1666666666666667em;
+	line-height: 1.2857142857142858em;
+	margin-bottom: 1.2857142857142858em;
+  padding: 0.75em;
   color: #fff;
 }
 
@@ -286,7 +292,7 @@ thead th.headerSortDown {
   #member_navigation ul a {
     border-bottom: none;
     padding-left: 24px;
-    background: transparent url(../images/nav_arrow.png) left center no-repeat;
+    background: url(../images/nav_arrow.png) left center no-repeat;
   }
   
   #member_navigation ul a {
@@ -295,7 +301,9 @@ thead th.headerSortDown {
   }
   
   #navigation ul a.current,
-  #member_navigation ul a.current {
+  #member_navigation ul a.current,
+  #navigation ul a:link.current,
+  #member_navigation ul a:link.current {
     background-image: url(../images/nav_arrow_inactive.png);
     color: #6b2213;
   }
@@ -303,8 +311,13 @@ thead th.headerSortDown {
   #navigation a:visited {
     color: #3c5e8e;
   }
+  
   #navigation a:hover {
     color: #728c63;
+  }
+  
+  #navigation ul a:visited.current {
+    color: #6b2213;
   }
   
   #member_navigation a:hover {
@@ -320,12 +333,29 @@ thead th.headerSortDown {
     width: 7em;
     line-height: 1.5em;
     margin-bottom: 1.5em;
+    display: inline;
   }
   
   #member_navigation input,
   .sessions #primary_content input {
     float: left;
     margin-left: 0.5em;
+  }
+  
+  /* Hacks to get the login forms to look right in IE6 & IE7 */
+  * html .sessions #primary_content form,
+  *:first-child+html .sessions #primary_content form {
+    width: 240px;
+  }
+  
+  /* More hacks */
+  * html #member_navigation input,
+  .sessions #primary_content input,
+  *:first-child+html #member_navigation input,
+  *:first-child+html .sessions #primary_content input {
+    display: block;
+    margin-bottom: 1.5em;
+    margin-right: 1.5em;
   }
   
   #member_navigation .submit,
@@ -342,6 +372,7 @@ thead th.headerSortDown {
 
 .member_search ul {
   float: left;
+  display: inline;
   list-style-type: none;
   width: 10em;
 }
@@ -402,6 +433,7 @@ thead th.headerSortDown {
     margin-left: 40px;
     width: 200px;
     float: left;
+    display: inline;
   }
   
   #index #primary_content #communication {
@@ -480,6 +512,7 @@ thead th.headerSortDown {
   
   #index #membership #member_navigation {
     float: left;
+    display: inline;
     width: 200px;
     margin-right: 40px;
     margin-bottom: 1.5em;

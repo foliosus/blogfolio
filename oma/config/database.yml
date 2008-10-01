@@ -5,6 +5,13 @@ development:
   password: Pete5On
   host: localhost
 
+staging:
+  adapter: mysql
+  database: oma_development
+  username: rails_user
+  password: Pete5On
+  host: localhost
+
 test:
   adapter: mysql
   database: oma_test

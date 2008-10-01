@@ -7,7 +7,7 @@ class School < ActiveRecord::Base
   validates_presence_of :latitude
   validates_presence_of :longitude
   
-  before_save :geocode_address
+  before_validation :geocode_address
   
   include ModelSecurity
   @permissions = {:create => :secretary, :update => :secretary, :delete => :secretary}

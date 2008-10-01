@@ -20,6 +20,3 @@ config.action_view.cache_template_loading            = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
-
-# Google maps API key
-GeoKit::Geocoders::google = 'ABQIAAAALzfe-l4458FMvzIm_-hWCxTilEnlw24R9Bs__81ZvL-ehfg0QxRqxCYWk-GmvhBaoIRXPgJtgQuUpA'

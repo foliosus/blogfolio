@@ -22,7 +22,7 @@
   
   <%- f.fieldset 'User account' do -%>
     <p><%= link_to('Reset password', reset_password_user_path(@member.user_id), :method => :post, :title => 'Reset the member\'s user account password and send them a new activation email', :confirm => 'Are you sure? This will cancel the user\'s current password and send them a new temporary one.') %></p>
-    <%= select_tag(:role, options_for_select(User::ROLES[0..User::ROLES.index(@current_user.role)].collect{|r| [r.to_s.capitalize, r.to_s]}, @member.user.role.to_s)) if User::ROLES.index(@current_user.role) >= User::ROLES.index(@member.user.role) %>
+    <%= select_tag(:role, options_for_select(User::ROLES[0..User::ROLES.index(@current_user.role)].collect{|r| [r.to_s.capitalize, r.to_s]}, @member.user.role.to_s)) if @member.user && @user::ROLES.index(@current_user.role) >= User::ROLES.index(@member.user.role) %>
   <%- end -%>
   
   <%= render :partial => "shared/notes_form", :locals => {:f => f} %>
