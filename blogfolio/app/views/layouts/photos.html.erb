@@ -1,0 +1,11 @@
+<%= render :partial => "layouts/head" %>
+
+  <div id="primary_content">
+  <%= yield %>
+  </div> <!-- /primary_content -->
+
+  <div id="secondary_content">
+    <%= yield :secondary_content %>
+  </div> <!-- /secondary_content -->
+  
+<%= render :partial => "layouts/tail"%>

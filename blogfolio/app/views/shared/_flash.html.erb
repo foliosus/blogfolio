@@ -1,0 +1,7 @@
+<%- if flash -%>
+<div id="messaging">
+  <%- flash.each do |type| -%>
+  <p class="<%= type %>"><%= flash[:type] %></p>
+  <%- end -%>
+</div>
+<%- end -%>

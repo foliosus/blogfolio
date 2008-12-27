@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= @meta[:title] %> | Foliosus Web Design LLC</title>
+  <%= stylesheet_link_tag 'uni-form' %>
+  <%= stylesheet_link_tag 'foliosus' %>
+  <%= stylesheet_link_tag 'print', :media => 'print' %>
+  <%= tag :meta, :name => 'description', :content => @meta[:description] %>
+  <%= yield :head %>
+</head>
+<body id="<%= controller.controller_name %>">
+
+<div id="branding">
+  <h1><%= link_to_unless_current 'Foliosus Web Design LLC: Your website done right', root_path, :title => "Return to home page" %></h1>
+</div>
+
+<div id="container">
+  <%= render :partial, 'shared/flash' %>

@@ -1,0 +1,7 @@
+<h2>Comment by <%= mail_to @comment.email, h(@comment.author) %></h2>
+<%= content_tag(:p, "#{h @comment.author} is from #{link_to(h(@comment.homepage), @comment.homepage)}.") if @comment.homepage %>
+
+<%= simple_format(auto_link(sanitize(@comment.body))) %>
+
+<p><%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %></p>

@@ -1,0 +1,11 @@
+<div id="categories">
+  <h3>Categories</h3>
+  <ul>
+  <%- for category in @categories do -%>
+    <li><%= link_to_unless_current category.name, blog_category_url(:category => category) %> (<%= category.post_count %>)</li>
+  <%- end -%>
+  <ul>
+</div>
+
+<div id="photos">
+</div>

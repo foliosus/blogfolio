@@ -1,0 +1,27 @@
+<h1>Listing posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Categories</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% for post in @posts %>
+    <tr>
+      <td><%= format_date(post.created_at) %></td>
+      <td><%=h post.title %></td>
+      <td><%= post.categories_list.collect{|c| h(c) }.join(', ').capitalize %></td>
+      <td><%= link_to 'Show', post_url(post) %></td>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <td><%= link_to 'Destroy', post_path(post), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'New post', new_post_path %></p>

@@ -1,0 +1,16 @@
+<%= render :partial => 'layouts/head' %>
+
+  <div id="primary_content">
+  <%= yield %>
+  </div> <!-- /primary_content -->
+
+  <div id="secondary_content">
+    <h3>Plant of the moment</h3>
+    
+    <h3>About the author</h3>
+    <p>Brent Miller is the owner and principal web designer of <a href="http://www.foliosus.com/" title="Home page">Foliosus Web Design LLC</a> in Portland, Oregon. He enjoys food, plants, and the color green. Read the &#8220;about&#8221; page for more about him. If you are interested in hiring him for web work, please contact him.</p>
+    
+    <%= render :partial => 'secondary_content' %>
+  </div> <!-- /secondary_content -->
+  
+<%= render :partial => 'layouts/tail'%>

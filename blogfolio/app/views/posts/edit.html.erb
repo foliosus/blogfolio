@@ -1,0 +1,11 @@
+<h1>Editing post</h1>
+
+<%= error_messages_for :post %>
+
+<% uni_form_for :post, @post, :url => post_path(@post), :html => {:method => :put} do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+  <%= f.submit "Update" %>
+<% end %>
+
+<p><%= link_to 'Show', @post %> |
+<%= link_to 'Back', posts_path %></p>
