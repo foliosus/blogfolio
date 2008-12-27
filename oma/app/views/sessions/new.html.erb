@@ -1,5 +1,0 @@
-<%= render :partial => "login_form" %>
-
-<%- unless flash[:error].blank? -%>
-  <p><%= link_to 'I forgot my password!', reset_password_path, :alt => 'Reset my password', :method => :post %>
-<%- end -%>

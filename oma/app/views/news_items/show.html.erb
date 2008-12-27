@@ -1,3 +1,0 @@
-<%= markdown(@news_item.description) %>
-
-<p><%= link_to('Edit', edit_news_item_path(@news_item), :title => 'Make changes') + ' | ' if logged_in? && @current_user.can_update_news_item? %><%= link_to 'Back', news_items_path, :title => 'Return to events listing' %></p>
