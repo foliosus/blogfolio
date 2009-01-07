@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   has_and_belongs_to_many   :categories, :order => 'name ASC'
-  has_many                  :comments
+  has_many                  :comments, :dependent => :destroy, :order => 'created_at ASC'
   
   validates_presence_of     [:title, :content]
   

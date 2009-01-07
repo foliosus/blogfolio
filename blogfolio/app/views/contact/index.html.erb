@@ -1,0 +1,15 @@
+<%- uni_form_for :contact, @contact, :url => {:action => :index} do |f| %>
+  <%- f.fieldset 'Message' do -%>
+    <%= f.text_field :name, :label => 'Your name', :size => 40, :max_length => 80, :required => true %>
+    <%= f.text_field :email, :label => 'Your email', :size => 40, :max_length => 80, :required => true %>
+    <%= f.text_field :email_confirmation, :label => 'Your email (again)', :size => 40, :max_length => 80, :required => true %>
+    <%= f.text_field :subject, :label => 'Subject of your inquiry', :size => 40, :max_length => 80, :required => true %>
+    <%= f.text_area  :body, :label => 'Your message', :required => true %>
+  <%- end -%>
+  <p><%= f.submit 'Send it!' %></p>
+<%- end -%>
+
+<%- content_for :secondary_content do -%>
+  <h3>Thanks for your interest in Foliosus!</h3>
+  <p>When you complete this form, your message will be sent to our office, and you will also receive a confirmation email. We'll be in touch as soon as we can, usually within 1 to 2 business days.</p>
+<%- end -%>

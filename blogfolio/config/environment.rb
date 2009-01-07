@@ -59,10 +59,11 @@ Rails::Initializer.run do |config|
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
   
-  config.gem 'mini_exiftool', :version => '1.0.1'
   config.gem 'hpricot', :version => '0.6.164'
+  config.gem 'flickr-fu', :lib => 'flickr_fu', :version => '>=0.1.4'
+  config.gem 'syntax', :lib => 'syntax/convertors/html', :version => '1.0.0'
+  
+  config.action_mailer.default_url_options = { :host => "foliosus.com" }
 end
 
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.update(:url => '%Y/%m/%d')
-
-require 'syntax/convertors/html'

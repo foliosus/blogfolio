@@ -1,9 +1,11 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  # Default date format
   def format_date(date)
     date.to_s(:short)
   end
   
+  # Render a date in nice, human readable form, e.g. "Monday two weeks ago"
   def humanize_date(date)
     current = Date.today
     case
@@ -36,6 +38,7 @@ module ApplicationHelper
     end
   end
   
+  # Render the time in a nice, human readable form
   def humanize_time(time)
     humanize_date(time.to_date) + (time.to_date.cweek == Date.today.cweek ? " at " + time.strftime("%l:%M %p") : "")
   end
@@ -52,5 +55,20 @@ module ApplicationHelper
       </script>"
     end
   end
-
+  
+  # Flickr page link
+  def flickr_url(photo)
+    "http://www.flickr.com/photos/foliosus/#{photo.id}/"
+  end
+  
+  # Flickr photo link for the input photo
+  def flickr_image_url(photo, size)
+    sizer = case size
+      when :square then '_s'
+      when :small then '_m'
+      when :original then '_o'
+      else ''
+    end
+    "http://farm#{photo.farm}.static.flickr.com/#{photo.server}/#{photo.id}_#{photo.secret}#{sizer}.jpg"
+  end
 end

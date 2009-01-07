@@ -9,13 +9,13 @@
   <%= stylesheet_link_tag 'foliosus' %>
   <%= stylesheet_link_tag 'print', :media => 'print' %>
   <%= tag :meta, :name => 'description', :content => @meta[:description] %>
+  <%= javascript_include_tag :all %>
   <%= yield :head %>
 </head>
 <body id="<%= controller.controller_name %>">
 
 <div id="branding">
-  <h1><%= link_to_unless_current 'Foliosus Web Design LLC: Your website done right', root_path, :title => "Return to home page" %></h1>
+  <h1><%= link_to 'Foliosus Web Design LLC: Your website done right', root_path, :title => "Return to home page" %></h1>
 </div>
 
 <div id="container">
-  <%= render :partial, 'shared/flash' %>

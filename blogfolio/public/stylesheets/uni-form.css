@@ -10,16 +10,14 @@
 
 /* Some generals */
 .uniForm fieldset {
-  margin: 1em 0;
-  padding: 0 0 1.5em 0;
+  margin: 0 0 1.5em 0;
   border: none;
   border-bottom: 1px solid #999;
 }
 
   .uniForm fieldset legend {
-    color: #000; /* Reset IE */
-    font-weight: bold;
-    font-size: 120%;
+    font-weight:bold; color:#555;
+    font-size: 1.2em; line-height: 1.25em; margin-bottom;
   }
 
 .uniForm .ctrlHolder { /* This is the main unit that contains our form elements */
@@ -28,7 +26,7 @@
   overflow: hidden;
 }
   .uniForm .ctrlHolder.odd {
-    background-color: #f9f9f9;
+    background-color: #f2fbff;
   }
   .uniForm .ctrlHolder.focused {
     background: #f1f1f1;

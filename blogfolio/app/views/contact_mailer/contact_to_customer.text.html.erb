@@ -1,0 +1,9 @@
+<%- render :layout => "layouts/email.html.erb" do %>
+<h2>Thank you for asking!</h2>
+
+<p>Thank you for your inquiry at Foliosus Web Design. A copy of your message (reproduced below) has been sent to our offices. We'll respond as quickly as we can; usually that means within 1-2 business days.</p>
+
+<h3>Your message</h3>
+
+<%= simple_format(h(@contact.body)) %>
+<%- end -%>

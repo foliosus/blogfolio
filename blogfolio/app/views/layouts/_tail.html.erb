@@ -1,7 +1,9 @@
-  <div id="footer">
-    <p>All content Copyright &copy; Foliosus Web Design LLC. XHTML | CSS. <%= link_to 'Got feedback?', static_page_path(:contact) %></p>
-  </div> <!-- /footer -->
+  <%= render :partial => "shared/navigation" %>
 </div> <!-- /container -->
+
+<div id="footer">
+  <p>All content Copyright &copy; Foliosus Web Design LLC. XHTML | CSS. <%= link_to 'Got feedback?', contact_path %></p>
+</div> <!-- /footer -->
 
 </body>
 </html>

@@ -1,3 +1,5 @@
+require 'hpricot'
+
 module PostsHelper
   # Show the metadata for a post, wrapped in a <p class="metadata">
   def show_metadata(post)
@@ -41,16 +43,22 @@ module PostsHelper
         post.content = post.summary + "\r\n\r\n#{link}"
       end
     end
-    
+
+    body = Hpricot(post.content.gsub(/<!--(.*?)-->/m, ''))
+
+    # Convert any "pre" segments to code
+    ['xml', 'yaml', 'ruby'].each do |code|
+      convertor = Syntax::Convertors::HTML.for_syntax code
+      body.search("pre.#{code}") do |e|
+        e.innerHTML = convertor.convert( e.innerHTML ).gsub(/<\/?pre>/,'')
+      end
+    end
+
     # Simple format & auto-link the body
-    body = Hpricot(simple_format(auto_link(sanitize(post.content.gsub(/<!--(.*?)-->/m, '')))))
+    body = Hpricot(simple_format(auto_link(sanitize(body.to_html))).gsub(/<p><pre/,'<pre').gsub(/\/pre><\/p>/,'/pre>'))
+    body.search("pre p"){|e| e.swap(e.inner_html)}
     body.search("pre br").remove # Remove <br /> tags inside <pre> tags -- the simple_format method incorrectly inserts them
     
-    # Convert any "pre" segments to code
-    convertor = Syntax::Convertors::HTML.for_syntax 'ruby'
-    body.search("pre.ruby") do |e|
-      e.innerHTML = convertor.convert( e.innerHTML ).gsub(/<\/?pre>/,'')
-    end
     
     output << body.to_html
 
@@ -68,8 +76,8 @@ module PostsHelper
   end
   
   def single_comment(comment, options = {})
-    options.reverse_merge!(:heading => :h3)
-    content_tag(:li,
+    options.reverse_merge!(:heading => :h3, :tag => :li)
+    content_tag(options[:tag],
       content_tag(options[:heading], 
                   comment.homepage.blank? ?  comment.author : link_to(comment.author, comment.homepage, {:rel => 'nofollow', :title => "Visit #{comment.author}'s homepage"})) + 
       simple_format(auto_link(sanitize(comment.body))),

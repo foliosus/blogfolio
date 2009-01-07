@@ -1,12 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :posts, :has_many => :comments, :shallow => true
   map.resources :photos
-  map.resources :comments
   map.resources :pages
-
+  map.resources :clients, :as => 'portfolio'
   map.resources :users
-  map.resources :posts do |posts|
-    posts.resources :comments
-  end
   map.resources :categories
 
   map.resource :session
@@ -19,6 +16,8 @@ ActionController::Routing::Routes.draw do |map|
                                                      :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
   map.blog_post '/blog/:id', :controller => 'blog', :action => 'show'
   map.blog_category '/blog/category/:category', :controller => 'blog', :action => 'category'
+  
+  map.contact 'contact', :controller => 'contact', :action => 'index'
 
   map.root :controller => 'pages', :action => 'index_page'
   

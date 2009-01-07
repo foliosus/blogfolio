@@ -1,0 +1,212 @@
+/* Based on Uni-Form by Dragan Babic  - http://dnevnikeklektika.com/ , http://draganbabic.com/ */ 
+/* Some rights reserved - http://creativecommons.org/licenses/by-sa/2.5/ */
+
+.uniForm {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  clear: left;
+}
+
+/* Some generals */
+.uniForm fieldset {
+  margin: 1em 0;
+  padding: 0 0 1.5em 0;
+  border: none;
+  border-bottom: 1px solid #999;
+}
+
+  .uniForm fieldset legend {
+    color: #000; /* Reset IE */
+    font-weight: bold;
+    font-size: 120%;
+  }
+
+.uniForm .ctrlHolder { /* This is the main unit that contains our form elements */
+  padding: 0.75em;
+  clear: both;
+  overflow: hidden;
+}
+  .uniForm .ctrlHolder.odd {
+    background-color: #f9f9f9;
+  }
+  .uniForm .ctrlHolder.focused {
+    background: #f1f1f1;
+  }
+
+.uniForm .buttonHolder {
+  overflow:hidden;
+  clear:both;
+}
+  .uniForm .resetButton {
+  }
+  .uniForm .submitButton {
+  }
+
+.uniForm textarea {
+  height: 12em; 
+}
+
+.uniForm label {
+  font-weight: bold;
+  position: relative;
+}
+  .uniForm label.nestedLabel {
+    font-weight: normal;
+  }
+
+.uniForm .formHint {
+  font-style: italic;
+  clear: left;
+}
+
+.uniForm .ctrlHolder p,
+p.form_required {
+  clear: left;
+}
+
+  p.form_required em {
+    font-style: normal;
+    font-weight: bold;
+    color: #900;
+  }
+
+.uniForm label em,
+.uniForm .label em {
+  display: block;
+  position: absolute;
+  left: -0.75em; top: 10%;
+  font-style: normal;
+  font-weight: bold;
+  color: #900;
+}
+
+/* ########################################################################## */
+/* Styles for form controls where labels are in line with the input elements */
+/* Set the class of the parent (preferably to a fieldset) to .inlineLabels */
+.uniForm .inlineLabels .ctrlHolder {
+}
+
+  .uniForm .inlineLabel,
+  .uniForm .inlineLabels label,
+  .uniForm .inlineLabels .inlineLabel,
+  .uniForm .blockLabels label.inlineLabel {
+    width: 20%;
+    float: left;
+    display:inline;
+    min-width: 7em;
+  }
+
+    .uniForm .inlineLabels input,
+    .uniForm .inlineLabels select,
+    .uniForm .inlineLabels textarea {
+      float: left;
+      margin-left: 2%;
+      max-width: 77%;
+    }
+    
+    .uniForm .inlineLabels input[type=radio],
+    .uniForm .inlineLabels input[type=checkbox] {
+      width: auto;
+    }
+
+  #mainContent .uniForm .inlineLabels .formHint {
+    margin: 0 0 0 21%;
+  }
+
+/* ########################################################################## */
+/* Styles for form controls where labels are above the input elements */
+/* Set the class of the parent (preferably to a fieldset) to .blockLabels */
+.uniForm .blockLabels .ctrlHolder {
+}
+
+  .uniForm .blockLabel
+  .uniForm .blockLabels label,
+  .uniForm .blockLabels .label,
+  .uniForm .inlineLabels label.blockLabel {
+    display: block;
+    float: left;
+    clear: left;
+  }
+  
+  .uniForm .blockLabels .label {
+    float:left;
+    margin-right:3em;
+  }
+
+  .uniForm .blockLabels .inlineLabel {
+    position:relative; top:.15em;
+  }
+
+  .uniForm .blockLabels .textInput,
+  .uniForm .blockLabels .fileUpload,
+  .uniForm .blockLabels .selectInput,
+  .uniForm .blockLabels textarea,
+  .uniForm .blockLabels .formHint {
+    float: left;
+    clear: left;
+    width: 53%;
+  }
+  
+  .uniForm .blockLabels input[type=radio],
+  .uniForm .blockLabels input[type=checkbox] {
+    float: left;
+    clear: left;
+  }
+  
+  .uniForm .blockLabels .nestedLabel {
+    float: left;
+    clear: none;
+  }
+  
+
+/* ########################################################################## */
+
+/* Focus pseudoclasses */
+.uniForm .ctrlHolder .textInput:focus {
+}
+
+.uniForm div.focused .textInput:focus {
+}
+
+.uniForm div.focused .formHint {
+}
+
+/* ########################################################################## */
+
+/* Messages */
+.uniForm .error {
+  background-color: #fdd;
+  border: 2px solid #900;
+}
+  .uniForm #errorMsg dt,
+  .uniForm #errorMsg h3 {
+  }
+
+  .uniForm #errorMsg dd {
+  }
+
+  .uniForm #errorMsg ol {
+  }
+    .uniForm #errorMsg ol li {
+    }
+
+  .uniForm div.error {
+    float: left;
+    clear: left;
+  }
+
+/* ########################################################################## */
+
+/* Add the following classes to your fieldsets (preferably) if you want columns */
+.uniForm .col {
+  float:left;
+  width: 47.9%;
+  margin: 0 1.8% 0 0;
+}
+.uniForm .columnLeft {
+  float:left;
+}
+.uniForm .columnRight {
+  float:right;
+}

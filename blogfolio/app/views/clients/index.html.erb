@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Teaser</th>
+      <th>Content</th>
+      <th>Url</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+  <% for client in @clients %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%=h client.name %></td>
+      <td><%=h client.teaser %></td>
+      <td><%=h client.content %></td>
+      <td><%=h client.url %></td>
+      <td><%= link_to 'Show', client %></td>
+      <td><%= link_to 'Edit', edit_client_path(client) %></td>
+      <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'New client', new_client_path %></p>

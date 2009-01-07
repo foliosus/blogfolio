@@ -1,0 +1,5 @@
+<%- render :layout => "layouts/email.html.erb" do %>
+<h2>Request from <%= @contact.name %> via foliosus.com</h2>
+
+<%= simple_format(h(@contact.body)) %>
+<%- end -%>

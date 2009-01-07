@@ -1,0 +1,5 @@
+<ul class="photos">
+  <%- for photo in @photos do -%>
+  <li class="<%= cycle('first','second','third','fourth') %>"><a href="<%=h flickr_url(photo) %>" title="See &quot;<%=h photo.title %>&quot; full size"><img src="<%= flickr_image_url(photo, :square) %>"  alt="<%=h photo.title %>" width="75" height="75"></a></li>
+  <%- end -%>
+</ul>

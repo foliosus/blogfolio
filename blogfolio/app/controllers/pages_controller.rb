@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   def index
     @pages = Page.ordered.all
     
-    @meta_title = 'Static page listing'
+    @meta[:title] = 'Static page listing'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -22,8 +22,8 @@ class PagesController < ApplicationController
       # load data!
     end
     
-    @meta_title = "Foliosus Web Design: Your website done right"
-    @meta_description = "Foliosus Web Design LLC is a small web design studio in Portland, Oregon, that focuses on building custom websites that are easy to use by both site owners and visitors."
+    @meta[:title] = "Your website done right"
+    @meta[:description] = "Foliosus Web Design LLC is a small web design studio in Portland, Oregon, that focuses on building custom websites that are easy to use by both site owners and visitors."
   end
 
   # GET /pages/1
@@ -31,8 +31,8 @@ class PagesController < ApplicationController
   def show
     @page = Page.find(params[:id])
     
-    @meta_title = @page.name
-    @meta_description = @page.description
+    @meta[:title] = @page.name
+    @meta[:description] = @page.description
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,7 +45,7 @@ class PagesController < ApplicationController
   def new
     @page = Page.new
     
-    @meta_title = 'New page'
+    @meta[:title] = 'New page'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -57,7 +57,7 @@ class PagesController < ApplicationController
   def edit
     @page = Page.find(params[:id])
     
-    @meta_title = 'Edit page'
+    @meta[:title] = 'Edit page'
   end
 
   # POST /pages
@@ -72,7 +72,7 @@ class PagesController < ApplicationController
         format.html { redirect_to(pages_url) }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
-        @meta_title = 'New page'
+        @meta[:title] = 'New page'
         format.html { render :action => "new" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end
@@ -91,7 +91,7 @@ class PagesController < ApplicationController
         format.html { redirect_to(@page) }
         format.xml  { head :ok }
       else
-        @meta_title = 'New page'
+        @meta[:title] = 'New page'
         format.html { render :action => "edit" }
         format.xml  { render :xml => @page.errors, :status => :unprocessable_entity }
       end

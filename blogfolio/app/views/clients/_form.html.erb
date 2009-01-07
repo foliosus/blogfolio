@@ -1,0 +1,6 @@
+<% f.fieldset 'Client' do %>
+  <%= f.text_field :name, :size => 40, :maxlength => 80, :required => true %>
+  <%= f.text_area :teaser, :required => true %>
+  <%= f.text_area :content, :required => true %>
+  <%= f.text_field :url, :size => 40, :maxlength => 120 %>
+<%- end -%>
