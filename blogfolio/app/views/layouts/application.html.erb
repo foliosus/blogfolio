@@ -1,15 +1,19 @@
 <%= render :partial => 'layouts/head' %>
 
-  <h1><%=h @meta[:title] %></h1>
-
-  <%= render :partial => 'shared/flash' %>
-
   <div class="primary_content">
-  <%= yield %>
+    <h1><%=h @meta[:title] %></h1>
+
+    <%= yield %>
   </div> <!-- /primary_content -->
 
   <div class="secondary_content">
+    <%= render :partial => 'shared/flash' %>
+
     <%= yield :secondary_content %>
+
+    <h3>Fresh photos from <a href="/blog" title="Read the Foliosus blog">the blog</a></h3>
+    <%= render :partial => "shared/photos" %>
+
   </div> <!-- /secondary_content -->
   
 <%= render :partial => "layouts/tail" %>

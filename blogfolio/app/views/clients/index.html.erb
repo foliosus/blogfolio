@@ -1,26 +1,10 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Teaser</th>
-      <th>Content</th>
-      <th>Url</th>
-    </tr>
-  </thead>
-  
-  <tbody>
-  <% for client in @clients %>
-    <tr class="<%= cycle('odd', 'even') %>">
-      <td><%=h client.name %></td>
-      <td><%=h client.teaser %></td>
-      <td><%=h client.content %></td>
-      <td><%=h client.url %></td>
-      <td><%= link_to 'Show', client %></td>
-      <td><%= link_to 'Edit', edit_client_path(client) %></td>
-      <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<p><%= link_to 'New client', new_client_path %></p>
+<ul class="portfolio">
+<%- for client in @clients -%>
+  <li>
+    <%= link_to(image_tag(client.thumb_path, :width => 152, :height => 152, :alt => h(client.name), :title => h(client.name)), client, :title => h(client.name), :class => 'photo') %>
+    <h3><%=h client.name %></h3>
+    <p><%=h client.teaser %></p>
+    <p><%= link_to "Read more", client, :alt => "Narrative about the design process and results for #{h(client.name)}"%><%= " or " + link_to('go straight to the live site', h(client.url), :title => "Visit #{h(client.name)} on the web") if client.url? %></p>
+  </li>
+<%- end -%>
+</ul>

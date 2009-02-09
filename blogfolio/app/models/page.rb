@@ -9,6 +9,7 @@ class Page < ActiveRecord::Base
   friendly_identifier :url, :identifier_column => :url
   
   named_scope :ordered, :order => 'name ASC'
+  named_scope :contains, lambda{|text| {:conditions => ['name LIKE :s OR description LIKE :s OR content LIKE :s', {:s => "%#{text}%"}]} }
   
   # Returns the full path of the page
   def full_path

@@ -1,18 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title><%= @meta[:title] %> | Foliosus Web Design LLC</title>
+  <title><%=h @meta[:title] %> | Foliosus Web Design LLC</title>
   <%= stylesheet_link_tag 'uni-form' %>
   <%= stylesheet_link_tag 'foliosus' %>
   <%= stylesheet_link_tag 'print', :media => 'print' %>
   <%= tag :meta, :name => 'description', :content => @meta[:description] %>
-  <%= javascript_include_tag :all %>
+  <%= javascript_include_tag :all, :cache => true %>
+  
+  <%= auto_discovery_link_tag :rss, rss_url, :title => "RSS 2.0 syndication feed" %>
+  
   <%= yield :head %>
 </head>
-<body id="<%= controller.controller_name %>">
+<body class="<%= controller.controller_name %> <%= controller.action_name %>">
 
 <div id="branding">
   <h1><%= link_to 'Foliosus Web Design LLC: Your website done right', root_path, :title => "Return to home page" %></h1>

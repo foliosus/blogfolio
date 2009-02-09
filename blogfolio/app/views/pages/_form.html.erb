@@ -5,5 +5,6 @@
 <%- end -%>
 
 <%- f.fieldset 'Content', :class => 'blockLabels' do -%>
-  <%= f.text_area :content, :label => '', :rows => 20, :cols => 70 %>
+  <%= f.text_area :content, :label => 'Primary', :rows => 20, :cols => 70 %>
+  <%= f.text_area :secondary_content, :label => 'Secondary', :rows => 20, :cols => 70 %>
 <%- end -%>

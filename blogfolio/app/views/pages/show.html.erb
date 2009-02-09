@@ -1,3 +1,5 @@
-<%- cache(:controller => :pages, :action => :show, :id => @page.id) do -%>
-  <%= @page.content %>
+<%= @page.content %>
+
+<%- content_for :secondary_content do -%>
+  <%= @page.secondary_content -%>
 <%- end -%>

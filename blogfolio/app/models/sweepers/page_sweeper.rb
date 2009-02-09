@@ -6,6 +6,16 @@ class PageSweeper < ActionController::Caching::Sweeper
   end
 
   def after_save(page)
-    expire_fragment({:controller => :pages, :action => :show, :id => page.id})
+    expire_single(page)
+  end
+  
+  def after_destroy(page)
+    expire_single(page)
+  end
+  
+  private
+  
+  def expire_single(page)
+    expire_page("/#{page.url}")
   end
 end

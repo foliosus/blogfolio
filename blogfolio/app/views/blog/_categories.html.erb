@@ -1,0 +1,6 @@
+<%- categories = Category.alphabetical.all.collect{|c| content_tag(:li, link_to(h(c.name), blog_category_path(c)))} %>
+<%- categories.in_groups(2) do |cats_group| %>
+    <ul class="categories">
+      <%= cats_group.join("\n\t\t\t") %>
+    </ul>
+<%- end -%>

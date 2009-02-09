@@ -1,23 +1,7 @@
-<p>
-  <b>Name:</b>
-  <%=h @client.name %>
-</p>
+<%= content_tag(:p, "Live site: " + link_to(@client.url, @client.url, :title => "Visit the live site for #{@client.name}", :rel => 'nofollow')) if @client.url? %>
+  
+<%= simple_format(auto_link(sanitize(@client.content))) %>
 
-<p>
-  <b>Teaser:</b>
-  <%=h @client.teaser %>
-</p>
+<p><%= link_to_if(@client.url?, image_tag(@client.image_path, :alt => "Screenshot for #{@client.name}", :width => 536, :height => 536), @client.url, :title => "Visit the live site for #{@client.name}", :class => 'photo', :rel => 'nofollow') %></p>
 
-<p>
-  <b>Content:</b>
-  <%=h @client.content %>
-</p>
-
-<p>
-  <b>Url:</b>
-  <%=h @client.url %>
-</p>
-
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<p><%= link_to 'Return to portfolio', clients_path %></p>

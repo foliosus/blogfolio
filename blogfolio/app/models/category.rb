@@ -1,4 +1,7 @@
 class Category < ActiveRecord::Base
+  include ModelSecurity
+  @permissions = {:create => :admin, :update => :admin, :delete => :admin}
+
   has_and_belongs_to_many   :posts
   has_and_belongs_to_many   :published_posts, :class_name => 'Post', :conditions => "status_id = #{Post::STATUSES.index('published')}", :order => 'posts.created_at DESC'
   

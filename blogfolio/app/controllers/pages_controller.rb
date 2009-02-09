@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
-
+  before_filter :login_required, :except => [:index_page, :show]
   before_filter :check_role_admin, :except => [:index_page, :show]
+  
+  caches_page :show
+  caches_page :index_page
+  
   cache_sweeper :page_sweeper, :only => [:create, :update]
   
   # GET /pages
@@ -18,12 +22,13 @@ class PagesController < ApplicationController
   
   # Show the real site home page
   def index_page
-    unless fragment_exist?({:controller => :pages, :action => :show_index})
-      # load data!
-    end
+    @clients = Client.reverse_chronological_order.all(:limit => 4)
+    @posts = Post.published.reverse_chronological_order.all(:limit => 5)
     
     @meta[:title] = "Your website done right"
     @meta[:description] = "Foliosus Web Design LLC is a small web design studio in Portland, Oregon, that focuses on building custom websites that are easy to use by both site owners and visitors."
+    
+    render :layout => 'index'
   end
 
   # GET /pages/1

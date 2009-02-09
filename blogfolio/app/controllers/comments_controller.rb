@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
   before_filter   :login_required, :except => [:create]
+  before_filter   :check_role_admin, :except => [:create]
+  
 
   # GET /comments
   # GET /comments.xml

@@ -3,7 +3,7 @@ require 'hpricot'
 module PostsHelper
   # Show the metadata for a post, wrapped in a <p class="metadata">
   def show_metadata(post)
-    content_tag(:p, "Filed in #{post.categories.collect{|cat| link_to cat.name.downcase, category_path(cat)}.join(', ')}", :class => 'metadata')
+    content_tag(:p, post.created_at.strftime('<span class="month">%b</span> <span class="day">%d</span> <span class="year">%Y</span>'), :class => 'date') + content_tag(:p, "Filed in #{post.categories.collect{|cat| link_to cat.name.downcase, blog_category_path(cat)}.join(', ')}", :class => 'metadata')
   end
   
   # Format a single post for output.  Accepts the following options (with their defaults): 
@@ -20,22 +20,22 @@ module PostsHelper
                             :heading => :h2, 
                             :metadata => true, 
                             :excerpt => false,
-                            :more_text => 'Read more &hellip;',
+                            :more_text => 'Read the rest &hellip;',
                             :title_link => :blog_post)
     
     output = []
     
     if options[:title_link]
-      output << content_tag(options[:heading], link_to(post.title, eval("#{options[:title_link]}_url(post)"), :title => "Read #{post.title} (with comments)"))
+      output << content_tag(options[:heading], link_to(post.title, eval("#{options[:title_link]}_url(post)"), :title => "Read #{post.title} (with comments)"), :class => 'title')
     else
-      output << content_tag(options[:heading], post.title)
+      output << content_tag(options[:heading], post.title, :class => 'title')
     end
     
-    output << content_tag(:p, "Posted #{humanize_time(post.created_at)}")
+    output << show_metadata(post) if options[:metadata]
     
     # Perform the excerpting
     if options[:excerpt]
-      link = link_to(options[:more_text], post_path(post), :title => "Read the rest of #{post.title}" )
+      link = link_to(options[:more_text], post_path(post), :title => "Read the rest of #{post.title}", :class => 'more' )
       post.content =~ /(.*)<!--\s?more\s?-->(.*)/m
       if $2
         post.content = $1 + link
@@ -55,17 +55,22 @@ module PostsHelper
     end
 
     # Simple format & auto-link the body
-    body = Hpricot(simple_format(auto_link(sanitize(body.to_html))).gsub(/<p><pre/,'<pre').gsub(/\/pre><\/p>/,'/pre>'))
+    body = simple_format(auto_link(sanitize(body.to_html)))
+    ['pre', 'ol', 'ul', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'div', 'p'].each do |tag|
+      body = body.gsub(/<p><#{tag}/,"<#{tag}").gsub(/\/#{tag}><\/p>/,"/#{tag}>")
+    end
+    body = Hpricot(body)
     body.search("pre p"){|e| e.swap(e.inner_html)}
     body.search("pre br").remove # Remove <br /> tags inside <pre> tags -- the simple_format method incorrectly inserts them
-    
+    body.search("ol>br").remove
+    body.search("ul>br").remove
     
     output << body.to_html
 
-    output << show_metadata(post) if options[:metadata]
-    
     if options[:comments]
-      output << content_tag(:ol, post.comments.collect{|comment| single_comment(comment) }.join("\n\n"), :class => 'comments')
+      output << content_tag(:h2, 'Conversation in progress&hellip;', :class => 'comments') unless post.comments.blank?
+      index = 0
+      output << content_tag(:ol, post.comments.collect{|comment| index += 1; single_comment(comment, :class => cycle('odd', 'even') + (index == 1 ? ' first' : ''), :index => index) }.join("\n\n"), :class => 'comments')
       new_comment = Comment.new(params[:comment])
       new_comment.post = post
       output << controller.instance_eval{render_to_string(:partial => 'comments/form')} if options[:comment_form]
@@ -76,12 +81,20 @@ module PostsHelper
   end
   
   def single_comment(comment, options = {})
-    options.reverse_merge!(:heading => :h3, :tag => :li)
-    content_tag(options[:tag],
-      content_tag(options[:heading], 
-                  comment.homepage.blank? ?  comment.author : link_to(comment.author, comment.homepage, {:rel => 'nofollow', :title => "Visit #{comment.author}'s homepage"})) + 
+    options.reverse_merge!(:heading => :h4, :tag => :li, :id => "comment_#{comment.id}", :explicit_numbers => true, :index => 1)
+    tag = options.delete(:tag)
+    heading = options.delete(:heading)
+    explicit_numbers = options.delete(:explicit_numbers)
+    index = options.delete(:index)
+    options[:class] ||= ''
+    options[:class] += ' author' if comment.email == 'foliosus@foliosus.com'
+    options[:class] = options[:class].lstrip
+    content_tag(tag,
+      (explicit_numbers ? content_tag(:span, index, :class => 'number') : '') + 
+      content_tag(heading, 
+                  "On #{comment.created_at.strftime('%B')} #{comment.created_at.day.ordinalize} " + (comment.homepage.blank? ?  comment.author : link_to(comment.author, comment.homepage, {:rel => 'nofollow', :title => "Visit #{comment.author}'s homepage"})) + " said:") + 
       simple_format(auto_link(sanitize(comment.body))),
-      :id => "comment_#{comment.id}"
+      options
     )
   end
 end

@@ -23,9 +23,10 @@ class ApplicationController < ActionController::Base
     
     # Load photos for sidebar
     def load_photos(options = {})
+      logger.warn("** Loading Flickr photos")
       options = options.reverse_merge(:user_id => '88016824@N00', :per_page => 8)
       @flickr = Flickr.new("#{RAILS_ROOT}/config/flickr_fu.yml")
-      @plant_photo = @flickr.photos.search(options.merge(:tags => 'plants', :per_page => 15)).photos.compact.rand
+      @plant_photo = @flickr.photos.search(options.merge(:tags => 'plants', :per_page => 8, :page => 2)).photos.compact.rand
       @photos = @flickr.photos.search(options)
     end
 end

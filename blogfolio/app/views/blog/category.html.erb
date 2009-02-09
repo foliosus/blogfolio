@@ -1,1 +1,1 @@
-<%= @posts.collect{|post| single_post(post, :excerpt => true, :comments => false, :metadata => false)}.join("\r\n") %>
+<%= @posts.collect{|post| single_post(post, :excerpt => true, :comments => false)}.join("\r\n") %>

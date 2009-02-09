@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_filter   :login_required, :except => [:index, :show]
+  before_filter   :login_required
+  before_filter   :check_role_admin
   
   before_filter   :preload_validation_data
   before_filter   :preload_post, :only => [:show, :edit, :update, :destroy]

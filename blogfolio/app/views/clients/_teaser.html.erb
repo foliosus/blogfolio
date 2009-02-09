@@ -1,0 +1,5 @@
+<ul id="portfolio_teaser" class="photos">
+  <%- @clients.each_with_index do |client, i| -%>
+  <li class="<%= i.even? ? 'first' : 'second'%>"><%= link_to(image_tag(h(client.thumb_path), :width => 75, :height => 75, :alt => "Design narrative about #{h(client.name)}"), client, :title => "Read more about #{h(client.name)}") %></li>
+  <%- end -%>
+</ul>

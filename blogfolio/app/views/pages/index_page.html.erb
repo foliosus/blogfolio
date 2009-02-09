@@ -1,1 +1,46 @@
-<h2>Front page woohoo!</h2>
+<div class="index_content_region who">
+  <div class="primary_content">
+    <h2>Who we are</h2>
+    <p>Foliosus Web Design LLC is a design studio based in Portland, Oregon. At Foliosus we don’t believe in flashy, wow-me sites that are unusable. We are commited to building accessible, easy to use sites. We are committed to your website, done right.</p>
+  </div> <!-- /primary_content -->
+
+  <div class="secondary_content">
+    <%= render :partial => 'shared/flash' %>
+    <h2>Recent clients</h2>
+    <%= render :partial => "clients/teaser" %>
+  </div> <!-- /secondary_content -->
+</div> <!-- /index_content_region who -->
+
+<div class="index_content_region what">
+  <div class="primary_content">
+    <h2>What we do</h2>
+    <p>Foliosus is a one-stop shop. We do <a href="/services" title="Read about what we do">the full range of web-related services</a> for your business or organization, starting with basic branding through custom application design and site maintenance:</p>
+    
+    <ul>
+      <li>Logo design and branding</li>
+      <li>Custom web site design</li>
+      <li>Custom web application design</li>
+      <li>Content management system (CMS) implementation</li>
+    </ul>
+  </div> <!-- /primary_content -->
+
+  <div class="secondary_content">
+    <h2>Interested?</h2>
+    <p>Great! <a href="/contact" title="Send us an e-mail now!">Get in touch</a> to talk about your project!</p>
+  </div> <!-- /secondary_content -->
+</div> <!-- /index_content_region what -->
+
+<div class="index_content_region blog">
+  <div class="primary_content">
+    <h2>From the blog</h2>
+    <ul>
+      <%- for post in @posts -%>
+      <li><%= link_to h(post.title), blog_post_path(post) %></li>
+      <%- end -%>
+    </ul>
+  </div> <!-- /primary_content -->
+
+  <div class="secondary_content">
+    <%= render :partial => "shared/photos" %>
+  </div> <!-- /secondary_content -->
+</div> <!-- /index_content_region blog -->

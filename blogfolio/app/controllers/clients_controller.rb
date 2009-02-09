@@ -1,8 +1,16 @@
 class ClientsController < ApplicationController
+  before_filter   :login_required, :except => [:index, :show]
+  before_filter   :check_role_admin, :except => [:index, :show]
+  
+  cache_sweeper :client_sweeper, :only => [:create, :update, :destroy]
+  
+  caches_page :index
+  caches_page :show
+
   # GET /clients
   # GET /clients.xml
   def index
-    @clients = Client.find(:all)
+    @clients = Client.alphabetical.find(:all)
     @meta[:title] = 'Portfolio'
 
     respond_to do |format|

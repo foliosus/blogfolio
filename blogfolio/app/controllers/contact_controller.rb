@@ -6,6 +6,7 @@ class ContactController < ApplicationController
     
     @meta[:title] = 'Contact Foliosus Web Design'
 
+    #FIXME Flash ain't showing!
     flash.now[:notice] = "Showing a message"
     flash.now[:warning] = "Showing a warning"
     flash.now[:error] = "Showing an error"

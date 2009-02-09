@@ -228,9 +228,8 @@ module Reed #:nodoc:
         else
           options[:html][:class] = 'uniForm'
         end
-        options[:html].reverse_merge! :method => :post
       else
-        options.merge! :html => {:class => 'uniForm', :method => :post}
+        options.merge! :html => {:class => 'uniForm'}
       end
       form_for(name, object, options, &proc)
     end

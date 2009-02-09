@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+  include ModelSecurity
+  @permissions = {:create => :admin, :update => :admin, :delete => :admin}
+
   has_and_belongs_to_many   :categories, :order => 'name ASC'
   has_many                  :comments, :dependent => :destroy, :order => 'created_at ASC'
   
@@ -12,6 +15,7 @@ class Post < ActiveRecord::Base
   named_scope :full_information, {:include => [:comments, :categories]}
   named_scope :published, {:conditions => {:status_id => STATUSES.index('published')}}
   named_scope :status, lambda{|status| {:conditions => {:status_id => status}} }
+  named_scope :contains, lambda{|text| {:conditions => ["title LIKE :s OR content LIKE :s", {:s => "%#{text}%"}]}}
 
   # Return the status as text, taken from Post::STATUSES
   def status

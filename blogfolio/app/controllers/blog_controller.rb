@@ -1,10 +1,20 @@
 class BlogController < ApplicationController
-  before_filter   :prepare_secondary_content
+  before_filter   :prepare_secondary_content, :except => :rss
+  
+  skip_before_filter :load_photos, :only => :rss
   
   # Show recent posts
   def index
     @posts = Post.published.reverse_chronological_order.full_information.all(:limit => 10)
     @meta[:title] = 'Foliosus blog: recent posts'
+  end
+  
+  # RSS feed
+  def rss
+    @posts = Post.published.reverse_chronological_order.full_information.all(:limit => 10)
+    respond_to do |format|
+      format.xml
+    end
   end
   
   # Show a single post, with comments form
@@ -19,9 +29,9 @@ class BlogController < ApplicationController
   def category
     @category = Category.find(params[:category])
 
-    @meta[:title] = "Posts filed under #{@category.name}"
+    @meta[:title] = "Posts in \"#{@category.name.downcase}\""
     
-    @posts = @category.posts.published.all
+    @posts = @category.posts.published.reverse_chronological_order.all
     raise ActiveRecord::RecordNotFound unless @posts.length > 0
   end
   

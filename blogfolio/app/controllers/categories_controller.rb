@@ -1,6 +1,6 @@
-#TODO Get the categories working
 class CategoriesController < ApplicationController
   before_filter :login_required
+  before_filter :check_role_admin
   
   # GET /categories
   # GET /categories.xml
