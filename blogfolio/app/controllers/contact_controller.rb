@@ -6,12 +6,6 @@ class ContactController < ApplicationController
     
     @meta[:title] = 'Contact Foliosus Web Design'
 
-    #FIXME Flash ain't showing!
-    flash.now[:notice] = "Showing a message"
-    flash.now[:warning] = "Showing a warning"
-    flash.now[:error] = "Showing an error"
-    logger.warn("** flash: #{flash.inspect}")
-    
     if params[:contact] && @contact.valid?
       ContactMailer.deliver_contact_to_foliosus(@contact)
       ContactMailer.deliver_contact_to_customer(@contact)

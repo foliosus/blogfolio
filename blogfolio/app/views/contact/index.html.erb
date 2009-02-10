@@ -1,4 +1,5 @@
 <%- uni_form_for :contact, @contact, :url => {:action => :index} do |f| %>
+  <%= f.error_messages %>
   <%- f.fieldset 'Message' do -%>
     <%= f.text_field :name, :label => 'Your name', :size => 40, :max_length => 80, :required => true %>
     <%= f.text_field :email, :label => 'Your email', :size => 40, :max_length => 80, :required => true %>

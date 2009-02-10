@@ -3,11 +3,13 @@
   <%= render :partial =>'shared/flash' %>
 
   <div class="primary_content">
-    <%= content_tag(:h1, h(@meta[:title])) if controller.action_name == 'category' %>
+    <%= content_tag(:h1, controller.action_name == 'category' ? h(@meta[:title]) : 'Blogfolio') %>
     <%= yield %>
   </div> <!-- /primary_content -->
 
   <div class="secondary_content">
+    <%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
+    
     <h3>About the author</h3>
     <p>Brent Miller is the owner and principal web designer of <a href="http://foliosus.com/" title="Home page">Foliosus Web Design LLC</a> in Portland, Oregon. He enjoys food, plants, and the color green. Read the &#8220;about&#8221; page for more about him. If you are interested in hiring him for web work, please contact him.</p>
     
