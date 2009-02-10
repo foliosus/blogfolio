@@ -8,7 +8,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.find(:all)
+    @posts = Post.published.reverse_chronological_order.all
+    @drafts = Post.draft.reverse_chronological_order.all
+    @meta[:title] = 'Blog posts'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,6 +33,7 @@ class PostsController < ApplicationController
   # GET /posts/new.xml
   def new
     @post = Post.new
+    @meta[:title] = "New post"
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,6 +52,7 @@ class PostsController < ApplicationController
         format.html { redirect_to(@post) }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
+        @meta[:title] = "New post"
         format.html { render :action => "new" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end

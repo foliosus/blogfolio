@@ -1,5 +1,3 @@
-<h1>Editing post</h1>
-
 <%= error_messages_for :post %>
 
 <% uni_form_for :post, @post, :url => post_path(@post), :html => {:method => :put} do |f| %>

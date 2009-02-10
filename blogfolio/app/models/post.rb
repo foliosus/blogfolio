@@ -14,6 +14,7 @@ class Post < ActiveRecord::Base
   named_scope :reverse_chronological_order, :order => 'posts.created_at DESC'
   named_scope :full_information, {:include => [:comments, :categories]}
   named_scope :published, {:conditions => {:status_id => STATUSES.index('published')}}
+  named_scope :draft, {:conditions => {:status_id => STATUSES.index('draft')}}
   named_scope :status, lambda{|status| {:conditions => {:status_id => status}} }
   named_scope :contains, lambda{|text| {:conditions => ["title LIKE :s OR content LIKE :s", {:s => "%#{text}%"}]}}
 
