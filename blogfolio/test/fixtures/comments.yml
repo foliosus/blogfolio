@@ -1,7 +1,734 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-# one:
-#   column: value
-#
-# two:
-#   column: value
+--- 
+comments_050: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    I just got a new 24" iMac, running the latest Leopard; I ran into this problem again while building the new system. This time, with the latest MySQL package (5.1.30), the following command worked:
+    
+    <pre class="code">sudo env ARCHFLAGS="-arch i386" gem install mysql -- --with-mysql-dir=/usr/local/mysql --with-mysql-config=`which mysql_config`</pre>
+    
+    This uses Igor's suggestion, but works better for the current MySQL package.
+  post_id: 130
+  author: Brent Miller
+  id: 59
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2008-12-20 00:00:00 -08:00
+comments_039: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: Unfortunately, I have zero experience with NetBeans.  If OCI8 works from IRB, then all of the Ruby-level work is in place and so the problem must be with NetBeans.  If you've got a PPC-only NetBeans codebase, or something similar, that could be causing the problem; beyond that, I'm completely in the dark.
+  post_id: 129
+  author: Brent Miller
+  id: 48
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2008-05-08 00:00:00 -07:00
+comments_028: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    It's true, calla lilies are an irritant.
+    
+    Most members of the Arum family (Araceae) are skin and eye irritants, and should never be eaten.  The family has a tendency to build up large amounts of calcium oxalate in its tissues, so much that it crystallizes.  These minute crystals are called raphides.  They tend to be quite pointy, so if you break up the plant tissue you get impaled with a bunch of tiny sharp things.  They're small enough that you can't really see them, but they're sharp enough to irritate skin, cause damage to eyes, and cause lots of pain to your mouth if you try eating them.
+    
+    Having said this, there is some evidence that the crystals aren't what cause the damage: <a href="http://www.efloras.org/florataxon.aspx?flora_id=1&taxon_id=10056" title="Flora of North America" rel="nofollow">it might be proteolytic enzymes</a> and not raphides that cause the damage.
+  post_id: 111
+  author: Brent Miller
+  id: 37
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2008-06-19 00:00:00 -07:00
+comments_017: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Ulf: I don't remember having to run launchtcl; I think that I rebooted my box, which did the trick.  However, it was so long ago, that I can't really say.
+    
+    In any case, you're welcome for the config file; I'm glad it's helpful to someone other than me.
+  post_id: 99
+  author: Brent Miller
+  id: 26
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2007-04-25 00:00:00 -07:00
+comments_006: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: so, yeah, this was a great help. amazing. cs3 really sucked. this problem has finally been rectified in cs4. but here at my shitty work computer with cs3, i had to deal with this issue again. adobe. seriously. get. a. clue.
+  post_id: 91
+  author: brian
+  id: 15
+  homepage: 
+  email: lemonchicken1@yahoo.com
+  created_at: 2008-10-30 00:00:00 -07:00
+comments_051: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    Hi, all
+    
+    The only one thing, which actually works for me:
+    
+    
+    sudo gem install mysql -- --with-mysql-config=`which mysql_config5`
+    
+    
+    
+    Thank you,
+    Sincerely,
+    Igor,
+    http://www.MyTaskHelper.com
+  post_id: 130
+  author: Igor Petrushenko
+  id: 60
+  homepage: http://www.mytaskhelper.com
+  email: admin@mytaskhelper.com
+  created_at: 2008-12-03 00:00:00 -08:00
+comments_040: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    Thanks, Brent. I was able to resolve the issue, and actually the fix turned out to be so simple. 
+    
+    I just created a new path on my drive: /scratch/plebld/208/rdbms/lib/. This is the exact same path referenced by the error message. Probably it would have been created during the full Oracle install or something, but it did not exist before. Then I placed a copy of the libclntsh.dylib.10.1 executable file there taken from \Library\Oracle\oracleclient folder that contained the latest unzipped version of Oracle client. And it worked.
+    
+    The new OCI8 combined with Ruby(i386) seems to be running much better and faster! Ruby running in PPC mode would often crash before and eating up lots of CPU. A+++++!
+    
+    Thanks a lot for all your work, Brent! Excellent and very helpful instructions!
+  post_id: 129
+  author: LuciDreamer
+  id: 49
+  homepage: 
+  email: ybrei@hotmail.com
+  created_at: 2008-05-08 00:00:00 -07:00
+comments_029: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    Dear Sirs,
+    At my home in the sitting room every day I have the pleasure looking at the calla lily.
+    with white and purper flowers.
+    My florist said: this lily is shin and eye irritant. Is that true.
+    
+    I should like hearing from you.
+    
+    Sincerely
+    
+    DR Adrian Verhoef
+    Nieuwe Teertuinen 11-D
+    1013 LV Amsterdam
+    The Netherlands
+  post_id: 111
+  author: Adrian Verhoef
+  id: 38
+  homepage: 
+  email: dragv@wxs.nl
+  created_at: 2008-06-18 00:00:00 -07:00
+comments_018: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: "Thanks for the instructions. This was a big help in getting me up and running.  Mongrel has some good info on Lighttpd/Mongrel deployment as well at: http://mongrel.rubyforge.org/docs/lighttpd.html"
+  post_id: 99
+  author: Adam
+  id: 27
+  homepage: 
+  email: ajpeters@nps.edu
+  created_at: 2007-05-22 00:00:00 -07:00
+comments_007: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Hello:
+    After reading your article about making vanilla extract at home using Jim Beam whiskey, I would like to point out that this method makes a wonderful infusion of vanilla flavored whiskey, and is perfectly acceptable for cooking, and other  home recipes. However, a true vanilla extract needs ethyl alcohol to really pull the flavors from the pods along with a slow maceration process in a solution of alcohol/water wash, that in time, will yield true vanilla extract that cannot be matched in taste by any other method. Whiskey imparts flavors to the vanilla, as does vodka, and really masks the true essence of real vanilla.
+  post_id: 93
+  author: Steve
+  id: 16
+  homepage: 
+  email: WRITER360@PEOPLEPC.COM
+  created_at: 2007-02-05 00:00:00 -08:00
+comments_052: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: Thanks!
+  post_id: 132
+  author: Tony Beasley
+  id: 61
+  homepage: http://www.gmail.com
+  email: tonybeas642@gmail.com
+  created_at: 2008-12-07 00:00:00 -08:00
+comments_041: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    My friend, you kick ass.
+    
+    These instructions were great!  I've been in a very poor mood today due to seemingly endless configuration and integration problems, and this is the first success I've had all day.
+    
+    Thanks ever so much for figuring out and posting this!
+    
+    Michael
+  post_id: 129
+  author: Michael Teter
+  id: 50
+  homepage: http://michaelteter.com
+  email: michael.teter@gmail.com
+  created_at: 2008-05-13 00:00:00 -07:00
+comments_030: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: I think that never can be better than cup of fresh green tea :)
+  post_id: 112
+  author: green tea
+  id: 39
+  homepage: http://www.proteaworld.com
+  email: tealover@gmail.com
+  created_at: 2008-06-26 00:00:00 -07:00
+comments_019: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: "Naisi: It's my own. :+)"
+  post_id: 99
+  author: Brent Miller
+  id: 28
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2007-11-28 00:00:00 -08:00
+comments_008: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    You're right about this not being true vanilla extract.  I use this for baking and nothing else.  This is a slow maceration process, however: since the beans soak for 6 months to several years, and drinking alcohol is ethyl alcohol, you get the full flavor profile of the vanilla out of the beans.  You just can't tell exactly what it is because of the bourbon.  :)  I wouldn't use this for a high end vanilla custard, although for a more middling vanilla custard it's quite delicious.  Most of things I make seem to work better than with the more typical vanilla extract, just because of the added flavor complexity of the bourbon.
+    
+    If you wanted to do this yourself at home, it would be easy to obtain straight ethanol and do it with that instead: like that you'd have the <em>real</em> deal.
+  post_id: 93
+  author: Brent Miller
+  id: 17
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2007-02-06 00:00:00 -08:00
+comments_053: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: Yum! That sounds absolutely delicious.
+  post_id: 133
+  author: Corinne
+  id: 62
+  homepage: http://benandcorinne.com
+  email: corinne@benandcorinne.com
+  created_at: 2008-11-24 00:00:00 -08:00
+comments_042: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    First I am an Apple newby.
+    I have OCI and Rails configured on an XP and now want to start developing on my new MacBook Pro.
+    
+    I followed your steps with some local help.
+    
+    1. I am sure I have instantclient installed correctly. It was tested with sql_plus and was able to access our DBs with TNANAMES
+    
+    2. I could not find the gem indicated in your instructions. I used the ...enhanced-adapter gem instead
+    
+    3. The compile seemed to go OK. I did not notice any errors
+    
+    4. The Test Connectivity step works just  fine
+    
+    5. the config.yml file had OCI as the adapter. I also tried Oracle
+    
+    6. I do not get any errors when I start the server - Mongrel from Aptana
+    
+    However when I try to hit the application from a browser I get a "Oracle/OCI libraries could not be loaded." error.
+    
+    I am unsure where the problem is and how to resolve it.
+    Any help would greatly be appreciated.
+    Mark
+  post_id: 129
+  author: Mark Dodd
+  id: 51
+  homepage: 
+  email: mark.dodd@vanderbilt.edu
+  created_at: 2008-08-07 00:00:00 -07:00
+comments_031: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: On the pictures these coockies look very tasty :)
+  post_id: 112
+  author: Tina Roach
+  id: 40
+  homepage: http://www.proteaworld.com
+  email: tinaroach@gmail.com
+  created_at: 2008-07-16 00:00:00 -07:00
+comments_020: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Hi. 
+    Good design, who make it?
+  post_id: 99
+  author: naisioxerloro
+  id: 29
+  homepage: 
+  email: naisioxerloro@mymail-in.net
+  created_at: 2007-11-28 00:00:00 -08:00
+comments_009: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Hi, Brent. I tried the Jim Beam and vanilla beans, and it makes a woderful vanilla extract. I got to thinking, how high end is high end vanilla extract? We're certainly not drinking it, of course, and your method of making vanilla extract, I may never go back to the original stuff. You'
+    re right about the complexity of flavors adding that extra dimension of flavor, and without that nasty harsh alcohol bite of the extract. True vanilla extract isn't really palatable and I think since the Jim Beam has aged, it just makes the vanilla all the better. Cheers to your good cooking!
+    
+    Steve
+  post_id: 93
+  author: Steve
+  id: 18
+  homepage: 
+  email: wolflake740@aol.com
+  created_at: 2007-05-18 00:00:00 -07:00
+comments_043: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    Alderete: Because the ActiveRecord Oracle adapter is namespaced to AR::ConnectionAdapters, if you were running in irb you couldn't just <code>require 'activerecord-oracle-adapter'</code> and have it work.  Instead, you would have to <code>require 'active_record/connection_adapters/oracle_adapter'</code>.  So, for the config line, you have to use:
+    
+    <code>config.gem 'activerecord-oracle-adapter', :lib => 'active_record/connection_adapters/oracle_adapter', :source => 'http://gems.rubyonrails.org'</code>
+    
+    The <code>:lib</code> option is necessary when the gem name & library name differ, as they do here.  I wish the docs for the config settings were a little bit better, but unfortunately that's where we are.
+  post_id: 129
+  author: Brent Miller
+  id: 52
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2008-08-22 00:00:00 -07:00
+comments_032: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: "Salut Brent,\n\
+    Tu fais des super photos.\n\
+    Bises \xC3\x83  toi et a Sally depuis le grand soleil de Lausanne!\n\
+    Charlotte"
+  post_id: 113
+  author: Charlotte
+  id: 41
+  homepage: 
+  email: lottenh@bluewin.ch
+  created_at: 2007-03-13 00:00:00 -07:00
+comments_021: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: "PS: \"man launchd.plist\" gives you all the keys that are possible to use in a plist that goes into one of the Lauch* folders"
+  post_id: 99
+  author: g.
+  id: 30
+  homepage: http://www.tapetenageln.de/
+  email: g@tapetenageln.de
+  created_at: 2008-03-21 00:00:00 -07:00
+comments_010: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: Brent! I am so glad to see that you are enjoying that cookbook. I knew you would like it. I will definitely try those pancakes; they sound delicious! Oh, I do miss cooking with you. One of these days... one of these days...
+  post_id: 95
+  author: Katy Pine
+  id: 19
+  homepage: http://pine.fm
+  email: katy@pine.fm
+  created_at: 2006-02-05 00:00:00 -08:00
+comments_044: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    In respond to LuciDreamer.
+    You don't have to create a path like
+    /scratch/plebld/208/rdbms/lib/.
+    Just put the dylib's in $HOME/lib and netbeans
+    (it's the dyld) will found everything.
+  post_id: 129
+  author: Jens Himmelreich
+  id: 53
+  homepage: 
+  email: jens.himmelreich@gmail.com
+  created_at: 2008-10-07 00:00:00 -07:00
+comments_033: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: Thanks for sharing this
+  post_id: 116
+  author: Igor
+  id: 42
+  homepage: http://net3x.blogspot.com
+  email: iiminar@gmail.com
+  created_at: 2007-11-26 00:00:00 -08:00
+comments_022: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Thanks for this very concise primer, just what I was searching for. Made it very easy to set this up on 10.4.11
+    A note: 
+    The "Program" key seems to be at least unnecessary - in my version launchd even refuses to run the file on startup if it's present.
+    I noticed you cannot chroot/chown a process if you start it with launchd - you have to set the owner in the plist file.
+    
+    You can start/stop lighttpd with launchd too: just type
+    &gt; launchctl load /Library/LaunchDaemons/
+    to load the new plist files you put there, then start lighttpd with
+    &gt; launchctl start net.lighttpd
+    stop it with
+    &gt; launchctl stop net.lighttpd
+    same works with net.lighttpd_ssl of course 
+    
+    for reference here's my plist file minus the header:
+    &lt;plist version=&quot;1.0&quot;&gt;
+    &lt;dict&gt;
+            &lt;key&gt;Label&lt;/key&gt;
+            &lt;string&gt;net.lighttpd_ssl&lt;/string&gt;
+            &lt;key&gt;ProgramArguments&lt;/key&gt;
+            &lt;array&gt;
+                    &lt;string&gt;/usr/local/sbin/lighttpd&lt;/string&gt;
+                    &lt;string&gt;-f/etc/lighttpd/lighttpd_ssl.conf&lt;/string&gt;
+                    &lt;string&gt;-D&lt;/string&gt;
+            &lt;/array&gt;
+            &lt;key&gt;UserName&lt;/key&gt;
+            &lt;string&gt;www&lt;/string&gt;
+            &lt;key&gt;GroupName&lt;/key&gt;
+            &lt;string&gt;www&lt;/string&gt;
+    &lt;/dict&gt;
+    &lt;/plist&gt;
+  post_id: 99
+  author: g.
+  id: 31
+  homepage: http://www.tapetenageln.de/
+  email: g@tapetenageln.de
+  created_at: 2008-03-21 00:00:00 -07:00
+comments_011: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Cute site, but have you thought about using CSS for the headings instead of Flash? They're not very accessible as is, and I know there are others who like me have Flash turned off. (By the way, your forms need a little more markup to be Triple-A Compliant.) 
+    
+    Best of luck with the site. I'll be visiting again. :)
+  post_id: 98
+  author: Emily
+  id: 20
+  homepage: 
+  email: emilysmit@earthlink.net
+  created_at: 2006-03-23 00:00:00 -08:00
+comments_045: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    Here's a question: If I am on Rails 2.1, and I want to add the Oracle Adapter and ruby-oci8 as dependencies using the new gem dependency feature of 2.1, is it possible to do that?
+    
+    I've tried it using this line:
+    
+    <code>config.gem 'activerecord-oracle-adapter', :source =&gt; 'http://gems.rubyonrails.org'</code>
+    
+    But when I restart my development server, I get an error with a stack trace:
+    
+    =&gt; Booting Mongrel (use 'script/server webrick' to force WEBrick)
+    =&gt; Rails 2.1.0 application starting on http://0.0.0.0:3001
+    =&gt; Debugger enabled
+    =&gt; Call with -d to detach
+    =&gt; Ctrl-C to shutdown server
+    ** Starting Mongrel listening at 0.0.0.0:3001
+    ** Starting Rails with development environment...
+    no such file to load -- activerecord-oracle-adapter
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    [...]
+    
+    Any ideas?
+  post_id: 129
+  author: Alderete
+  id: 54
+  homepage: http://aldoblog.com/
+  email: blog-2008@aldoblog.com
+  created_at: 2008-08-22 00:00:00 -07:00
+comments_034: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: Ooooh, Brent. I love lemon bars! I've made them according to a slightly different recipe that didn't involve making lemon curd first, just a egg-lemon-sugar mixture that wasn't cooked first. Yours sound divine... I'd like to get an in-person lemon bar lesson sometime :).
+  post_id: 125
+  author: Katy
+  id: 43
+  homepage: http://pine.fm
+  email: katy@pine.fm
+  created_at: 2008-03-14 00:00:00 -07:00
+comments_023: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: "Werutz: I really don't know.  I'm not much of a db guy.  I can get around, but when I run into difficult stuff I ask my coworkers who are better at SQL than I am.  If you look at my bookshelf there are no SQL books there &mdash; it's all graphics, design, typography and Rails.  Sorry!"
+  post_id: 99
+  author: Brent Miller
+  id: 32
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2008-10-09 00:00:00 -07:00
+comments_012: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Hi,
+    
+    Great tutorial, it's exactly what I've been looking for.
+    
+    It seems I can get everything working except for being able to access the user folders, by this I mean http://localhost:3500/~Mic/ ... which just gives a 404 error. 
+    
+    All other requests work, including PHP on the standard doc root set in server.document-root ... just not when I try to get to the users folder.
+    
+    Any ideas !?
+    
+    I have bound the server to port 3500 just because I wanted to test against Apache, I will swop over eventually, but need to get this working first.
+    
+    Thanks
+    
+    Mic
+  post_id: 99
+  author: Mic Pringle
+  id: 21
+  homepage: 
+  email: micpringle@madasafish.com
+  created_at: 2006-05-15 00:00:00 -07:00
+comments_001: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Hey Brent,
+    
+    I'm desperate... is there a way to do this with Acrobat 5?
+    
+    Don't ask why I'm working in Acrobat 5... long, sad story...
+    
+    Thanks!
+    Jackie
+  post_id: 91
+  author: Jackie
+  id: 10
+  homepage: 
+  email: jschertz@wi.rr.com
+  created_at: 2008-01-28 00:00:00 -08:00
+comments_046: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    I should add, I'm quite certain the gem is installed; I copied-and-pasted the name of the gem from the output of <code>gem list</code>.
+    
+    I get similar failure messages when I try to <code>rake gems:unpack</code> to automatically unpack gem dependencies, but I was successful doing a manual <code>gem unpack activerecord-oracle-adapter</code>. Of course, that didn't change the stack trace / errors when starting up my server....
+  post_id: 129
+  author: Alderete
+  id: 55
+  homepage: http://aldoblog.com/
+  email: blog-2008@aldoblog.com
+  created_at: 2008-08-22 00:00:00 -07:00
+comments_035: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: All you've gotta do is come back to visit Portland, and I'll gladly show you how.  It doesn't look like we'll be able to make it to Norway any time soon. :(
+  post_id: 125
+  author: Brent Miller
+  id: 44
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2008-03-16 00:00:00 -07:00
+comments_024: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Hi!
+    
+    I would like improve my SQL capabilities.
+     I red so many SQL books and want to
+    read more about SQL for my occupation as db2 database manager.
+    
+     What would you recommend?
+    
+    Thanks,
+    Werutz
+  post_id: 99
+  author: werutzb
+  id: 33
+  homepage: 
+  email: werutzb@gawab.com
+  created_at: 2008-10-07 00:00:00 -07:00
+comments_013: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Mic,
+    
+    What is the exact code you used in <span class="code">lighttpd_shared.conf</span>?  To access <span class="code">http://yourserver/~Mic/</span> it should look like this:
+    
+    <pre class="code">userdir.basepath = "/Users/"
+    userdir.path = "Sites"
+    userdir.include-user = ("Mic") # only allow requests for this user (optional)
+    </pre>
+    
+    The third line is optional, and allows you to whitelist users.  You can include as many users as you want, each with their own <span class="code">userdir.include-user</span> statement.  If you omit all of those statements, then access is allowed for all users.
+    
+    The other possibility is that you don't have a <span class="code">/Users/Mic/Sites/index.html</span> file, and so even though lighty is looking in the right place there is nothing for it to serve.
+    
+    Binding to port 3500 shouldn't make a difference, as long as the rest of the configuration is the same, so that's not the problem.
+    
+    Does this help?
+  post_id: 99
+  author: Brent Miller
+  id: 22
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2006-05-15 00:00:00 -07:00
+comments_002: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Oh, I'm so sorry! I wish I knew, but I haven't used Acrobat 5 in ... years.  Have you tried looking at the <a href="http://www.adobeforums.com/cgi-bin/webx/.3bbeda8b/" title="Wow &mdash; that's a bad URL" rel="nofollow">Adobe forums</a>?
+    
+    Good luck!
+  post_id: 91
+  author: Brent Miller
+  id: 11
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2008-01-28 00:00:00 -08:00
+comments_047: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    @Mark: In your config.yml you should try this:
+    
+    adapter: oracle_enhanced
+  post_id: 129
+  author: Brent Miller
+  id: 56
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2008-08-10 00:00:00 -07:00
+comments_036: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: should I run Oracle &amp; ruby on seperate servers
+  post_id: 129
+  author: walt bajkowski
+  id: 45
+  homepage: 
+  email: wbajkowski@caci.com
+  created_at: 2008-09-04 00:00:00 -07:00
+comments_025: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    Dear Brent,
+    
+    Congrats on your recent Botany POTD! (And thanks for stopping by.)
+    
+    Loved this post about live-in cactus. Here are some other examples of plant architecture. Hideous? Heavenly? You be the judge.
+    
+    http://humanflowerproject.com/index.php/weblog/comments/hanging_gardens_of_paris/
+    
+    http://humanflowerproject.com/index.php/weblog/comments/trumpomania/
+    
+    All good wishes from Austin,
+    Julie
+  post_id: 109
+  author: Julie
+  id: 34
+  homepage: http://www.humanflowerproject.com
+  email: Julie@humanflowerproject.com
+  created_at: 2007-02-11 00:00:00 -08:00
+comments_014: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Hi Brent,
+    
+    Thanks for that mate, you sorted it.
+    
+    For some reason I assumed userdir.include-user = ("username") was some sort of internal variable which picked up the current username. Doh !!
+    
+    All working now :-)
+    
+    Once again, fantastic tutorial mate ... I just need to figure out how to compile in the GD part of PHP and I've got an exact copy of my Apache setup, but instead using Lighttpd and including Rails, 5 star ... great stuff.
+    
+    Thanks again.
+    
+    Mic
+  post_id: 99
+  author: Mic Pringle
+  id: 23
+  homepage: 
+  email: micpringle@madasafish.com
+  created_at: 2006-05-15 00:00:00 -07:00
+comments_003: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: Yes, Illustrator CS3 will save a PDF with proper bleeds.  You just have to tell it to do so when saving the PDF.  It's in the marks &amp; bleeds options when doing Save-As.
+  post_id: 91
+  author: Kevin
+  id: 12
+  homepage: 
+  email: junk@somesitesomewhere.com
+  created_at: 2008-02-28 00:00:00 -08:00
+comments_048: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: Hi, I found your blog on this new directory of WordPress Blogs at blackhatbootcamp.com/listofwordpressblogs.  I dont know how your blog came up, must have been a typo, i duno.  Anyways, I just clicked it and here I am.  Your blog looks good.  Have a nice day.  James.
+  post_id: 130
+  author: James
+  id: 57
+  homepage: 
+  email: james88theone@yahoo.com
+  created_at: 2008-09-18 00:00:00 -07:00
+comments_037: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: Many thanks to you.  I've been relying on your info for the past 12 months to use Rails and Oracle on OSX.  Recently, the Rosetta solution for Ruby became a big problem because mysql adapter doesn't like ppc bundle, and I needed both Oracle and Mysql together.  Now it's all fine.  Incidentally, where do you run your Oracle server - also on OSX ?  For now, mine is on a Linux VM also on my OSX.
+  post_id: 129
+  author: Russell Balest
+  id: 46
+  homepage: http://balest.com
+  email: russell@balest.com
+  created_at: 2008-12-09 00:00:00 -08:00
+comments_026: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: "Julie: Thanks for links.  I've seen the mur v\xC3\x83\xC2\xA9g\xC3\x83\xC2\xA9tal at the Mus\xC3\x83\xC2\xA9e du Quai Branly, and I have to say that it looks better in real life than it does in the photos.  It's very, very green for what is an otherwise stony city.\n\n\
+    The Trump thingum in Dubai is a different matter, though.  I'd love to be able to go to Dubai to see it in person &mdash; it's a fantastic place to see modern architecture, like the <a href=\"http://maps.google.com/maps?f=q&hl=en&q=Dubai,+united+arab+emirates&ie=UTF8&z=18&ll=25.140982,55.185839&spn=0.004565,0.005836&t=h&om=1\" title=\"Hotel?  Sail?\" rel=\"nofollow\">Burj al Arab</a> and <a href=\"http://umsis.miami.edu/~bghareeb/dubai_arch.htm\" title=\"Gallery of Dubai architecture\" rel=\"nofollow\">others</a>."
+  post_id: 109
+  author: Brent Miller
+  id: 35
+  homepage: http://www.foliosus.com/
+  email: foliosus@foliosus.com
+  created_at: 2007-02-11 00:00:00 -08:00
+comments_015: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Thanks for your tutorial! It's what I was looking since many many days ago.
+    
+    Lighttpd rocks! I love it
+  post_id: 99
+  author: Matte
+  id: 24
+  homepage: http://www.extendi.it/ruby-on-rails
+  email: alessani@extendi.it
+  created_at: 2006-10-17 00:00:00 -07:00
+comments_004: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: Howdy. I saved in the target size (A3) in Illustrator, then in Acrobat enlarged the page in Advanced -&gt; Print Production -&gt; Crop Pages, then put the marks in Advanced -&gt; Print Production -&gt; Add Printer Marks. I think this way you'll accomplish the same thing(?).
+  post_id: 91
+  author: Jonk
+  id: 13
+  homepage: 
+  email: joni.kahara@gmail.com
+  created_at: 2008-02-15 00:00:00 -08:00
+comments_049: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: dude, you're the man. after looking at 20+ blogs/forums yours is the only one that works, many thanks
+  post_id: 130
+  author: jonathan
+  id: 58
+  homepage: 
+  email: sweemer@princeton.edu
+  created_at: 2008-10-17 00:00:00 -07:00
+comments_038: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    I did everything after cleaning up the previous PPC setup and it works in IRB mode. However when calling the OCI8 from NetBeans within the project, it gives the error:
+    
+    Oracle/OCI libraries could not be loaded: dlopen(/Library/Ruby/Site/1.8/universal-darwin9.0/oci8lib.bundle, 9): Library not loaded: /scratch/plebld/208/rdbms/lib/libclntsh.dylib.10.1
+      Referenced from: /Library/Ruby/Site/1.8/universal-darwin9.0/oci8lib.bundle
+      Reason: image not found - /Library/Ruby/Site/1.8/universal-darwin9.0/oci8lib.bundle
+    
+    Any possible suggestions?
+    Thanks.
+  post_id: 129
+  author: LuciDreamer
+  id: 47
+  homepage: 
+  email: ybrei@hotmail.com
+  created_at: 2008-05-08 00:00:00 -07:00
+comments_027: 
+  updated_at: 2009-01-06 22:54:52 -08:00
+  body: |-
+    Brent,
+    
+    Would love to hear what you think of the collection and installation inside the Branly. I thought the exterior was pretty wonderful but had many, many problems with the handling of the works inside. Maybe we would collaborate on a post about this....
+    
+    Good wishes,
+    J.
+  post_id: 109
+  author: Julie
+  id: 36
+  homepage: http://www.humanflowerproject.com
+  email: Julie@humanflowerproject.com
+  created_at: 2007-02-11 00:00:00 -08:00
+comments_016: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: |-
+    Thanks for the great sample config file! The best I found on Google...
+    
+    One thing about launchd: You probably have to run the command "sudo launchctl load /Library/LaunchDaemons/net.lighttpd.plist" for launchd to recognize the new plist file, though.
+  post_id: 99
+  author: Ulf
+  id: 25
+  homepage: 
+  email: ulf.moehring@mac.com
+  created_at: 2007-04-24 00:00:00 -07:00
+comments_005: 
+  updated_at: 2009-01-06 22:54:51 -08:00
+  body: Thank you for posting this!!! It saved me!
+  post_id: 91
+  author: kfrost
+  id: 14
+  homepage: 
+  email: frostk@umich.edu
+  created_at: 2008-08-07 00:00:00 -07:00

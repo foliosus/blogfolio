@@ -1,2 +1,184 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+--- 
+clients_007: 
+  slug: sekko-kai
+  name: Sekko-kai
+  updated_at: 2009-02-08 23:05:50 -08:00
+  url: http://sekko-kai.com
+  id: 7
+  content: |-
+    <h3>Purpose</h3>
+    
+    Sekko-kai had a 1998-era website that didn't do them justice. The school is led by a fun and dynamic instructor; the old site was boring and its colors were problematic at best. Their new site looks more Japanese, and shows off the calligraphy.
+    
+    <h3>Look and feel</h3>
+    
+    Sekko-kai already had defined branding: Daigo sensei's calligraphy. My task was to build a site around it. I chose to make the site simple, using a highly ordered grid, with clean typography to highlight the dynamic and organic quality of Daigo sensei's brushwork. Her chop seals the site for balance and color.
+    
+    <h3>Site features</h3>
+    
+    The site is quite simple, being largely a marketing brochure; it's a simple collection of static pages on a single template. Since updates are very rare, it was most cost-effective to do updates by hand.
+  teaser: Sekko-kai is a Japanese calligraphy school that markets primarily through word of mouth and visibility at events in the local Japanese culture community, such as events at the Japanese Garden or yearly festivals.
+  created_at: 2009-02-08 23:05:50 -08:00
+clients_008: 
+  slug: shakespeare-authorship-coalition
+  name: Shakespeare Authorship Coalition
+  updated_at: 2009-02-08 23:11:50 -08:00
+  url: http://www.doubtaboutwill.org/
+  id: 8
+  content: |-
+    <h3>Purpose</h3>
+    
+    The Shakespeare Authorship Coalition wanted a platform to serve two purposes: first, to educate the public about its mission, and second, to collect signatures in support of its Declaration of Reasonable Doubt about the identity of William Shakespeare.
+    
+    <h3>Look and feel</h3>
+    
+    The original mockups for the front page, an inside page, the declaration, and the historical doubters page were all done by a graphic designer the coalition had previously worked with. The graphic designer and I worked a little bit on making his design more web-friendly, and then I did the typography and additional page layouts as needed, keeping the look and feel consistent.  I feel that the site reflects very well on the society, and truly sets them apart from their peers, giving them an aura of professionalism that is necessary given the battle they are trying to fight.
+    
+    <h3>Site features</h3>
+    
+    The site has a basic CMS, custom-built, and a back-end application to collect and handle the signatures.  These are fully validated on input, then automatically address verified before being human-verified.  Once they clear that step, they await publication during one of the coalition's 4 yearly publishing dates. The entire application, including the CMS, was written in Ruby on Rails for rapid development, quick roll-out, and reduced costs.
+  teaser: The SAC advocates for research into the identity of the person who wrote Shakespeare's plays. They needed a system to allow them to collect signatures for their Declaration of Reasonable Doubt, but with strong security.
+  created_at: 2009-02-08 23:11:50 -08:00
+clients_001: 
+  slug: jessica-reichman
+  name: Jessica Reichman
+  updated_at: 2009-02-08 19:26:20 -08:00
+  url: http://www.jessicareichman.com/
+  id: 1
+  content: |-
+    <h3>Purpose</h3>
+    
+    JessicaReichman, a local artist, wanted a redesign of her web page that highlighted the textural and color qualities of her work, while also providing a memorable experience for visitors.
+    
+    <h3>Look and feel</h3>
+    
+    The client wanted a site that highlights her art, and the only constraint she put on the design was the inclusion of her signature as a graphic element; literally, she wanted her identity as her visual identity.  I opted for a gallery-like feel, to make the art pop off the page.  Since the goal was to have people see the art, the only graphic elements are images of the artist's pieces, and I feel that the site successfully showcases the range of her work.
+    
+    <h3>Site features</h3>
+    
+    The site galleries are done using <a href="http://www.huddletogether.com/projects/lightbox2/" title="JavaScript tool for displaying galleries">Lightbox 2</a> to emphasize the quality of the art and to make navigation easy.  It also degrades gracefully for users with JavaScript turned off.  The site alsoThffers a web-based contact form to shield the owner's e-mail from spambot harvesting.
+  teaser: Jessica is an artist from Santa Barbara, California, who specializes in complex media collages and print making. She needed a new site, built from scratch, to begin marketing herself on the web.
+  created_at: 2009-02-08 18:56:29 -08:00
+clients_002: 
+  slug: bioblitz
+  name: BioBlitz
+  updated_at: 2009-02-08 20:31:20 -08:00
+  url: http://bioblitzsb.org/
+  id: 2
+  content: |-
+    <h3>Purpose</h3>
+    
+    The <a href="http://www.sbbg.org/" title="Visit the SBBG homepage">Santa Barbara Botanic Garden</a> approached me to design a site for BioBlitz 2007.  They needed a visual identity as well as a means of communicating with the public about the BioBlitz event.
+    
+    <h3>Look and feel</h3>
+    
+    I did the visual branding for the client, and I wanted to convey the sense of the hunt associated with BioBlitz.  Since the event is about cataloging the diversity of organisms present in a given natural area, the focus of the event is on the little details &mdash; the small plants, the little mushrooms, the tiny insects.  Those are where most of the biodiversity in an area are; it's not the trees or the more typically charismatic megafauna like squirrels or deer.  The client requested a design that was "kid-friendly" and would work well on merchandise like hats, shirts and mugs.  To fit the brief I made a logo that is a bit more complicated than logos usually are; it has some of the complexity of the natural world.  It is presented with a dragonfly, to balance out the plant-centric elements and provide a splash of color; it is modelled after a species of orange dragonfly native to the Santa Barbara region.  The bright colors are appealing to children, and the dynamism is very attractive to kids of all ages.
+    
+    The site was designed with similar ideas in mind.  The page shows a riot of vegetation with brightly colored animals in it.  Some are insects, some are lizards; there is even a worm in the "underground" footer.  The bright colors and outdoor metaphor make the site feel very Santa Barbara in a way, as well as communicating the theme of the event.
+    
+    <h3>Site features</h3>
+    
+    In addition to the static content, the garden wanted to build a collection of images of the organisms it found, and to show them off.  The initial set of photos were seeded by myself and Bob Haller, a legendary botanist in California.  Every page shows 3 random photos from the collection.  The collection itself is browsable by taxonomic group.  In addition, we needed a system to easily provide results information, again by taxonomic group.  There is some web expertise at the garden, so the system had to be maintainable by the garden staff.
+    
+    All of the data, for the photos and results, are stored in XML files which are easily editable.  This solution, although not as full-featured as a real database, is sufficient for the site's purposes, and meant a much shorter development time and therefore increased savings for the client.
+  teaser: BioBlitz Santa Barbara was a one-day attempt to survey as much biodiversity as possible from Mission Canyon in Santa Barbara. BioBlitz needed branding, as well as a new site with some database functionality.
+  created_at: 2009-02-08 20:26:23 -08:00
+clients_003: 
+  slug: goleta-valley-holistic-health-care
+  name: Goleta Valley Holistic Health Care
+  updated_at: 2009-02-09 00:32:44 -08:00
+  url: http://gvhhc.com/
+  id: 3
+  content: |
+    <h3>Purpose</h3>
+    
+    The practice owner wanted a web site to publicize his brand new business, inform potential clients about the kind of medicine he practices, and attract new patients to his practice.
+    
+    <h3>Look and feel</h3>
+    
+    To start the process, the client needed visual branding for the business, and of the many possible symbols we discussed the ginkgo leaf seemed to resonate the most with the client.  Not only is the ginkgo a living plant, but it also represents a rescue from death; until the 17th century they were known to the west only as fossils, and survived through human intervention at buddhist temples in China and Japan.  This imbues the ginkgo with a feeling of hope and growth &mdash; specifically the attitude the client wants to foster among his patients.  The form of the logo was inspired by traditional Japanese seals and Chinese jade carvings.
+    
+    Together we settled on a clean Asian-inspired look for the site, but wanted to shy away from overt use of Chinese characters to emphasize the melding of east and west.  I worked very closely with the client to choose colors that were appropriate to both a western clientele and the eastern ideals behind the practice.
+    
+    <h3>Site features</h3>
+    
+    The site is quite simple, having a flat navigational structure and few pages.  The only fancy bit is a web-based contact form to shield the owner's e-mail from spambot harvesting.
 
+  teaser: Goleta Valley Holistic Health Care, a provider of acupuncture, shiatsu and traditional Chinese medicine in Santa Barbara, needed branding and a new site to support their grand opening.
+  created_at: 2009-02-08 20:36:12 -08:00
+clients_004: 
+  slug: livingspaces
+  name: Livingspaces
+  updated_at: 2009-02-08 22:24:51 -08:00
+  url: 
+  id: 4
+  content: |-
+    <h3>Purpose</h3>
+    
+    Livingspaces, a professional organizing company, wanted a web page to publicize its business and recruit potential clients by giving them a feel for their methods, and the benefits of working with Livingspaces as opposed to other local professional organizers.
+    
+    <h3>Look and feel</h3>
+    
+    The logo design was done for the client, and the nautilus was chosen to convey a sense of growth and organization.  The client wanted a site that was calm, organized, and inspirational, and the contrast between the organic nautilus and the ordered grid of the background in calming blues (with a touch of red to warm them up) conveys the right feeling.
+    
+    <h3>Site features</h3>
+    
+    Because many clients of professional organizing businesses are expected to use assistive technologies, the entire site was designed from the ground up to be fully accessible, and the graphical design is very robust to large changes in text size without breaking.  The site also offers a web-based contact form.
+    
+    Unfortunately, the owner has decided to move on and has closed the business, so I cannot point to a live site anymore.  The image below will have to do.
+  teaser: A professional organizing consultant in Santa Barbara needed full branding, including logo, business cards and letterhead, as well as a full website to support her new business.
+  created_at: 2009-02-08 22:21:05 -08:00
+clients_005: 
+  slug: oregon-ki-society
+  name: Oregon Ki Society
+  updated_at: 2009-02-08 22:32:18 -08:00
+  url: http://www.oregonki.org/
+  id: 5
+  content: |-
+    <h3>Purpose</h3>
+    
+    The <a href="http://www.oregonki.org/" title="Visit the OKS homepage">Oregon Ki Society</a> made themselves a web page very early on in the history of the web.  When I started training aikido in 1995 they had one.  However, in 2007, 12 years later, they still had the <em>same</em> one.  They needed an expansion, a content overhaul, and some reorganization.  After years of spotty updates the site navigation had become very confusing, and content was hard to find.
+    
+    <h3>Look and feel</h3>
+    
+    Given my love of the Japanese aesthetic, it was a natural fit for me to develop the new site for them.  In addition to doing the coding, this meant acting as project manager for a large group of stakeholders, some of whom have strong opinions.
+    
+    In designing the site, I wanted to highlight the quality of the content &mdash; <a href="http://www.oregonki.org/" title="Visit the OKS site">oregonki.org</a> has some of the best content about Ki and Aikido training to be found online &mdash; and so I decided to go with a clean and spare look.  I took my inspiration from Japanese shoji screens, which resulted in a crisp site with a strong grid.  This was very much a change from the previous site with its poorly textured background and ad-hoc layout.  Clear typography polishes the site, and vibrant photography makes it sing.  The site was particularly challenging to develop, as I knew that we needed strong photography, but we didn't have any.  So I shot almost all of the photos on the site in addition to doing the web work.
+    
+    <h3>Site features</h3>
+    
+    The site has a lot of static content, but we wanted to start highlighting how active the organization is.  To do that I developed a set of custom calendar scripts to take events from an XML file and put them in the appropriate places.  In addition to the master events list, the front page shows the next 3 events and each dojo page has its own calendar for events relevant to them.  The site then becomes more relevant to current students as well as providing extra value for potential students.  Future expansion plans include behind-the-scenes administrative helpers, such as centralized student mailing lists, a donor database and online registration for camps and other events.
+  teaser: The OKS is a group of Aikido dojos that needed to replace a 1995-era web site with something much newer and more modern. The new look, inspired by Japanese shoji screens, captures the spirit of the martial art.
+  created_at: 2009-02-08 22:32:18 -08:00
+clients_006: 
+  slug: oregon-montessori-association
+  name: Oregon Montessori Association
+  updated_at: 2009-02-08 22:59:09 -08:00
+  url: http://www.oregonmontessori.org/
+  id: 6
+  content: |-
+    <h3>Purpose</h3>
+    
+    OMA was suffering under a financially burdensome site maintenance contract with their previous web agency, and didn't like the way their site looked <em>or</em> behaved. They needed a complete refresh.  To coincide with the 100th anniversary of the Montessori movement, they also wanted new branding.
+    
+    <h3>Look and feel</h3>
+    
+    The logo was designed around the trillium, a local wildflower that is one of the early spring bloomers. It carries with it symbolism of renewal and leaving winter behind.  Additionally, its tri-partite symmetry reflects the many triples within Montessori, such as:
+    
+    <ul>
+      <li>Parents, teachers and students</li>
+      <li>Infancy, childhood and adolescence</li>
+      <li>Theory, practice and observation</li>
+    </ul>
+    
+    I rendered the logo with a sense of spin to it, to reflect the dynamic and growing nature of the Montessori movement. Its colors are those of the northwest &mdash; the rich, saturated blues, browns and greens of a wet climate.
+    
+    <h3>Site features</h3>
+    
+    The site is mostly database-driven, with a simple content management system (CMS) to allow OMA's board members to make changes to the site themselves. The calendar of upcoming events, Montessori-geared classified ads and news announcements are all maintained by the board without my intervention.  The same is true for almost all of the other site pages.
+    
+    There is a members-only area, which was one of the prime drivers behind the new site; OMA wanted to offer content to its members online, to help them connect with each other more easily, and to move much of their communication off of expensive paper and into the ether, where bits are free. Members have access to the online membership directory and the quarterly newsletter through the site. They can also update their contact information and renew their memberships online as well.
+    
+    For the organization leadership, the site offers an easy-to-use bulk e-mailer, to facilitate contact with the members, and infrastructure for handling the membership database and information updates. The site now operates for the cost of hosting, which is cheap, and nothing else. OMA went from a site they didn't like, without the features they wanted, to being able to manage most aspects of their organization for less money.
+  teaser: OMA needed new branding, and a new site, to help them carry the Montessori movement into the 21st century. They got all of that, plus an easy-to-maintain database-driven site with PayPal integration.
+  created_at: 2009-02-08 22:56:39 -08:00

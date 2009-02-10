@@ -1,7 +1,1512 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+--- 
+posts_040: 
+  permalink: connecting-ruby-on-rails-to-oracle-on-an-intel-mac-in-leopard-take-2
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Connecting Ruby on Rails to Oracle on an Intel Mac in Leopard, take 2
+  id: 129
+  content: "Since I posted the first version of this article, there have been a couple of changes.  The biggest one is that Intel has released Intel Mac versions of the InstantClient.  Woohoo!  That makes the previous version rather too complicated, so I've updated it here.  This tutorial assumes that you're using Rails 2.0 or greater.  If you're starting from the setup we had before, and you want to fix it, <a href=\"#fat_fix\" title=\"Jump to the fixer-upper instructions\">start with the cleanup instructions at the bottom</a>, and then come back here. <!--more-->\n\n\
+    <h2 id=\"get_oracle\">Grab the new Oracle InstantClient libraries</h2>\n\n\
+    <p>The new Intel Mac versions are available from the <a href=\"http://www.oracle.com/technology/software/tech/oci/instantclient/htdocs/intel_macsoft.html\" title=\"Get the libraries: login required\">Oracle downloads site</a>.  Install them in <code>/Library/Oracle/</code>.  You can do side-by-side installations in folders with whatever names you want, since apps find them by using the <code>$ORACLE_HOME</code> environment variable (and it's friends). I've got mine in <code>/Library/Oracle/instantclient/10.2.0.4</code>.  Also make sure that you've got the files required to run sqlplus and the sdk.  You can drop those in the same directory.</p>\n\n\
+    <p>Oh, and don't forget to copy over your <code>tnsnames.ora</code> file.</p>\n\n\
+    <h3>Symlink the libraries</h3>\n\n\
+    <p>In the directory where you've installed the instant client, run this:</p>\n\n\
+    <pre class=\"code shell\">ln -s libclntsh.dylib.10.1 libclntsh.dylib</pre>\n\n\
+    <h3>Set the environment variables correctly</h3>\n\n\
+    <p>You'll probably want to put these lines in your <code>.bash_profile</code>, but they also must be run (or <code>source</code>'d) from the command line to take effect:</p>\n\n\
+    <pre class=\"code shell\">export ORACLE_HOME=/Library/Oracle/instantclient/10.2.0.4\n\
+    export TNS_ADMIN=$ORACLE_HOME\n\
+    export LD_LIBRARY_PATH=$ORACLE_HOME\n\
+    export DYLD_LIBRARY_PATH=$ORACLE_HOME\n\
+    export PATH=$PATH:$ORACLE_HOME\n\
+    </pre>\n\n\
+    <p>On to the next step, making Rails & Oracle play nice.</p>\n\n\
+    <h2>Getting Rails to talk to Oracle</h2>\n\n\
+    <p>First,</p>\n\n\
+    <pre class=\"code shell\">sudo gem install activerecord-oracle-adapter --source http://gems.rubyonrails.org</pre>\n\n\
+    <p>This installs the oracle adapter, which is how ActiveRecord deals with Oracle.  It doesn't, however, install the Ruby oci8 driver, which is how Ruby talks to Oracle.  We'll do that now.</p>\n\n\
+    <h3>Compile the ruby-oci8 library</h3>\n\n\
+    <p>Make sure you've got the <a title=\"Download the Oracle Instant Client SDK\" href=\"http://www.oracle.com/technology/software/tech/oci/instantclient/htdocs/intel_macsoft.html\">Oracle Instant Client SDK</a> installed in your Oracle Instant Client directory (/Library/Oracle/instantclient/10.2.0.4)</p>\n\n\
+    <p>The most recent stable version of the oci8 library is <a title=\"Ruby oci8 library\" href=\"http://rubyforge.org/projects/ruby-oci8/\">1.0.1</a>.  Download it and unpack the file in the finder: it should unzip into <code>~/Downloads/ruby-oci8-1.0.1</code>.</p>\n\n\
+    <p>Now we can finish configuring the environment before we compile the library.</p>\n\n\
+    <pre class=\"code shell\">cd ~/Downloads/ruby-oci8-1.0.0\n\
+    export SQLPATH=$ORACLE_HOME\n\
+    export RC_ARCHS=i386\n\
+    ruby setup.rb config\n\
+    make\n\
+    sudo make install</pre>\n\n\
+    <p>These steps should cause some compiler output to scroll by.  Pay attention if you run into any errors on the setup step; the error messages are reasonably helpful at pointing you towards any problems.</p>\n\n\
+    <h2>Test connectivity</h2>\n\n\
+    <p>At this point, we're done.  We've got the latest Oracle InstantClient, and we've installed the ruby-oci8 library.  Now it's a question of making sure that everything works as advertised:</p>\n\n\
+    <pre class=\"code shell\">ruby /usr/bin/irb</pre>\n\n\
+    <p>In the IRb console, type:</p>\n\n\
+    <pre class=\"code ruby\">require 'oci8'</pre>\n\n\
+    <p>If the console returns <code>true</code> or <code>[]</code>, you\xC3\xA2\xE2\x82\xAC\xE2\x84\xA2re in business.</p>\n\n\
+    <h2>Configure your database.yml</h2>\n\n\
+    <p>The last step is to make your application use the Oracle connection.  In your <code>database.yml</code>, use the following to make it work:</p>\n\n\
+    <pre class=\"code yaml\">development:\n  adapter: oracle\n  database: your_instance_name\n  username: your_user_name\n  password: your_password</pre>\n\n\
+    <p>The database name comes straight out of your <code>tnsnames.ora</code> file.  You don't need to specify any other connection information in <code>database.yml</code>, since the <code>tnsnames.ora</code> file has everything you need.</p>\n\n\
+    <p>Your application is now talking to Oracle, without Rosetta!</p>\n\n\
+    <h2 id=\"fat_fix\">Fix the <code>ruby_fat</code> and <code>ruby_ppc</code> setup</h2>\n\n\
+    If you followed my <a href=\"/2007/11/19/connecting-ruby-on-rails-to-oracle-on-an-intel-mac-in-leopard-mac-osx-105/\" title=\"Don't read these: you don't want them anymore\">previous instructions</a> and went through all of the shenanigans with the <code>ruby_ppc</code> and <code>ruby_fat</code> versions and would like to undo them, it's quite simple.  Just remove the <code>ruby_ppc</code> files, and the symlinks to them (called <code>ruby</code>, and rename <code>ruby_fat</code> as <code>ruby</code>:\n\n\
+    <pre class=\"code shell\">cd /usr/bin\n\
+    sudo rm ruby\n\
+    sudo rm ruby_ppc\n\
+    sudo mv ruby_fat ruby\n\
+    cd /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin\n\
+    sudo rm ruby\n\
+    sudo rm ruby_ppc\n\
+    sudo mv ruby_fat ruby</pre>\n\n\
+    Then, you should also remove the 2 management scripts:\n\n\
+    <pre class=\"code shell\">sudo rm /usr/bin/ppc_ruby.sh\n\
+    sudo rm /usr/bin/fat_ruby.sh</pre>\n\n\
+    And that's enough for the cleanup.  From here you can start following the instructions beginning with <a href=\"#get_oracle\" title=\"Start from the top\">getting the new Oracle libraries.</a>"
+  status_id: 1
+  created_at: 2008-05-05 15:24:31 -07:00
+posts_029: 
+  permalink: pots-de-chocolat
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Pots de chocolat
+  id: 118
+  content: "<div class=\"image_frame\"><a href=\"http://www.flickr.com/photos/foliosus/2191155804/\" title=\"Pot de chocolat by foliosus, on Flickr\"><img src=\"http://farm3.static.flickr.com/2218/2191155804_2c4055944f_m.jpg\" width=\"240\" height=\"159\" alt=\"Pot de chocolat\" /></a></div>\n\n\
+    Who doesn't love chocolate?\n\n\
+    That's what I thought.  Nobody raised their hands.\n\n\
+    I love to make desserts that finish a meal in style, and this chocolate mousse certainly fits the bill.  The best part is that it's very easy to make.<!--more-->\n\n\
+    <h2>Choose your chocolate wisely</h2>\n\n\
+    Like with flourless chocolate cakes, you have to choose your chocolate very carefully.  If you look at the ingredients for this recipe, it's chocolate with a little bit of butter, some eggs, and a smidgen of coffee.  If your chocolate is no good, your mousse won't be any good either.  The mousse will highlight the characteristics of the chocolate; if the chocolate is bitter, the mousse will be bitter.  If the chocolate is very fruity, the mousse will be fruity.  So choose carefully.\n\n\
+    I tend to make this with the blocks of <a href=\"http://www.ghirardelli.com/\" title=\"Visit their site\">Ghirardelli</a> (dark, of course) that Trader Joe's sells.  It's a very good all-purpose chocolate.\n\n\
+    <h2>Pots de chocolat</h2>\n\n\
+    <ul class=\"ingredients\">\n  <li>8 ounces of any semisweet chocolate, broken into chunks</li>\n  <li>1\xC3\x82\xC2\xBD tablespoons butter</li>\n  <li>2-3 tablespoons of strong coffee, rum or brandy</li>\n  <li>3 eggs</li>\n  <li>Pinch of salt</li>\n\
+    </ul>\n\n\
+    <ol>\n\
+    <li>Put the chocolate, butter and coffee (or liquor) into a double boiler over moderate heat.  Stir until completely melted and smooth.</li>\n\
+    <li>Let the chocolate stand for a few minutes to cool.</li>\n\
+    <li>Separate the eggs.</li>\n\
+    <li>Once the chocolate has cooled slightly (it should still be warm), add the egg yolks one at a time, stirring until smooth after each addition.</li>\n\
+    <li>Beat the egg whites and the salt until they hold a firm shape.  They should be stiff, but not dry.</li>\n\
+    <li>Fold the whites into the chocolate.  Start with a large spoonful of whites, and fold it in.  Then do a second large spoonful.  Then do half of the remaining whites, and then the rest.</li>\n\
+    <li>Gently transfer the mousse to serving dishes like ramekins, small bowls, or martini glasses.</li>\n\
+    <li>Put the dishes in the fridge for 6-8 hours or overnight.  If overnight, the texture will be firmer when eaten; be sure to cover them with plastic wrap so that the tops don't dry out.</li>\n\
+    <li>Serve with a dollop of whipped cream and a garnish \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D grated chocolate, a mint leaf, or some fresh berries.</li>\n\
+    </ol>\n\n\
+    <p>This recipe makes 6\xC3\xA2\xE2\x82\xAC\xE2\x80\x9C8 servings.</p>\n\n\
+    <p>Enjoy!</p>"
+  status_id: 1
+  created_at: 2008-01-13 16:39:42 -08:00
+posts_018: 
+  permalink: fonts-for-the-masses-of-designers
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Fonts for the masses (of designers)
+  id: 107
+  content: "Right on, <a title=\"An open letter to John Warnock, by Andrei Herasimchuk\" href=\"http://www.designbyfire.com/\">Mr. H</a>!\n\n\
+    Andrei Herasimchuk has just written <a title=\"Please let's have some fonts\" href=\"http://www.designbyfire.com/?p=30\">an open letter to John Warnock at Adobe</a>, suggesting that he, and really Adobe, contribute a small group of roughly 10 core fonts to the public domain.  That's not so cool.  What's cool is the rationale behind the request.  If these fonts \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D fonts like <a title=\"Great sans-serif\" href=\"http://store.adobe.com/type/browser/P/P_1186.html\">Frutiger</a>, <a title=\"The essence of modernism\" href=\"http://store.adobe.com/type/browser/P/P_1199.html\">Helvetica Neue</a> and <a title=\"Contemporary humanism\" href=\"http://store.adobe.com/type/browser/P/P_1709.html\">Warnock Pro</a> \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D go public and are released in Windows and MacOS distributions, then web designers might be able to use more than FIVE fonts for designing web pages.\n\n\
+    Given the technological limitations that web designers face, what with problems in cross-browser support for standards as well as requirements for testing sites on multiple platforms (mac, win, cell phones, screen readers), it would be nice if we got a break for once, and were able to expand our design options beyond Helvetica, Times, Trebuchet, Georgia and Verdana.  As nice as those are, the inability to rely on any kind of typographical range is a real handicap.  If you've ever wondered why many \"Web 2.0\" sites look alike, look no further than the choice of 3 good sans-serif fonts that are truly avaliable cross-platform.  Choice of fonts will allow our sites to have unique character and identity.  Seriously \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D if Adobe released just 10 fonts in this manner, it would <em>triple</em> the number of available choices.\n\n\
+    Mr. H, you have my support."
+  status_id: 1
+  created_at: 2006-08-29 10:43:43 -07:00
+posts_007: 
+  permalink: ror-caching-and-routing
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: RoR caching and routing
+  id: 96
+  content: |-
+    I've been trying to learn Ruby on Rails.  So far I've found it to be a very elegant solution to the problem of writing web apps.  Until now I've used Tango or PHP, but I hope that I never have to use them again.
+    
+    I recently had a rather interesting problem, however.  My first teaching project was a little app to generate a bookmarks page, and it allows me to categorize bookmarks.  Relatively straightforward, right?  Well, I got the code to handle logging in, the categories, subcategories and bookmarks done just fine with no hitches, but then I wanted to test out caching.<!--more-->
+    
+    In development.rb I set caching to true, and then enable page caching on my "view" controller &emdash; the one that is not behind the login and simply outputs the bookmarks list.  I reload the page, and presto, the index.html page magically appears in my app's public folder.  "Sweet," I think.  I then edit one of the pieces of bookmark data, and my sweeper class kicks in, logs that it is expiring the page, and then expires the page.
+    
+    <pre class="code ruby">
+      def expire_view(model)
+        model.logger.info("Expiring the cached index")
+        expire_page(:controller => "view", :action => "index")
+      end
+    </pre>
+    
+    Except that the page doesn't actually expire.  What the f*@#!?!
+    
+    After several days of poking around, trying action caching instead, and a few posts to various forums, I figured out what the problem was.  I had reconfigured my routes.rb to essentially point all bogus URL's to the view::index action, which was the page being cached.  After I changed routes.rb back, the page started expiring.  I'm guessing that :caches_page and expire_page() only work when there are single URL's pointing to the page being cached.  Has anybody else had a similar experience?
+  status_id: 1
+  created_at: 2006-03-15 07:57:18 -08:00
+posts_041: 
+  permalink: howto-install-mysql-gem-on-leopard
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: "HOWTO: Install mysql gem on Leopard"
+  id: 130
+  content: |-
+    A while ago, when I upgraded to Rails 2.0, I started getting the annoying "upgrade to the real mysql library" message every time I did anything with rails from the command line.  Running rake tasks, running tests, opening a console session, I'd always get the error.  When I would try to install the gem (<code>sudo gem install mysql</code>) I'd get the following error: <!--more-->
+    
+    <pre>Building native extensions.  This could take a while...
+    ERROR:  Error installing mysql:
+    	ERROR: Failed to build gem native extension.
+    
+    blah blah blah
+    
+    *** extconf.rb failed ***
+    Could not create Makefile due to some reason, probably lack of
+    necessary libraries and/or headers.  Check the mkmf.log file for more
+    details.  You may need configuration options.
+    </pre>
+    
+    Configuration fail!
+    
+    It seems that this is particular to Leopard.  I just discovered the solution in <a href="http://weblog.rubyonrails.org/2007/10/26/today-is-leopard-day" title="Solve my mysql gem woes">an old post</a> from the RoR blog:
+    
+    <pre class="code shell">sudo env ARCHFLAGS="-arch i386" gem install mysql -- --with-mysql-dir=/usr/local/mysql</pre>
+    
+    We're not quite there &mdash; if you try to <code>config.gem 'mysql'</code> in your <code>environment.rb</code> you'll get an error.  The solution (thanks to <a href="http://www.macruby.org/trac/wiki/Troubleshooting" title="MySQL gem troubleshooting on Mac OS X">macruby.org</a> is to:
+    
+    <pre class="code shell">sudo ln -s /usr/local/mysql/lib /usr/local/mysql/lib/mysql</pre>
+    
+    And that's it.  Two steps and we're fixed.  No more annoying messages.
+    
+    Command line win!
+  status_id: 1
+  created_at: 2008-09-12 15:48:56 -07:00
+posts_030: 
+  permalink: two-wrongs-dont-make-a-right-microsoft-needs-to-fix-themselves
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: "Two wrongs don't make a right: Microsoft needs to fix themselves"
+  id: 119
+  content: "Yesterday two articles appeared at <a href=\"http://www.alistapart.com/issues/251\" title=\"read the articles here\">A List Apart</a> discussing a Microsoft-backed proposal to change how the web works (<a href=\"http://www.digital-web.com/news/2008/01/IE8_Version_Targeting_causes_quite_a_stir\" title=\"Summary of blog posts and articles about this\">round-up here</a>).  The proposal, on its face, is quite simple.  Developers would put a meta tag in their documents (<code>X-UA-Compatible</code>) stating what version of a browser the pages were coded against.  The browsers would read the tag, and render the page with legacy behavior, including all of the quirks, of that browser.  The goal is to \"not break the web\" with browser upgrades.\n\n\
+    It sounds like a great idea, right? I mean, why should I have to worry that Microsoft released IE7? If I used this tag, and specified IE6, then my page would always render correctly in IE, even if IE was on version 28.\n\n\
+    <h3>WRONG!!!</h3>\n\n\
+    <!--more-->\n\n\
+    Let's really look at this situation.  There are two wrongs here, and Microsoft wants to add a third.  Let's look at how we got here.\n\n\
+    <ol>\n\
+    <li>Microsoft made a bad browser: it didn't (and still doesn't) support the CSS standard</li>\n\
+    <li>Developers everywhere screwed up by coding pages that take advantage of the IE bugs, in a way that breaks in standards-compliant browsers (never mind that conditional comments makes this unnecessary)</li>\n\
+    <li>Microsoft upgrades IE to version 7, and those bad sites break</li>\n\
+    <li>Microsoft says, \"If every web developer were to just change how they work, we could have upgrades that are ok.\"</li>\n\
+    </ol>\n\n\
+    Do you see the fatal flaw in the logic?\n\n\
+    It's right there in steps 1 and 2.\n\n\
+    If Microsoft made browsers that support the standards, we wouldn't be in this mess.  I say, <strong>no</strong> to Microsoft's proposal.  I say, if Microsoft doesn't want to make browsers that support the standards, then their customers get what they deserve if the web starts breaking for them.  I say, how about Microsoft step up to the plate and make a rendering engine that works instead of relying on <strong>everyone else</strong> to fix their problems for them.\n\n\
+    \"But what about all of those pages that the IE7 upgrade broke?\" you ask.  Those are bad pages, and IE7 is a bad browser.  They're either not coded to standards, or IE7 choked on the correct standards-compliant code they were using, or both.  That's why they broke.  The people who paid for that development should switch developers to get someone who knows what they're doing, who will code pages that actually work.  The browser shouldn't have been released if it didn't support the standards.\n\n\
+    This is why they're called \"Web Standards.\"  Because they're <em>standard</em>.  I make a page that works in Firefox, I know that it works in Safari.  I should know that it works in IE.  If that's not true, then it's IE's problem, not mine.\n\n\
+    <h3>Note to Microsoft</h3>\n\n\
+    <strong>FIX YOUR D*** BROWSER ALREADY</strong>. It's almost been a <em>decade</em> since IE5 started support for CSS 2, and they still haven't gotten it right.  They make <a href=\"http://en.wikipedia.org/wiki/Microsoft\" title=\"I'm serious. They're wealthier than just about everybody.\">$50 billion dollars a year</a> and can't make their browser behave.\n\n\
+    <h3>Note to web developers</h3>\n\n\
+    <strong>FIX YOUR D*** PAGES ALREADY</strong>. It's almost been a <em>decade</em> since CSS2 came out.  You haven't figured out how it works yet? You call yourself a professional?  Get with it.\n\n\
+    <h3>I'm a bleeding-heart liberal</h3>\n\n\
+    <a href=\"http://www.zeldman.com/2008/01/22/in-defense-of-version-targeting/\" title=\"A very good argument for the new proposal\">Zeldman</a> posted about people just like me.  He says, \"We won\xC3\xA2\xE2\x82\xAC\xE2\x84\xA2t get converts by breaking sites and ridiculing their creators for not knowing as much as we do.\"  He's right.\n\n\
+    Except that we've tried that, and it doesn't work.  It doesn't work because many of the web pages out there aren't made by professionals.  Anybody heard of Dreamweaver WYSIWYG mode?  If the pages work, people are happy.  Except that they don't work.  If they work in IE6, but not in IE7, they never worked.  They just had the illusion of working.\n\n\
+    Let's make an analogy, to print design.  If I, a rank amateur in the print design world, decided to print a book in 5 point Comic Sans and it was totally illegible, that's my problem.  It's not the printer's problem, or the reader's problem.  It's mine.  I screwed up, I made content that wasn't accessible to anybody.  Some readers have figured out that if they use a magnifying glass, it's not so bad, they can read it.  That doesn't mean that my book wasn't broken. Now let's say that these people buy another book of mine, this time printed in 72 point Bembo.  With their magnifying glass, they now complain that the new book is broken!  They can't read it.  Nobody else can either, because the type is just too big.  If I said, \"Well, every publisher needs to do something so that my books are legible\" you would say I'm stupid.  It's up to me to books that are legible.  And that's right.  That's why it's up to Microsoft to stop making a browser that's broken and expecting people to work around them.  And it's also up to developers to stop coddling the browser that's broken.\n\n\
+    <h3>Why the doctype switch isn't targeting</h3>\n\n\
+    One problem in this debate is that <a href=\"http://snook.ca/archives/browsers/version_targeting_ie8/\" title=\"Snook got it wrong on this one\">people are confusing doctype switching with version targeting</a>. Using a standard doctype is like a contract: I, the developer, support this <strong>standard</strong> of HTML and CSS, so that you, the browser, can render it properly according to the same <strong>standard</strong>.  The standard provides a common language, a shared vocabulary, so that the garbage I put in to the system is the same garbage that comes out.  Targeting a browser isn't the same thing.  When I use conditional comments or other CSS hacks, I'm saying \"hey browser, you're don't understand this sentence in our standard vocabulary, so I'm going to give you a sentence that you understand.\"  That's not the same thing as saying which vocab you're using.  It's like talking to a child \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D if you use a word the child doesn't understand, you talk around it, explain it, you don't switch languages.  If I use the new meta-tag, and I target IE7, IE8, or IE42, it should render my page the same, according to the contract I say I'm holding to in my doctype declaration.  End of story.  If they don't then they've got bugs.\n\n\
+    <h3>Really?</h3>\n\n\
+    Are we really going this way? I can't believe that this industry is even <em>considering</em> Microsoft's proposal. If the browsers aren't upholding their end of the contract, why should we work around them?  Let them be broken, let people decide they don't want a broken browser, let the bad browsers die."
+  status_id: 1
+  created_at: 2008-01-22 18:30:50 -08:00
+posts_019: 
+  permalink: long-live-the-swiss
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Long live the Swiss
+  id: 108
+  content: |-
+    When I was a kid my family lived in Geneva for 5 years.  It was a formative time in my life, and I still think very fond thoughts of the Swiss.  I've always thought of them as a rather typical European country, but smaller, more quaint and with a much more closed and provincial mind-set.  However, over the years I've learned that they have a rather interesting sense of art and design, one that is much more prominent than in many countries.  Their influnence on graphic design is unmeasurable: take Helvetica, for instance.  The Swiss really helped make modernism.
+    
+    Their artistic sense really shines in public art projects, however &mdash; like architectural contests, creative painting of radar camera boxes, and generally constructing their public spaces well.  What surprises me is when they go super modern and cutting edge.  Take <a href="http://www.yatblog.com/2006/08/08/swiss-public-toilet/" title="A public toilet in Basel">this toilet</a>, for example.
+    
+    The Swiss freakin' rule.
+  status_id: 1
+  created_at: 2006-08-30 22:26:08 -07:00
+posts_008: 
+  permalink: lighttpd-url-rewrites-are-funny
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: Lighttpd url rewrites are funny
+  id: 97
+  content: |-
+    Since I've been playing around with RoR I've found the
+    
+    <pre class="code">script/server</pre>
+    
+    trick for development to be fantastically useful.  It's quick to use, the server itself is fast, and it's everything I could want.  That is, until it's time to go in to production mode.  I've been running Apache, using OSX's built-in build, but I'm considering switching my whole setup over to lighty because of the funkiness of Apache and Ruby's fcgi.  So I tried it.  Building lighty was really easy.  Getting lighty to then serve my static pages was also very easy.  Then I tried getting it to serve my ruby apps, and that's where the problems hit. <!--more-->
+    
+    It turns out that my one big config problem was this: "url.rewrite" does not work inside a $HTTP["url"] matching block.  So, for example consider this case, where I want to rewrite URL's intended for my rails app which has 2 controllers, admin and view:
+    
+    <pre class="code lighttpd">$HTTP["url"] =~ "^/input_path/" {
+      url.rewrite-once ("/(admin|view)/(.*)" => "/some/other/path/$1/$2")
+    }</pre>
+    
+    If the incoming URL matches "/input_path/" then lighty starts processing the code inside the braces, but the url.rewrite-once fails to act.  Instead, the server will invariably look for files inside /input_path/ and serve up a 404.
+    
+    The proper way to do this sort of work with lighty is to have the regex do all the work:
+    
+    <pre class="code lighttpd">url.rewrite-once ("^/input_path/(admin|view)/(.*)" => "some/other/path/$1/$2")</pre>
+    
+    This isn't documented anywhere on the <a href="http://www.lighttpd.net/documentation/" title="LightTPD docs">lighty web site</a>, but there is a <a href="http://article.gmane.org/gmane.comp.web.lighttpd/2992" title="The only documentation?">message on the lighty mailing list</a> that points out the problem.
+    
+    I have to say, other than this hitch, I've been very impressed with the speed and ease of configuration that lighty offers.  Once I get PHP to work with it, I'll be a happy camper.
+  status_id: 1
+  created_at: 2006-03-20 10:56:58 -08:00
+posts_042: 
+  permalink: howto-get-up-and-running-with-postgresql-and-ruby-on-rails-on-leopard-mac-osx-10-5
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: "HOWTO: Get up and running with PostgreSQL and Ruby on Rails on Leopard (Mac OSX 10.5)"
+  id: 131
+  content: |
+    I ran into this problem at work today: for once, instead of Oracle, it was time to use a PostgreSQL database.  I've never used PostgreSQL before, so this was all new territory to me.
+    
+    Looking around online, I found several pages that describe how to do this <a href="http://brionesandco.com/ryanbriones/2008/01/postgresql-on-leopard-for-rails-few.html">with</a> <a href="http://www.robbyonrails.com/articles/2008/01/22/installing-ruby-on-rails-and-postgresql-on-os-x-third-edition">MacPorts</a>.  But I don't have MacPorts, and I don't want it, since PostgreSQL ships binaries with an installer for Mac OSX.  I want something simpler, anyway.
+    
+    It turns out that the solution is fairly easy: <!--more-->
+    
+    <ol>
+    	<li><a href="http://www.postgresql.org/download/macosx" title="Get the lastest version of PostgreSQL">Download PostgreSQL</a> (latest version)</li>
+    	<li>Mount the installer disk image, double click the installer, and follow the instructions</li>
+    	<li>Once the installer has completed, in the terminal do this, with the correct version number at the end of the -with-pgsql-dir parameter: <code>sudo env ARCHFLAGS='-arch i386' gem install postgres -- --with-pgsql-dir=/Library/PostgreSQL/8.3</code></li>
+    	<li>In your database.yml, make sure you specify the adapter as <code>postgresql</code></li>
+    </ol>
+    
+    Now your app will talk to postgres!
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+  status_id: 1
+  created_at: 2008-10-01 12:49:19 -07:00
+posts_031: 
+  permalink: a-rake-task-for-setting-up-new-rails-projects-for-subversion
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: A rake task for setting up new Rails projects for Subversion
+  id: 120
+  content: "One of the more annoying things about using Subversion for source code control when using rails is that every time you start a new project, you have to go through this dance to get the new project's Subversion setup done.  Really, this means that you're repeating yourself every time you start a new project, so in the interest of DRYness, it seems like you would want to script this.  Even better, you could just setup one canonical project that you checkout instead of running <code>rails my_new_project</code>.\n\n\
+    I've <a href=\"http://blog.teksol.info/2006/03/09/subversion-primer-for-rails-projects\" title=\"A very complete explanation for how to do it at the shell prompt\">found</a> <a href=\"http://www.railsonwave.com/railsonwave/2006/12/19/smart-subversion-script-for-rails-projects\" title=\"A shell script to configure SVN\">several</a> <a href=\"http://blog.unquiet.net/archives/2005/11/06/helpful-rake-tasks-for-using-rails-with-subversion/\" title=\"A rake task to configure SVN\">pages</a> <a href=\"http://wiki.rubyonrails.org/rails/pages/How+To+Use+Subversion+with+a+Rails+Project\" title=\"Rails wiki\">on</a> <a href=\"http://wiki.rubyonrails.org/rails/pages/HowtoUseRailsWithSubversion\" title=\"Another Rails Wiki page\">the</a> internets that discuss how to do a good subversion setup, and they each had their strong points.  I've combined their approaches into a method for making a canonical blank app.\n\n\
+    <!--more-->\n\n\
+    <h3>Creating the canonical app</h3>\n\n\
+    First, you should create a repository for your canonical blank app.  Let's say it's at <code>http://svn.my_svn.com/canonical/trunk</code>. I trust that you know how to do this.  Then, you can create your app:\n\n\
+    <pre class=\"code shell\">rails canonical\n\
+    cd canonical</pre>\n\n\
+    Next you can do an in-place import of your SVN repo into your app directory:\n\n\
+    <pre class=\"code shell\">svn checkout http://svn.my_svn.com/canonical/trunk .</pre>\n\n\
+    Don't forget the final period in that command; it's critical. SVN should say something like <code>Checked out revision 1</code>.  This step puts our newly created canonical directory under Subversion control.\n\n\
+    <h3>Adding all of your files to the repository</h3>\n\n\
+    Now we put all of our files under Subversion control:\n\n\
+    <pre class=\"code shell\">svn add --force .</pre>\n\n\
+    Again, don't forget the trailing period.  This command will output a long list of files with a leading \"A\", indicating that they've been added.\n\n\
+    <h3>Create the rake task</h3>\n\n\
+    Put the following code in a file called <code>svn.rake</code> in the <code>lib/tasks</code> folder:\n\n\
+    <pre class=\"code ruby\">desc \"Configure Subversion for Rails\"\n\
+    task :setup_svn do\n  puts \"Removing /log\"\n  system \"svn remove log/*\"\n  system \"svn commit -m 'removing all log files from subversion'\"\n  system 'svn propset svn:ignore \"*.log\" log/'\n  system \"svn update log/\"\n  system \"svn commit -m 'Ignoring all files in /log/ ending in .log'\"\n\n  puts \"Ignoring /db\"\n  system 'svn propset svn:ignore \"*.db\" db/'\n  system \"svn update db/\"\n  system \"svn commit -m 'Ignoring all files in /db/ ending in .db'\"\n\n  puts \"Renaming database.yml database.example\"\n  system \"svn move config/database.yml config/database.example\"\n  system \"svn commit -m 'Moving database.yml to database.example to provide a template for anyone who checks out the code'\"\n  system 'svn propset svn:ignore \"database.yml\" config/'\n  system \"svn update config/\"\n  system \"svn commit -m 'Ignoring database.yml'\"\n\n  puts \"Ignoring /tmp\"\n  system 'svn propset svn:ignore \"*\" tmp/'\n  system \"svn update tmp/\"\n  system \"svn commit -m 'Ignoring all files in /tmp/'\"\n\n  puts \"Ignoring /doc\"\n  system 'svn propset svn:ignore \"*\" doc/'\n  system \"svn update doc/\"\n  system \"svn commit -m 'Ignoring all files in /doc/'\"\n\
+    end</pre>\n\n\
+    <h3>Do any other setup</h3>\n\n\
+    If there are any other setup or configuration bits that you use all the time \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D plugins, ActionMailer configs, date formats, etc., put those in the appropriate places.  When using <code>script/plugin</code> make sure that you use the <code>-x</code> flag to get the Subversion stuff right.  When using <code>script/generate</code> be sure to use the <code>--svn</code> flag to add the files automatically to Subversion.\n\n\
+    For example, at my work most of our apps routinely connect to multiple databases, so I put stubs for each of them in <code>database.example</code>.  I also like to have certain date formats available to me, \n\n\
+    <h3>Run the rake task</h3>\n\n\
+    Now, execute the new rake task:\n\n\
+    <pre class=\"code shell\">rake setup_svn</pre>\n\n\
+    Be warned, though, you should only run this once on the canonical: it moves the <code>database.yml</code> file to <code>database.example</code>, making the project non-functional.  You don't want any passwords in there, either, since you don't want to expose them in the repository.\n\n\
+    The script does a bunch of commits, so any changes you have made to your canonical will be saved to the repository.\n\n\
+    <h3>Export new projects</h3>\n\n\
+    The next time you want to create a new Rails project, instead of doing <code>rails projectname</code> you should do the following:\n\n\
+    <ol>\n  <li>Export the canonical from the repository</li>\n  <li>Do an in-place import from the new project's repository</li>\n  <li>Rename <code>database.example</code> as <code>database.yml</code> and populate it</li>\n  <li>Run <code>rake secret</code> and copy the new secret code into your <code>environment.rb</code> (you don't want all of your apps to have the same code)</li>\n\
+    </ol>\n\n\
+    If you don't want to mess with the canonical, you can just drop the <code>svn.rake</code> file in to your new projects and run it.  That would give you some DRYness, like a good hitchhiker's towel.\n\n\
+    <h3>That's it!</h3>\n\n\
+    Now you should have a good canonical app that makes creating new projects a breeze.  At my work we have multiple developers and we will have dozens of apps by the time we're done migrating ourselves out of the old platform.  By standardizing our new projects this way, it makes our startup time much faster and leads to better habits (like always using Subversion), and there is no bad in any of that."
+  status_id: 1
+  created_at: 2008-01-31 08:59:02 -08:00
+posts_020: 
+  permalink: plant-inspired-architecture
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Plant-inspired architecture
+  id: 109
+  content: "<div class=\"image_frame\"><a href=\"http://archidose.blogspot.com/2006/10/half-dose-30-urban-cactus.html\" title=\"Read more about the urban cactus\"><img src=\"/wp-content/uploads/2006/11/urban_cactus.jpg\" alt=\"Urban cactus\" /></a></div>I can't resist, this is too good to be true: there is such a thing as an <a href=\"http://archidose.blogspot.com/2006/10/half-dose-30-urban-cactus.html\" title=\"Read more about the urban cactus\">urban cactus</a>.  It's a housing project in Rotterdam, based on a cactus.  By placing the balconies as the architects did, every resident gets a double-height outdoor space and more sunlight than they would with a typical balcony.  I think it's brilliant."
+  status_id: 1
+  created_at: 2006-11-30 22:35:41 -08:00
+posts_009: 
+  permalink: is-microsoft-scre-g-the-web-community-again
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: Is Microsoft scre***g the web community again?
+  id: 98
+  content: |-
+    Many of the leading luminaries of modern standards-based web design have been very excited about the upcoming release of IE7; the promise of not having to support yet another crappy browser has been very tempting.
+    
+    Let's recap what's happened, though. <!--more-->
+    
+    <ol>
+    <li>MSFT announces that known hacks won't work, and that <a href="http://blogs.msdn.com/ie/archive/2005/10/12/480242.aspx" title="IE Blog">developers should rely on conditional comments to target IE</a>.  At this point, I thought, "Oh no, here we go.  They're going to prevent us from targeting IE7, and IE7 won't actually render things properly, so we'll be left out to hang."</li>
+    <li>MSFT makes progress, best illustrated by <a href="http://www.molly.com/2006/03/01/microsoft-ie7-progress-sneak-preview-of-mix06-release/" title="Molly on Malarkey and the garden">Molly Holzschlag's recap of IE7's rendering progress</a> (including <a href="http://www.stuffandnonsense.co.uk/archives/the_ie7_mix_06_release.html" title="Malarkey's progress report on IE7">the rendering of Malarkey's site</a>).  I'll admit, with the latest release of IE7 beta 2, I thought there was light at the end of the tunnel.  Removing the ability to specifically target IE7 isn't a problem <em>as long as it renders according to the standards</em>.</li>
+    <li>Roger Johansson points out that <a href="http://www.456bereastreet.com/archive/200603/new_clearing_method_needed_for_ie7/" title="456 Berea Street on float clearing"> the latest IE7 beta, the so-called "layout complete" version, doesn't clear floats properly</a>!  Check the comments if you want to see some vitriol.</li>
+    <li>Nick Rigby points out that the "layout complete" IE7 only fixes 6 of the 7 bugs in his <a href="http://www.nickrigby.com/sandbox/ie7/" title="IE7 bug testing">IE7 test suite</a>.</li>
+    </ol>
+    
+    So, essentially, IE7 is still going to be a broken browser, but without hacks we'll have no way to target it.  Wasn't the whole point to have an IE browser that didn't need special support?  Thanks, Microsoft, you're doing a bang-up job spending lots of money to make lots of headaches.
+  status_id: 1
+  created_at: 2006-03-23 10:56:29 -08:00
+posts_043: 
+  permalink: howto-use-a-rails-model-with-an-oracle-public-synonym
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: "HOWTO: Use a Rails model with an Oracle public synonym"
+  id: 132
+  content: |-
+    The title of this post is somewhat misleading.  It turns out that you can't use Oracle public synonyms with Rails, because of how ActiveRecord obtains information about the fields in its models.
+    
+    <h2>The problem</h2>
+    
+    Let's say you have the following model:
+    
+    <pre class="code ruby">class User < ActiveRecord::Base
+    end</pre>
+    
+    If you have a public synonym in your database called <code>users</code> AR will fail, with an error message about how it can't get column information for the <code>users</code> table.
+    
+    Why is that?
+    
+    Well, AR queries the <code>all_tab_columns</code> view to get the column list, with something like this: <!--more-->
+    
+    </pre><pre class="code sql">SELECT * FROM all_tab_columns WHERE table_name = 'users'</pre>
+    
+    Unfortunately, public synonyms don't have rows in <code>all_tab_column</code>, so no rows are retrieved.
+    
+    <h2>The solution</h2>
+    
+    The solution here is quite simple.  You need to create a view into the public synonym:
+    
+    <pre class="code">CREATE VIEW users_v AS SELECT * FROM users</pre>
+    
+    All user views have rows in <code>all_tab_columns</code>, so the query to pull column information  will work. If you're feeling extra-special-clever, you'll put the <code>CREATE VIEW</code> statement into a migration.
+    
+    I highly recommend giving the view a name that is different from the public synonym, unless you want a big ole' mess.  If you're like me and work against legacy databases, you can take this opportunity to straighten out the naming conventions to match what Rails is looking for.  If your table is already playing nicely with rails, just do this in your model:
+    
+    <pre class="code ruby">set_table_name 'users_v'</pre>
+    
+    Then everything will work as intended.
+    
+    <h2>Why the solution is a problem</h2>
+    
+    Having a view into another table, just for the sake of making Rails work, isn't quite ideal, especially if the view will be heavily queried by your app.  The view creates a layer of database inefficiency, and will slow down all of your db requests.  Thankfully, it's not huge; in my experience, we're never close to maxing out the database anyway, so the performance hit is negligible.
+  status_id: 1
+  created_at: 2008-11-11 16:16:23 -08:00
+posts_032: 
+  permalink: seasonal-beer-rocks-the-year
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Seasonal beer rocks the year
+  id: 121
+  content: |-
+    One of the things I love about living in Portland is the beer.  The Northwest is renowned for great beer, in part because of its high quality water, and in part because of the <a href="http://en.wikipedia.org/wiki/Hops" title="Read more about hops">Cascade hops</a> which grow very well in the Northwest climate.
+    
+    But even better than having good beer, is having good <em>seasonal</em> beer.  The Northwest has a strong seasonal rhythm that explodes into Spring every year, starting around late February. Our food is highly seasonal, with a brief spring growing season and then a long summer full of fantastic tomatoes, squash, oniony things, herbs, etc. And yet, so many people drink the same things year-round. The seasonal beers give me something to look forward to. As winter sets in, I look forward to the winter ales, just as I am enjoying the Oktoberfest beers. When the days begin to lengthen, I begin to look forward to the spring beers, and to the flowers, but that hope is tinged with bitterness at having to leave behind the winter ales.
+    
+    Over the long, wet winter, drinking <a href="http://www.deschutesbrewery.com/BrewPub/OnTap/140995.aspx" title="Buzzsaw Brown">the</a> <a href="http://www.redhook.com/" title="Winter Hook">winter</a> <a href="http://www.fullsailbrewing.com/wassail.cfm" title="Wassail">ales</a> is a hearty reminder that Spring is coming, and a very pleasant way to pass the rains away.
+    
+    In Spring, the breweries go crazy, creating a <a href="http://www.laurelwoodbrewpub.com/brewery_seasonals.php" title="Check out the length of that list">very</a> <a href="http://www.bluemoonbrewingcompany.com/" title="Warning: full flash">wide</a> <a href="http://www.mcmenamins.com/index.php?loc=75&id=416" title="Scroll down for the Workingman's Red">variety</a> of beers.  But there's also the <a href="http://www.springbeerfest.com/" title="Good beer, tasty nibbles, what more could you want?">Spring Beer Festival</a>. The lighter beers that characterize spring go great with field work.
+    
+    Summer beers are a different beast.  They're usually intended to help beat the heat, so they crank up the hops or are very light pale ales. At this point I'm running out of links, because the summer beers are too far away.  My favorite summer beer consumption involves either barbecue, or sitting outside in the late afternoon/evening with friends.  Or both at the same time.
+    
+    Portland gets really nice late summers every year.  It's always warm well into September, and frequently half of October as well before the first storms roll in off the Pacific.  When the Oktoberfest beers and other autumn ales come out, they remind  you to enjoy the last of summer while you still can: there's not much warmth left before the rains set in.
+  status_id: 0
+  created_at: 2008-03-11 23:22:21 -07:00
+posts_021: 
+  permalink: new-page-in-my-portfolio
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: New page in my portfolio
+  id: 110
+  content: |-
+    <div class="image_frame"><a href="/portfolio/tyler/" title="Link to my description of Claudia Tyler's home page"><img src="/wp-content/uploads/2006/12/tyler_sm.jpg" alt="Thumbnail of Claudia Tyler's site" /></a></div>Although this page went live a little while ago, I've just gotten around to writing it up.  A scientist at the University of Santa Barbara contacted me about making a <a href="http://www.icess.ucsb.edu/~tyler/" title="Claudia Tyler's home page">professional page</a> for her.  I've <a href="/portfolio/tyler/" title="My description of her page">added it to my portfolio</a>.  I'm particularly happy about the image at the bottom of the page behaves: use a big screen and make your browser window wide.  Very wide.
+    
+    I hope that the page will help Claudia advertise her work both to other scientists as well as to potential students and field assistants.
+  status_id: 1
+  created_at: 2006-12-10 16:34:13 -08:00
+posts_010: 
+  permalink: howto-lighttpd-with-ssl-rails-php-and-mysql-on-osx-10-4-tiger
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: "HOWTO: Lighttpd with SSL, Rails, PHP and MySQL on OSX 10.4 (Tiger)"
+  id: 99
+  content: |-
+    I've run Apache on my Mac for as long as I've had OSX, using either the built-in version or the <a href="http://www.serverlogistics.com/" title="Good installer package for MySQL">ServerLogistics</a> package, which they don't make anymore.  It always worked great, and when I started learning PHP, it was <a href="http://www.entropy.ch/software/macosx/php/" title="PHP installer package">easy to install</a> and make work.  Getting SSL to work was a little bit more of a challenge, but once I found <a href="http://forums.serverlogistics.com/viewtopic.php?t=494" title="SSL for Apache 2.0">the right instructions</a> it was a breeze.
+    
+    But now I need to serve Rails as well.  Getting Apache to do RoR with fcgi can be a hassle, and it's apparently slow as well, so I decided to switch to <a href="www.lighttpd.net" title="Lighty home">lighttpd</a>, or lighty as it's called.
+    
+    For development purposes, using the standard <span class="code">script/server</span> is a no-brainer; however I want a "production" environment as well.  One that can serve Rails, and legacy PHP, and do SSL for authentication, while talking to MySQL.  I discovered that lighty can do all of these things, but how? <!--more-->
+    
+    I looked around, and once you get to the deployment phase of RoR, there isn't a lot of good information on the web, especially for smaller set-ups like mine; essentially, I'm almost the only person who hits my web server, as it houses some personal productivity stuff just for me that most other people don't find interesting.  That and my photo collection for friends to browse.
+    
+    So I looked and looked, and found a lot of disjointed bits and bobs, but I didn't find a good how-to for non-unix geeks.  But, given the ease of use of lighty, I've put one together.  Enjoy!
+    
+    <h3>Requirements</h3>
+    
+    <ol>
+    <li>Tiger (OSX 10.4)</li>
+    <li>XCode 2.0 or newer and developer's tools</li>
+    <li>Patience and a nice snack while waiting for compiling to happen</li>
+    </ol>
+    
+    <h3 id="rubyetc">Building Ruby, Gems, RoR, FastCGI, PCRE</h3>
+    
+    Go to <a href="http://hivelogic.com/articles/2005/12/01/ruby_rails_lighttpd_mysql_tiger">Dan Benjamin's excellent instructions</a> to do all of these things, and follow them well.  However, stop when you get to the lighttpd instructions, because we're going to make a change.  Do this instead of what he says:
+    
+    <pre class="code shell" name="lighttpd">curl -O http://lighttpd.net/download/lighttpd-1.4.11.tar.gz
+    tar xzvf lighttpd-1.4.11.tar.gz
+    cd lighttpd-1.4.11
+    ./configure --prefix=/usr/local --with-pcre=/usr/local --with-openssl
+    make
+    sudo make install
+    cd ..</pre>
+    
+    The only difference is the addition of <span class="code">--with-openssl</span> to the configuration, which will compile lighttpd with SSL (v2 and v3) support.
+    
+    <h3 id="mysql">Building MySQL</h3>
+    
+    You can choose to build MySQL according to <a href="http://hivelogic.com/articles/2005/12/01/ruby_rails_lighttpd_mysql_tiger">the HiveLogic instructions</a>, or you can use the <a href="http://dev.mysql.com/downloads/mysql/5.0.html#Mac_OS_X" title="MySQL 5.0 download page">MySQL 5.0 packages</a> from the dolphin's mouth, so to speak, and avoid the compile time.  This works for <a href="http://dev.mysql.com/downloads/mysql/4.1.html#Mac_OS_X" title="MySQL 4.1 download page">version 4.1</a> as well.  I've tried both versions with the setup described here, and both work.
+    
+    Don't forget to install the MySQL native bindings (again, from <a href="http://hivelogic.com/articles/2005/12/01/ruby_rails_lighttpd_mysql_tiger">the HiveLogic instructions</a>) as well.
+    
+    <h3>But, I've already got this stuff working!</h3>
+    
+    Chances are, you've already got a full setup that works, because you saw <a href="http://hivelogic.com/articles/2005/12/01/ruby_rails_lighttpd_mysql_tiger">the HiveLogic instructions</a> long before I ever wrote this page.  If that's the case, then all you need to do is follow <a href="#lighttpd">my lighttpd compile instructions</a>, which will over-write the pre-existing lighttpd version, with no ill effects.
+    
+    <h3 id="php">Building PHP</h3>
+    
+    First, <a href="http://www.php.net/downloads.php" title="PHP download page">download the PHP 5.1.2 full source code</a>, and unpack the tarball by double-clicking it in the finder.  I would recommend moving the unpacked "php-5.1.2" folder to the same folder where you downloaded all of the source code from <a href="http://hivelogic.com/articles/2005/12/01/ruby_rails_lighttpd_mysql_tiger">the hivelogic instructions</a>.
+    
+    Second, open a terminal, and execute the following commands:
+    
+    <pre class="code shell">./configure --enable-fastcgi --enable-discard-path --enable-force-redirect --with-zlib --with-xml --with-mysql=/usr/local/mysql --prefix=/usr/local/php5-fcgi --disable-cli --enable-memory-limit --with-layout=GNU --with-regex=php
+    make
+    sudo make install</pre>
+    
+    When this is done, you'll have a working cgi-fcgi version of PHP.  We'll hook this up to lighttpd in a minute, when we get to the lighty configuration files.
+    
+    <h3 id="ssl">SSL</h3>
+    
+    Before we start configuring lighty, we've got to get an SSL certificate.  If you're creating your own, you can follow the instructions from the lighty web site:
+    
+    <pre class="code shell">openssl req -new -x509 -keyout host.pem -out host.pem -days 365 -nodes</pre>
+    
+    If you already have a certificate that's a .crt and a .key file, you have to make them snuggle up into a single .pem file:
+    
+    <pre class="code shell">cat host.key host.crt > host.pem</pre>
+    
+    Both of these methods result in a single .pem file, usually named "host.pem" where "host" is the name of the server you're using the certificate for.  This file can be stored anywhere you want on your system, since the lighty configuration takes an explicit path to it.
+    
+    <h3 id="lighttpdconfig">Configuring lighttpd</h3>
+    
+    Now the more difficult part: we get to configure lighty.  I'll present the config files one chunk at a time, explaining what the various commands do.  I've chosen to store mine in <span class="code">/etc/lighttpd/</span> to mimic how Apache stores its files (<span class="code">/etc/httpd/</span>).  Any path will do, just change the references to that directory in the coming intsructions.
+    
+    First, we'll set up 2 top-level files, which are both quite simple.  They set up two nearly identical configurations for the lighty daemon, that run side-by-side.  The first scans port 80, and serves http requests.  Let's call this file <span class="code">lighttpd.conf</span>.
+    
+    <pre class="code lighttpd">include "lighttpd_shared.conf"
+    
+    server.port = 80
+    
+    server.errorlog    = "/etc/lighttpd/lighttpd.error.log"
+    accesslog.filename = "/etc/lighttpd/lighttpd.access.log"</pre>
+    
+    The first line causes lighty to parse the main configuration file, which we'll go through below.  The next line binds lighty to port 80, the default for http, and then we assign error log files.
+    
+    We do something very similar for the other top-level file, the one that configures the SSL daemon.  I've called mine <span class="code">lighttpd_ssl.conf</span>.
+    
+    <pre class="code lighttpd">include "lighttpd_shared.conf"
+    
+    server.port = 443
+    
+    server.errorlog    = "/etc/lighttpd/lighttpd_ssl.error.log"
+    accesslog.filename = "/etc/lighttpd/lighttpd_ssl.access.log"
+    
+    ssl.engine         = "enable"
+    ssl.pemfile        = "/etc/lighttpd/host.pem"</pre>
+    
+    In this case, we've bound the daemon to port 443, the default for secure connections.  We've specified log files, and then enabled the SSL engine and specified the path to the .pem file.
+    
+    By the way, the log files must exist before you run the daemon, and have the right permissions.  To do this, simply touch the files, assign them to "www" and set the permissions:
+    
+    <pre class="code shell">cd /etc/lighttpd
+    touch lighttpd.error.log
+    touch lighttpd.access.log
+    touch lighttpd_ssl.error.log
+    touch lighttpd_ssl.access.log
+    sudo chown www *.log
+    sudo chmod 0666 *log</pre>
+    
+    Now, on to the meat of the matter.  Both of our top-level files parse the <span class="code">lighttpd_shared.conf</span> file, so that both daemons run in parallel and do the same things.  This means that all pages in our web server can be served with a regular or a secure connection.  Here's the meat:
+    
+    <pre class="code lighttpd">server.modules = ( "mod_rewrite",
+                       "mod_access",
+                       "mod_fastcgi",
+                       "mod_userdir",
+                       "mod_accesslog" )
+    
+    # Main folder containing web documents
+    server.document-root = "path/to/main/"
+    
+    # Allow http://www.domain.com/~username/ style requests
+    userdir.basepath = "/Users/"
+    userdir.path = "Sites"
+    userdir.include-user = ("username") # only allow requests for this user (optional)
+    
+    # If no file is specified, what to look for?
+    index-file.names = ( "index.html", "index.htm", "index.php" )
+    
+    # Required event handler for OS X
+    server.event-handler = "freebsd-kqueue"
+    
+    # Run the server under the user-name "www" for security purposes
+    # To bind to port 80, the server must be called by root user, but we don't want
+    # the server to have free run of the box, so it runs as "www"
+    server.username = "www"
+    server.groupname = "www"
+    
+    # Set up the appropriate MIME type mappings
+    mimetype.assign             = (
+      ".pdf"          =>      "application/pdf",
+      ".sig"          =>      "application/pgp-signature",
+      ".spl"          =>      "application/futuresplash",
+      ".class"        =>      "application/octet-stream",
+      ".ps"           =>      "application/postscript",
+      ".torrent"      =>      "application/x-bittorrent",
+      ".dvi"          =>      "application/x-dvi",
+      ".gz"           =>      "application/x-gzip",
+      ".pac"          =>      "application/x-ns-proxy-autoconfig",
+      ".swf"          =>      "application/x-shockwave-flash",
+      ".tar.gz"       =>      "application/x-tgz",
+      ".tgz"          =>      "application/x-tgz",
+      ".tar"          =>      "application/x-tar",
+      ".zip"          =>      "application/zip",
+      ".mp3"          =>      "audio/mpeg",
+      ".m3u"          =>      "audio/x-mpegurl",
+      ".wma"          =>      "audio/x-ms-wma",
+      ".wax"          =>      "audio/x-ms-wax",
+      ".ogg"          =>      "application/ogg",
+      ".wav"          =>      "audio/x-wav",
+      ".gif"          =>      "image/gif",
+      ".jpg"          =>      "image/jpeg",
+      ".jpeg"         =>      "image/jpeg",
+      ".png"          =>      "image/png",
+      ".xbm"          =>      "image/x-xbitmap",
+      ".xpm"          =>      "image/x-xpixmap",
+      ".xwd"          =>      "image/x-xwindowdump",
+      ".css"          =>      "text/css",
+      ".html"         =>      "text/html",
+      ".htm"          =>      "text/html",
+      ".js"           =>      "text/javascript",
+      ".asc"          =>      "text/plain",
+      ".c"            =>      "text/plain",
+      ".cpp"          =>      "text/plain",
+      ".log"          =>      "text/plain",
+      ".conf"         =>      "text/plain",
+      ".text"         =>      "text/plain",
+      ".txt"          =>      "text/plain",
+      ".dtd"          =>      "text/xml",
+      ".xml"          =>      "text/xml",
+      ".mpeg"         =>      "video/mpeg",
+      ".mpg"          =>      "video/mpeg",
+      ".mov"          =>      "video/quicktime",
+      ".qt"           =>      "video/quicktime",
+      ".avi"          =>      "video/x-msvideo",
+      ".asf"          =>      "video/x-ms-asf",
+      ".asx"          =>      "video/x-ms-asf",
+      ".wmv"          =>      "video/x-ms-wmv",
+      ".bz2"          =>      "application/x-bzip",
+      ".tbz"          =>      "application/x-bzip-compressed-tar",
+      ".tar.bz2"      =>      "application/x-bzip-compressed-tar"
+     )
+    
+    # Don't server these files statically, for security 
+    static-file.exclude-extensions = ( ".fcgi", ".php", ".rb", "~", ".inc", ".pl", ".yml" )
+    
+    # Use mod_access to deny direct access to files ending in ~ or .inc; these are usually
+    # code or backup files
+    url.access-deny             = ( "~", ".inc" )
+    
+    # Disable auto-generated directory listings, for security
+    dir-listing.activate        = "disable"
+    
+    # Disable range requests for PDF files
+    $HTTP["url"] =~ "\.pdf$" {
+      server.range-requests = "disable"
+    }
+    
+    # Set up a fastcgi server for PHP
+    fastcgi.server = ( ".php" => (( 
+                         "bin-path" => "/usr/local/php5-fcgi/bin/php", # path to php binary
+                         "socket" => "/tmp/php.socket",
+                     )))
+    
+    # Now create virtual subdomains for each rails app we want; myrailsapp.domain.com
+    # Repeat the following block for each rails app, and for each one
+    # replace "myrailsapp" with the name of your application
+    # This sets up separate fcgi processes for each application
+    
+    $HTTP["host"] =~ "^myrailsapp\." {
+         var.myrailsapp = "/path/to/rails/app"
+         server.document-root = var. myrailsapp + "/public"
+         server.error-handler-404 = "/dispatch.fcgi"
+         fastcgi.server = ( ".fcgi" =>
+                         ( "localhost" =>
+                             ( "bin-environment" => ("RAILS_ENV" => "production"),
+                               "bin-path" => var. myrailsapp + "/public/dispatch.fcgi",
+                                "socket" => "/tmp/myrailsapp.fcgi.socket"
+                             )
+                          )
+                     )
+    }</pre>
+    
+    You can tweak the fastcgi performance by using <a href="http://www.lighttpd.net/documentation/fastcgi.html" title="Lighttpd fastcgi configuration options">the lighttpd instructions</a> for directives such as "min-procs" and "max-procs" but that's up to you.
+    
+    <h3 id="launchd">Lighty at startup</h3>
+    
+    Wouldn't it be nice if lighty launched at startup, and we didn't have to worry about it?  How about if it relaunched whenever it crashed?  That would be even better.  Save the following to <span class="code">/Library/LaunchDaemons/net.lighttpd.plist</span> and watch the magic happen, thanks to <a href="http://textsnippets.com/posts/show/124" title="Original launchd instructions">froehle</a>:
+    
+    <pre class="code xml"><?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+    	<key>Label</key>
+    	<string>net.lighttpd</string>
+    	<key>OnDemand</key>
+    	<false />
+    	<key>Program</key>
+    	<string>/usr/local/sbin/lighttpd</string>
+    	<key>ProgramArguments</key>
+    	<array>
+    		<string>/usr/local/sbin/lighttpd</string>
+    		<string>-f/path/to/lighttpd.conf</string>
+    		<string>-D</string>
+    	</array>
+    </dict>
+    </plist></pre>
+    
+    Oh, wait, before the magic, there's one more (<span class="code">/Library/LaunchDaemons/net.lighttpd_ssl.plist</span>):
+    
+    <pre class="code xml"><?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+    <plist version="1.0">
+    <dict>
+    	<key>Label</key>
+    	<string>net.lighttpd_ssl</string>
+    	<key>OnDemand</key>
+    	<false />
+    	<key>Program</key>
+    	<string>/usr/local/sbin/lighttpd</string>
+    	<key>ProgramArguments</key>
+    	<array>
+    		<string>/usr/local/sbin/lighttpd</string>
+    		<string>-f/path/to/lighttpd_ssl.conf</string>
+    		<string>-D</string>
+    	</array>
+    </dict>
+    </plist></pre>
+    
+    Of course, if you've installed the lighttpd binary someplace other than <span class="code">/usr/local/sbin</span> then you should change those 2 lines in each .plist file, and you should specify the path to your .conf files properly.
+    
+    <h3 id="graceful">Graceful restarts</h3>
+    
+    Wouldn't it be super-nice if we could issue graceful restart commands?  It's actually very easy in Tiger (10.4) since launchd monitors apps it has started, and re-opens them if they've quit or crashed.  That means that all we have to do is cause a graceful shutdown, and launchd will take care of the restart for us.  Put the following in <span class="code">/usr/local/sbin/</span> in a file called "lighttpdctl" (named after apachectl) with the appropriate path to your config files:
+    
+    <pre class="code shell">#!/bin/sh
+    sudo killall -9 lighttpd</pre>
+    
+    Make it executable by doing this:
+    
+    <pre class="code shell">chmod u+x /usr/local/sbin/lighttpdctl</pre>
+    
+    Now, from anywhere (since <span class="code">/usr/local/sbin</span> is in our path), you can call <span class="code">lighttpdctl</span> to do a graceful restart.  Note, if you're running a port 3000-bound <span class="code">script/server</span> development instance of lighty, it will also quit.
+    
+    <h3>We're done</h3>
+    
+    Well, almost.  You now have to restart your machine to have launchd do its thing.  If you issue the kill command to lighttpd and the configuration is bad (for whatever reason), and lighty bails on startup, launchd will no longer monitor the process.  This means that when you're mucking around, there's a lot of <span class="code">sudo lighttpd -f/etc/lighttpd/lighttpd.conf -D</span> from the prompt until you've got it working, followed by a restart.  I'm pretty sure that there's a better way to do the config debugging, but I'm not 1337 enough with FreeBSD and launchd-speak to do it any better.  If somebody out there knows, please post it in the comments.
+    
+    Enjoy!
+  status_id: 1
+  created_at: 2006-04-04 09:48:44 -07:00
+posts_044: 
+  permalink: the-devonia-cocktail
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: The Devonia Cocktail
+  id: 133
+  content: |+
+    Here in Oregon, it's fall.  The leaves have changed colors, the weather is changing.  When I go to the farmer's market, I no longer see plums; root vegetables, apples and pears are the norm now.  And the apple cider is here.
+    
+    I've been thinking about seasonality a lot recently; I figure that, although I can make a drink that tastes like a long summer day on a tropical beach, perhaps in Oregon in the fall I should make a drink that tastes like Oregon in the fall.  A few searches on <a href="http://www.cocktaildb.com" title="Great database of cocktails">Cocktail DB</a> later, I've found the <a href="http://cocktaildb.com/recipe_detail?id=661" title="Tastes like fall!">Devonia Cocktail</a>.
+    
+    Wow! What a drink! It's not particularly strong &mdash; it has less than a full shot of alcohol &mdash; but it is extremely smooth and well balanced. <!--more-->
+    
+    <h3>Recipe</h3>
+    
+    <ul class="ingredients">
+      <li>&frac34; oz. <a href="http://bendistillery.com/cascade-mtn-gin.html" title="Distiller's page">Bendistillery Cascade Mountain gin</a></li>
+      <li>1&frac12; oz. fresh Braeburn apple cider</li>
+      <li>Two dashes <a href="http://www.feebrothers.com/Product.asp?Category=5" title="Fee Brothers, makers of fine bitters">Fee Brothers orange bitters</a></li>
+    </ul>
+    
+    Combine the ingredients, stir with ice until thoroughly chilled, and garnish with a slice of lemon.  For a more complicated garnish, you could use slices of apples and/or asian pear as well.
+    
+    I find the Cascade Mountain gin to be perfect for this drink.  It's not a super-juniper gin like Tanqueray #10 or Bendistillery's Desert Juniper gin; it's a mellow and complex botanical gin, a little more in the Dutch style.  Its mellowness lets it play with the flavors in the cider, yielding a very well-balanced drink that just tastes like apple cider, with a little enhancement.  The orange bitters contribute as well, balancing out the sweetness from the cider, and lending a little holiday flavor to the drink.
+    
+    Be careful with these &mdash; they're so easy to drink you don't really notice 'em going down.  And boy are they tasty.
+    
+    
+  status_id: 1
+  created_at: 2008-11-17 11:50:36 -08:00
+posts_033: 
+  permalink: how-to-choose-a-web-designer-freelancer-or-agency
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: How to choose a web designer, freelancer or agency
+  id: 122
+  content: |-
+    Before I launch in to this, let me just say that, really, there's no universally <em>right</em> way to choose the ideal web designer.  There is no idea web designer.  There's just the best way for you, and the best web designer for you.  I hope that the thoughts I lay out below help you to clear up your right way is.
+    
+    <h3>What you know</h3>
+    
+    Some clients approach me saying that they want a website.  Some say that they want a website that looks nice.  Some say they want a website that performs functions x, y and z. Some say they want a website set in 12pt Verdana with a background that's exactly this shade of green, on a 960 pixel grid.  And written in PHP with a custom CMS, please.
+    
+    There's nothing wrong with any of these, although the last client always tends to give me pause, for reasons I'll discuss at the end of the article.  I like to think of hiring a web professional the way I would hire a contractor to work on my house.  Because, really, that's what you're doing: you're hiring a contractor to work on your digital house.  Not all contractors are the same.  They produce work of differing quality, in different styles and at different prices.
+    
+    The problem for most home owners/clients is that the sheer number of choices is overwhelming; they don't even know where to start.  If you want a contractor for your house, there's a very clear geographic constraint on the choice &mdash; the contractor must be in the same place as you, so they can come to your house to do the work.  But with the web, that's not true; we're all just one e-mail away from each other. (6 degrees of separation? Hah!)
+    
+    <!--more-->
+    
+    <h3>Who might you hire?</h3>
+    
+    Chances are pretty good that you're not the first business in your industry to have a website.  They're also pretty good that you're not the first business of your size to have a website.  So look at some of these other businesses on the web, and find out who did their sites.  Most web pros will have some link to themselves somewhere on the sites they design, usually in the footer or on an "About" page.
+    
+    Start building a list of potential contractors in this way.  You can also do a Google local search to find web designers in your area.  They have the advantage of being able to meet you face to face, which is something that I really like, although it's not necessary.
+    
+    You'll very quickly end up with 10-20 potential site builders this way.  Collect 'em all.
+    
+    <h3>Who do you like?</h3>
+    
+    This is the most fun part of selecting a web designer: making a short list.  Everybody's a critic, and this is your chance. Start by browsing their web sites.
+    
+    If their site is old, clunky or ugly, then maybe you should take them off the list.  If they tend to make sites radically different from the kind of site you're looking for, take them off.  If their personal style doesn't match up with your vision of your site, then perhaps they're not right for you.  Although be careful; some people have amazing ranges and can surprise you.
+    
+    Many web pros have a blog.  Read some of it.  Do they seem like the kind of person you would want working for you?
+    
+    After going through this, you should be down to some kind of a short list.
+    
+    <h3>Your ideas</h3>
+    
+    Note that, so far, I haven't said much about refining the ideas for your site.  That's because you don't need to do that alone. The analogy about hiring a contractor isn't really appropriate anymore.  Really, when you hire someone (or some company) to build your site, you're hiring an architect <em>and</em> a contractor all at the same time.  The architect will help you refine your vision when you're deciding on the addition to your house; let the web professional do the same.
+    
+    You shouldn't refine your ideas alone.  The best designs come from lots of interaction between the designer and the client.
+    
+    <h3>Talk to them</h3>
+    
+    Now we get down to the nitty gritty. E-mail or call every member of your short list, and make an appointment. Speak with them.  Ask them about their process.  How do they get you from where you are to having a completed site?  How much feedback is there between them and you along the way?  What does their process emphasize? How flexible is the process?
+    
+    Although there are wrong answers to these questions, there aren't any right answers.  What's important here is that the way they work fit with what you want.  Personality is a big part of this.  You have to be able to talk to your web pro, and you have to be able to trust that their process will produce the end result that you're looking for.
+    
+    <h3>Get a quote</h3>
+    
+    This one speaks for itself.  Get a quote.  Find out what their pricing method is.  Do they bill hourly?  Is it a flat fee?  What are the restrictions about changing details of the project mid-stream?  What kind of timeline can they work with?  Is the quote firm?
+    
+    Again, there aren't really right answers, although there can be wrong ones. Comparing quotes is very difficult, as they are frequently apples and oranges. Unfortunately I don't really have any good advice here, except this: in the low range of web design, you almost always get what you pay for, but above that it's a free-for-all, and price frequently bears little correlation to the quality of the finished product. 
+    
+    <h4>Be wary of hidden costs</h4>
+    
+    Be careful about hidden costs. For example, all web sites need to be hosted somewhere.  Does your web designer offer their own web hosting?  Many do.  If so, what do they charge?  What does the charge include?  You can easily price this against any web hosting company's rates to see if what you're paying is reasonable.
+    
+    If they don't offer hosting, will they set you up with a reputable web host?  Will they charge you for that?
+    
+    How does your site get updated?  Will you be able to do it, without breaking anything?  If not, how much will it cost you to make changes?  Be wary of being nickel-and-dimed to death with site updates, especially when nickels cost $80 an hour.
+    
+    Search engine optimization (SEO) is another favored charge.  Some web pros won't submit your new site to the search engines.  Or they will charge you for it.  Some will issue repeated charges for re-submission every few months.  This is a very bad idea: once the search engines are aware of you, they will re-index your site regularly.  Re-submission is usually grounds for removal of your site from their search results. There can be a wide variety of charges associated with SEO; make sure that they are legitimate and useful for you.
+    
+    <h3>Choose someone!</h3>
+    
+    By now you're very well equipped to choose the best web designer for you.  You know a lot about the people on your short list: you understand something about who they are, how they think and how they will approach your project. Weigh that against your budget, and make your choice.
+    
+    <h3>Trust your designer</h3>
+    
+    Once you have chosen a designer, don't be afraid to trust them.  If you don't think you can trust them, <em>don't hire them</em>.
+    
+    If you know as much as your designer does about web technology, then hiring them is a bad idea; let them sort out the design and the tech.  They know if PHP is the best technology for your site or not. Discuss it with them, but listen to what they have to say.  After all, you hired them to be your web expert.  As long as you have enough input in to the process, they should be trusted to make the best decisions for you.  If they can't, then you hired a bad web professional &mdash; fire them and get your money back.
+    
+    With trust and confidence on both sides, you will end up with a site that you love.
+  status_id: 1
+  created_at: 2008-03-25 22:25:04 -07:00
+posts_022: 
+  permalink: im-ubcs-botany-photo-of-the-day
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: I'm UBC's botany photo of the day!
+  id: 111
+  content: |-
+    <div class="image_frame"><a href="http://www.ubcbotanicalgarden.org/potd/2007/01/zantedeschia_aethiopica_1.php" title="Go to the UBC BPoTD"><img src="http://farm1.static.flickr.com/36/82857035_0e313f7cd0_m.jpg" width="240" height="159" alt="Zantedeschia aethiopica (Araceae); Calla lily" /></a></div>Many thanks to <a href="mailto:daniel.mosquin@ubc.ca">Daniel Mosquin</a> from the <a href="http://www.ubcbotanicalgarden.org/">UBC Botanical Garden</a> for choosing my photo of Zantedeschia aethiopia, also known as the calla lily, for <a href="http://www.ubcbotanicalgarden.org/potd/2007/01/zantedeschia_aethiopica_1.php" title="Go to the UBC BPoTD">today's photo of the day</a>.  Woohoo!
+    
+    For the record, I shot this image in western Australia, where the calla lily is highly invasive and is causing quite a bit of ecological upheaval in the tuart forests.
+  status_id: 1
+  created_at: 2007-01-18 18:25:53 -08:00
+posts_011: 
+  permalink: new-site-design-aeonium
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: "New site design: Aeonium"
+  id: 100
+  content: There's a new site design!  If you look just underneath the search box in the sidebar, you'll now find a pair of links, titled "Banksia" and "Aeonium."  These allow you to switch between the Banksia and Aeonium layouts.  I think that the newer Aeonium layout is more successful, but I love the colors of Banksia and so I couldn't let it disappear.  The new layout is named after the genus <span class="species"><a href="http://images.google.com/images?q=aeonium&sa=N&tab=wi" title="Google search for photos of Aeonium">Aeonium</a></span>, which graces the banner, and was inspired by both the geometric regularity of that species and a Japanese aesthetic of simplicity.  Let me know what you think!
+  status_id: 1
+  created_at: 2006-04-11 07:06:07 -07:00
+posts_034: 
+  permalink: call-urls-on-your-app-from-the-rails-console
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Call URLs on your app from the Rails console
+  id: 123
+  content: |
+    Here's a neat trick I just learned from Obie Fernandez (<a href="http://www.amazon.com/exec/obidos/tg/detail/-/0321445619/foliosuscom-20" title="Buy the book from Amazon">The Rails Way</a>, p. 30): you can see what your Rails app's HTML output is from the console. To make this work you have to fool the app into thinking that there's a request coming in by setting some environmental variables, and then call the dispatcher.
+    
+    But wouldn't it be nice to have a single method call, that uses <code>url_for</code> syntax?
+    
+    <!--more-->
+    
+    <pre class="code ruby">class Object
+      def request(options = {})
+        method = options.delete(:method) || :get
+        options.reverse_merge!(:only_path => true)
+        ENV['REQUEST_URI'] = app.url_for(options)
+        ENV['REQUEST_METHOD'] = method.to_s
+        Dispatcher.dispatch
+      end
+    end</pre>
+    
+    First we pull the method (<code>:get</code>, <code>:post</code> etc.) out, if it exists.  By default we want it to be <code>:get</code>.  Then we call <code>url_for</code> and have it only return the path, without any leading domain info.  Next we populate the environmental variables and call the dispatcher.  The return output will be the HTML your app renders.
+    
+    To make the trick universally accessible on your development box, put the above code in <code>~/.irbrc</code>:
+    
+    Then, fire up the console to your favorite rails app, and call:
+    
+    <pre class="code ruby">>> request(:controller => 'my_controller', :action => 'the_action')</pre>
+    
+    You should see the HTML output scroll by.
+
+  status_id: 1
+  created_at: 2008-02-06 11:46:37 -08:00
+posts_023: 
+  permalink: macha-cukkii-green-tea-cookies
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: "Macha cukkii: green tea cookies"
+  id: 112
+  content: "<div class=\"image_frame\"><a href=\"http://www.flickr.com/photos/foliosus/379949951/\" title=\"Link to green tea cookies picture\" class=\"external\"><img src=\"http://farm1.static.flickr.com/52/379949951_9d7926a0d7_m.jpg\" width=\"240\" height=\"159\" alt=\"Green tea cookies\" /></a><span class=\"image_caption\"><a href=\"http://www.flickr.com/photos/foliosus/379949951/\" title=\"Link to green tea cookies picture\" class=\"external\">Green tea cookies</a></span></div>\n\n\
+    My upstairs neighbor gave us some macha: Japanese powdered green tea.  The Japanese are the only people on the planet who still drink this stuff \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D it's a very primitive form of tea, and when brewed it's quite bitter.  They eat it with sweets that are too sweet, alternating bites of too-sweet with sips of too-bitter, and it all balances out.\n\n\
+    I like drinking macha, though; but I'd rather make delicious tasty desserts with it, like this one which I made this afternoon.  The recipe is based on the \"Rich roll cookies\" from Joy of Cooking.<!--more-->\n\n\
+    <div class=\"image_frame\"><a href=\"http://www.flickr.com/photos/foliosus/379950035/\" title=\"Link to green tea cookies picture\" class=\"external\"><img src=\"http://farm1.static.flickr.com/183/379950035_138c9d8557_m.jpg\" width=\"240\" height=\"159\" alt=\"Green tea cookies\" /></a><span class=\"image_caption\"><a href=\"http://www.flickr.com/photos/foliosus/379950035/\" title=\"Link to green tea cookies picture\" class=\"external\">Green tea cookies</a></span></div>\n\n\
+    <h3>Rich green tea roll cookies</h3>\n\n\
+    <ul class=\"ingredients\">\n\
+    <li>1 cup softened butter</li>\n\
+    <li>2/3 cup sugar</li>\n\
+    <li>1 egg</li>\n\
+    <li>1 teaspoon vanilla</li>\n\
+    <li>2\xC3\x82\xC2\xBC cups flour</li>\n\
+    <li>1 tbsp. powdered green tea</li>\n\
+    <li>1/2 teaspoon salt</li>\n\
+    </ul>\n\n\
+    Cream together the butter and sugar.  Beat in the egg and vanilla.  Sift together the dry ingredients, and stir in to the butter mixture.  Since there is almost no water in the dough, don't worry about over-working it.  When the dough has an even color and texture, form it into a ball and chill for 3-4 hours.\n\n\
+    Preheat the oven to 350\xC3\x82\xC2\xB0.\n\n\
+    Roll the dough out on a very, very lightly floured surface.  Too much flour is death for these cookies.  Cut them into your favorite shapes with a knife or cookie cutters.  Bake them on a cookie sheet that either has a piece of parchment paper on it or has been lightly greased, for 8-10 minutes or until the corners get slightly brown.\n\n\
+    Eating them reminds me of being in Japan!"
+  status_id: 1
+  created_at: 2007-02-04 17:31:03 -08:00
+posts_012: 
+  permalink: im-officially-moving
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: I'm officially moving
+  id: 101
+  content: |-
+    It looks like the career switch is now official.  I was up in Portland, Oregon last week finding an apartment and a job, and thanks to the power of <a href="http://portland.craigslist.com/" title="Portland classifieds">Craigslist</a>, I got me both.  The job is a web job that's big and corporate, but not super interesting coding.  The upside of the job, though, is that at 5:00 it's done, and the job stays at work.  It doesn't come home.  That will leave me with plenty of time to do some freelancing on the side, to continue playing with Ruby, and do all of the more fun aspects of web design.
+    
+    The apartment I got is pretty sweet, too.  It's a 1940s vintage unit with great hardwood floors and a small but highly usable kitchen.  Its only downside is that the stove is electric and not gas.  Sigh.  I'll just have to make it work, but I'll miss the easy chile roasting capacity of the gas stoves.
+    
+    I was super excited when I was up there because I locked in the apartment and the job within 48 hours of landing.  I was kind of surprised at the job offer that came the day after the interview, but I was really surprised about finding the apartment.  I'm told by my PDX friends that I'm backwards; I should be shocked at the job offer given the tech job market in Portland these days, but that finding an apartment is really easy.  I guess that living in Santa Barbara for so long really skewed my understanding of what a normal housing market is like.  I'd sort of forgotten that landlords aren't always despots and that there are places in this country where apartments stay on the market for more than 48 hours before being rented.
+    
+    Cheers to Portland!
+  status_id: 1
+  created_at: 2006-05-15 09:37:26 -07:00
+posts_001: 
+  permalink: new-site-launch-for-oregon-ki-society
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: New site launch for Oregon Ki Society
+  id: 90
+  content: |-
+    <div class="image_frame"><a href="/portfolio/oregon-ki-society/" title="Go to the design description of the new Oregon Ki Society site"><img src="/wp-content/uploads/2007/12/oregonki_sm.jpg" alt="Oregon Ki Society screenshot" /></a></div>
+    
+    Even though I've started a new job, which I love by the way, my freelance work continues.  Last week I launched the newly redesigned <a href="http://www.oregonki.org/" title="Oregon Ki Society">Oregon Ki Society</a> site, and it's now <a href="/portfolio/oregon-ki-society/" title="Go to the design description of the new Oregon Ki Society site">in my portfolio</a>.  This one is particularly near and dear to my heart, as I began training Aikido with the OKS 11 years ago, and still train today.
+    
+    To be honest, when I first saw their site in 1996 I wanted to get my hands on it to fix it up.  Little did I know they would still be using the same site in 2007, when I was finally in a position to do something about it. The new site is crisp, clean and fresh with lots of strong photography.  I'm also quite proud of that since I shot most of the photos.
+    
+    The content is interesting, too; there are <a href="http://www.ki-society.com/english/renew/aikidokai_002.html" title="Official Ki Society dojo list">Ki Society dojos all over the world</a>, and so there might be one near you.  If there is, it's worth checking out.  The aikido training the Ki Society offers is unparalleled.
+  status_id: 1
+  created_at: 2007-12-08 15:23:10 -08:00
+posts_035: 
+  permalink: its-easy-to-become-an-llc-in-oregon
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: It's easy to become an LLC in Oregon
+  id: 124
+  content: |-
+    Do it online! Fifty bucks and a half-hour get you there.  Oregon has made it really easy; online filing is a real model to be emulated by other states.  The basic place to go is <a href="http://www.filinginoregon.com/" title="Become a business in Oregon">Oregon Sec. of State Corporation Division</a>: the state puts everything you need online.
+    
+    <ol>
+    <li>Make sure your business name isn't being used by someone else</li>
+    <li></li>
+    </ol>
+    
+    http://www.filinginoregon.com/
+    https://secure.sos.state.or.us/ABNWeb/   (to file for an LLC online)
+    http://www.filinginoregon.com/business/starting_a_business.htm
+    
+    
+    Then the EIN from the IRS
+  status_id: 0
+  created_at: 2008-05-26 22:54:57 -07:00
+posts_024: 
+  permalink: botany-photo-of-the-day-take-2
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Botany photo of the day, take 2
+  id: 113
+  content: "<div class=\"image_frame\"><a href=\"http://www.ubcbotanicalgarden.org/potd/2007/03/acer_japonicum_cultivar.php\" title=\"Go to the UBC BPoTD\"><img src=\"/wp-content/uploads/2007/03/acer_japonicum.thumbnail.jpg\" alt=\"Japanese maple\" /></a></div>Once again it seems I owe my thanks to <a href=\"mailto:daniel.mosquin@ubc.ca\">Daniel Mosquin</a> from the <a href=\"http://www.ubcbotanicalgarden.org/\">UBC Botanical Garden</a> for choosing my photo of <span class=\"species\">Acer japonicum</span>, the japanese maple, for <a href=\"http://www.ubcbotanicalgarden.org/potd/2007/03/acer_japonicum_cultivar.php\" title=\"Go to the UBC BPoTD\">yesterday's photo of the day</a>.  That's two in two months; we'll see if I can make a third.  If you read his comments I think that he's completely right \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D there is something very appealing about the Japanese maples in the winter time, because of their architectural shapes.  I took this photo shortly after a big rain, and the way the sunlight was catching the drops was so appealing that I couldn't resist.  I think that it makes the tree look somehow much more ancient than it really is."
+  status_id: 1
+  created_at: 2007-03-05 07:07:10 -08:00
+posts_013: 
+  permalink: new-portfolio-site-goleta-valley-holistic-health-care
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: "New portfolio site: Goleta Valley Holistic Health Care"
+  id: 102
+  content: "Another client site went live recently: <a href=\"http://www.gvhhc.com/\" title=\"GVHHC home page\">Goleta Valley Holistic Health Care</a>.  I've put a <a href=\"/portfolio/gvhhc/\" title=\"GVHHC site description\">page in my portfolio</a> about it.  I wish them the best of luck with their new business."
+  status_id: 1
+  created_at: 2006-07-16 18:17:05 -07:00
+posts_002: 
+  permalink: howto-get-printers-marks-and-correct-bleed-sizes-in-pdfs-output-from-illustrator-cs3
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: "HOWTO: Get printer's marks and correct bleed sizes in PDFs output from Illustrator CS3"
+  id: 91
+  content: "GRRRRR!\n\n\
+    Sometimes stupid software bugs just burn my bu**.\n\n\
+    For one of my clients, I designed a 8.5x11\" flyer that's going to a real printer.  It's a full-bleed piece, so the printer requested that I give them an eighth-inch bleed, with trim marks.  I thought, \"Oh.  No worries.  I'm using my brand-spanking-new-hot-off-the-presses copy of CS3, which will surely be able to handle this sort of thing.  Well, you can see where this is going \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D it doesn't.  If you make an 8.5x11\" documentin Illustrator CS3, and then save it as a PDF with the appropriate bleed size and trim marks, you don't get what you wanted.  Illustrator crops the document at the artboard limits, which are 8.5x11\".\n\n\
+    Some quick googling turned up <a href=\"http://rwillustrator.blogspot.com/2007/11/ask-mordy-document-size-and-bleed.html\" title=\"Aha!\">a discussion of the problem</a>, but not the solution I wanted.\n\n\
+    But there is a work-around.  I'll give you a hint: it <em>doesn't</em> involve CS3's new crop area tool.<!--more-->\n\n\
+    If you use the crop area tool, you get the same bug, so it's no help.\n\n\
+    The solution:\n\n\
+    <ol>\n\
+    <li>Add \xC3\x82\xC2\xBC\" of width all the way around the artboard, making your document 9x11.5\"</li>\n\
+    <li>Save the document as a PDF</li>\n\
+    <li>Open the new PDF in Acrobat 8</li>\n\
+    <li>Go to Document > Crop Pages...</li>\n\
+    <li>Set the TrimBox (shown below) to \xC3\x82\xC2\xBC\" all the way around \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D to compensate for the \xC3\x82\xC2\xBC\" we added before.  You'll see the bright green line in the preview window that now delineates the original 8.5x11\" document size.\n\n\
+    <img src=\"/wp-content/uploads/2008/01/cs3_trim_box.jpg\" alt=\"CS3 TrimBox crop dialog\" /></li>\n\
+    <li>Go to Advanced > Print Production > Add Printers Marks</li>\n\
+    <li>Check \"Trim Marks\"</li>\n\
+    </ol>\n\n\
+    You should now see the trim marks! Don't forget to save\xC3\xA2\xE2\x82\xAC\xC2\xA6"
+  status_id: 1
+  created_at: 2008-01-10 23:26:36 -08:00
+posts_036: 
+  permalink: lemon-bars
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Lemon bars
+  id: 125
+  content: |-
+    I wish that I had a photo of these to show; they were just too delicious, though, and didn't last long enough.  The addition of a little bit of almond meal to the crust gives them a complexity of flavor that plays very nicely with the clean tartness of the lemon curd.
+    
+    <h3>Lemon curd is tricky</h3>
+    
+    Lemon curd is a very difficult beast.  It's too easy for it to be off-balance: the butter, sugar or tartness from the lemons can easily dominate, and then it's just good, not sublime like it can be.  There are no hard and fast secrets for getting the balance right, either, as it depends entirely on the particular lemons you're using.  As their sugar levels vary, the amount of juice and sugar you'll need to use to balance out the curd will change.  This means that you should taste the curd while it's cooking, so that you can balance it out at the last minute if it needs it.
+    
+    The second tricky part to a good lemon curd is making it so that it sets properly, and doesn't have those nasty little bits of egg white that cook too soon and gum it up.  I came across a discussion of lemon curds online somewhere, and one of the participants had a suggestion which worked perfectly: that's the basis of the recipe below.  The secret is two-fold.  <!--more-->First, you cream the butter and sugar like you're making a cake.  Second, you must stir the lemon curd constantly while it's cooking.  When you first put it on the heat it will be chunky.  As you stir, it will go smooth.  It will take several minutes for the transition to smoothness to start, but once it has started it will be quite rapid.  This is when you have to taste it to correct the balance of flavors. Similarly, when it thickens it will happen very rapidly.  The whole cooking process should take no more than 10&ndash;15 minutes.
+    
+    <h3>Recipe</h3>
+    
+    <h4>Crust</h4>
+    
+    <ul class="ingredients">
+      <li>&frac12; cup flour</li>
+      <li>&frac12; cup almond meal</li>
+      <li>&frac14; confectioner's sugar</li>
+      <li>&frac12; melted butter</li>
+    </ul>
+    
+    <h4>Curd</h4>
+    
+    <ul class="ingredients">
+      <li>&frac14; cup butter, cut into pieces</li>
+      <li>1&frac14; cup sugar</li>
+      <li>4 eggs, lightly beaten</li>
+      <li>&frac34; cup lemon juice</li>
+      <li>1 tbsp. minced lemon zest</li>
+    </ul>
+    
+    First, we prepare the crust:
+    
+    <ol>
+      <li>Preheat the oven to 350&deg;F</li>
+      <li>Sift together the flower, almond meal and powdered sugar</li>
+      <li>Stir in the melted butter</li>
+      <li>Press into the bottom of an 8-inch baking pan</li>
+      <li>Bake for 20 minutes</li>
+    </ol>
+    
+    While the crust is baking, let's make the curd:
+    
+    <ol>
+      <li>Cream the butter</li>
+      <li>Gradually beat in the sugar</li>
+      <li>Beat in the eggs</li>
+      <li>Mix in the lemon juice and lemon zest</li>
+      <li>Cook over a double-boiler, while stirring constantly</li>
+      <li>The curd will thicken: it is done when it coats the spoon you're stirring with, and you can use your finger to draw a line through the curd on the spoon that <em>stays</em></li>
+    </ol>
+    
+    Now assemble the bars:
+    
+    <ol>
+      <li>Pour the curd into the pre-baked crust</li>
+      <li>Return the bars to the oven for another 25 minutes</li>
+      <li>When baked, let cool to room temperature and then refrigerate</li>
+      <li>Before serving, cut into 2-inch squares and sprinkle with powdered sugar</li>
+    </ol>
+    
+    I brought a pile of these into work and they vanished: they're quite tasty.
+  status_id: 1
+  created_at: 2008-03-11 20:07:18 -07:00
+posts_025: 
+  permalink: an-else-condition-for-link_to_unless_current
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: An "else" condition for link_to_unless_current
+  id: 114
+  content: |-
+    Every time I get frustrated with an aspect of Rails, it turns out that it's just my idiocy and not actually something to do with Rails.
+    
+    Most recently, I wanted to code this algorithm:
+    
+    <pre class="code ruby">If on the current page
+      show <a href="blah1">link 1</a>
+    else
+      show <a href="blah2>link 2</a></pre> <!--more-->
+    
+    Rails has, of course, the nifty <span class="code">link_to_unless_current</span>, but all that does is show the text of the link:
+    
+    <pre class="code ruby">If on the current page
+      show link
+    else
+      show <a href="blah">link</a></pre>
+    
+    That's not quite what I'm looking for.  But when I was looking up link_to_unless_current in the <a href="http://api.rubyonrails.org/" title="The full Rails API">docs</a>, I realized that there IS an else condition on <span class="code">link_to_unless_current</span>.  The function takes a block as its last parameter, and that's what gives you the "else."
+    
+    This code, in a view:
+    
+    <pre class="code ruby"><%= link_to_unless_current('Link text', my_url) { 'Alternate text' } %></pre>
+    
+    produces this algorithmic result:
+    
+    <pre class="code ruby">If on the current page
+      show Alternate text
+    else
+      show <a href="my_url">Link text</a></pre>
+    
+    Mission accomplished.
+  status_id: 1
+  created_at: 2007-04-18 20:17:21 -07:00
+posts_014: 
+  permalink: new-site-in-my-portfolio-jessicareichman-com
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: "New site in my portfolio: JessicaReichman.com"
+  id: 103
+  content: I've just completed a new site for a local artist named Jessica Reichman.  She approached me with a pre-existing web site that had gotten beaten with an ugly stick and then left unfinished.  It failed to highlight her personality or her work.  The new design does both.  You can see my little writeup in <a href="/portfolio/reichman/" title="Go to my portfolio description">my portfolio</a> or you can just go visit <a href="http://www.jessicareichman.com/" title="Go to JessicaReichman.com">the site</a> to see what it looks like.
+  status_id: 1
+  created_at: 2006-05-26 15:14:16 -07:00
+posts_003: 
+  permalink: hello-world
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: Hello World!
+  id: 92
+  content: "Hello world wide web.  I hope that this post marks the beginning of a long and fruitful relationship between me and you.  For my part, I'm a web designer-in-training.  Or if you prefer, a grad student who decided to leave the botanical sciences for the wilds of the interweb.  You might wonder why I would make such a transition.  Well, there are several reasons.\n\n\
+    <ol>\n\
+    <li>Pursuing a career in a field with employment opportunity</li>\n\
+    <li>Being in an industry that has portable skills, so that my Australian wife and I can move to Perth</li>\n\
+    <li>Getting a job (see #1)</li>\n\
+    <li>Finally starting to earn some money - 28 is a bit old to <em>still</em> be a student</li>\n\
+    </ol>\n\n\
+    Looking down the track at a career in Botany, I see that there just aren't any jobs out there.  It doesn't make sense to play the academic game for another decade finishing a Ph.D. (which lowers lifetime earning potential) and pursuing a couple of post-doc positions to then find out that there isn't a job for me to do.  So it is with regret that I'm leaving academia, as I still love many things about it.  Instead of being a botanist who dabbles in web technologies, I've decided to become a web designer who botanizes; I'm switching my vocation for my hobby.\n\n\
+    So what does this mean for you dear reader, dear web?  It means that you have another blog to read.  I intend to fill these pages with discussion about the web and web technologies, breaking in to the IT industry, design, plants, and good food (my other hobby).  These pages will be part personal, part professional.  I hope that they will be all enjoyable.  "
+  status_id: 1
+  created_at: 2006-01-16 17:26:59 -08:00
+posts_037: 
+  permalink: microsoft-has-seen-the-light-on-ie8
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Microsoft has seen the light on IE8
+  id: 126
+  content: |-
+    <b>Woohoo!</b> Today, <a href="http://blogs.msdn.com/ie/archive/2008/03/03/microsoft-s-interoperability-principles-and-ie8.aspx" title="Read the announcement for yourself">Microsoft made the right decision about IE8</a>. The default rendering mode will be fully standards compliant. They're not going to <a href="/2008/01/22/two-wrongs-dont-make-a-right-microsoft-needs-to-fix-themselves/" title="Read my earlier post on the subject">punish the people who know what they're doing</a>.
+    
+    This is truly great news, for several reasons.  One is that Microsoft is now arguing for greater openness.  That can only help the marketplace. The other is that, for the first time in a long time, they're making a very good decision with respect to IE, and they're making it <em>for the right reasons</em>.  They're making it because they want to play nicer with their clients and their developers.  That's what I call a win-win: they win, and we win.  Everybody wins!
+  status_id: 1
+  created_at: 2008-03-03 22:13:35 -08:00
+posts_026: 
+  permalink: botany-photo-of-the-day-again
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Botany Photo of the Day, again!
+  id: 115
+  content: |-
+    <div class="image_frame"><a href="http://www.ubcbotanicalgarden.org/potd/2007/06/erythronium_montanum.php" title="Go to the UBC BPoTD" class="external"><img src="/wp-content/uploads/2007/08/erythronium_montanum.jpg" alt="Avalanche lily" /><span class="image_caption">Avalanche lily</span></a></div>Really, twice.  First was <a href="http://www.ubcbotanicalgarden.org/potd/2007/06/erythronium_montanum.php" title="BPotD number 3">at the end of June</a>: I completely forgot to note it here.  I took a photo of <span class="species">Erythronium montanum</span> at the top of Larch Mountain outside of Portland.  It was a rainy day, which usually doesn't make for good hiking, but we were under a thick understory for most of the hike so it worked.  There were vast numbers of these very delicate avalanche lilies waiting for us near the top of the mountain, all covered with droplets.  They are quite charismatic.
+    
+    <div class="image_frame"><a href="http://www.ubcbotanicalgarden.org/potd/2007/08/erigeron_peregrinus_subsp_callianthemus_var_callianthemus.php" title="Go to the UBC BPoTD" class="external"><img src="/wp-content/uploads/2007/08/erigeron_peregrinus.jpg" alt="Wandering daisy" /><span class="image_caption">Wandering daisy</span></a></div>The second time was <a href="http://www.ubcbotanicalgarden.org/potd/2007/08/erigeron_peregrinus_subsp_callianthemus_var_callianthemus.php" title="BPotD number 4">today</a>, for a photo of <span class="species">Erigeron peregrinus</span> ssp. <span class="species">callianthemus</span>.  I shot this one over this past weekend hiking up on Mt. Hood.  It was a glorious day for a hike, with perfect weather and clear skies.  More photos from this trip are in <a href="http://www.flickr.com/photos/foliosus/" title="See my photos on Flickr">my Flickr stream</a>.
+    
+    As always, many thanks to Daniel Mosquin of the <a href="http://www.ubcbotanicalgarden.org/" title="Visit the UBC bot garden">UBC Botanical Garden</a> and his <a href="http://www.ubcbotanicalgarden.org/potd/" title="BPotD">Botany Photo of the Day</a>, which I really can't recommend enough.  Every day you get a beautiful photo in your feed reader, along with some understanding of the natural world that surrounds us.  It really is an amazing planet.
+  status_id: 1
+  created_at: 2007-08-29 22:22:08 -07:00
+posts_015: 
+  permalink: marionberries-make-everything-better
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: Marionberries make everything better
+  id: 104
+  content: "<div class=\"image_frame\"><a href=\"http://www.flickr.com/photos/foliosus/191114390/\" title=\"Link to marionberries picture\" class=\"external\"><img src=\"http://farm1.static.flickr.com/70/191114390_0d6779f3cd_m.jpg\" width=\"240\" height=\"159\" alt=\"Marionberries\" /></a><span class=\"image_caption\"><a href=\"http://www.flickr.com/photos/foliosus/90378172/\" title=\"Link to marionberries picture\" class=\"external\">Marionberries from Sauvie Island</a></span></div>\n\
+    <p>Yesterday Sally and I went to <a href=\"http://www.sauvieislandfarms.com/\" title=\"You-pick fruit and flowers\">Sauvie Island Farms</a> to pick marionberries, and what a bountiful harvest it was.  After a few hours with only a couple of minor scratches (those things have thorns!), we weighed in with 23 and a quarter pounds of gorgeous marionberries.  When they are super fresh off the plant, and are warmed by the sun, they have a wonderful musky spiciness to them that I had never quite experienced like this.  To date my marionberry consumption, though non-trivial, has been through farmer's market berries, which are usually picked a day or two before they are sold.  As good as those have been, freshly picked is better.<!--more--></p>\n\
+    <div class=\"image_frame\"><a href=\"http://www.flickr.com/photos/foliosus/191280657/\" title=\"Link to marionberry jam picture\" class=\"external\"><img src=\"http://farm1.static.flickr.com/51/191280657_c208523967_m.jpg\" width=\"240\" height=\"159\" alt=\"Marionberry jam\" /></a><span class=\"image_caption\"><a href=\"http://www.flickr.com/photos/foliosus/90378172/\" title=\"Link to marionberry jam picture\" class=\"external\">The first batch of marionberry jam</a></span></div>\n\
+    <p>So what do you do with 23 pounds of berries?  You make jam!  Sally has been wanting to try canning for a while, and so we got the equipment we need assembled, and made marionberry jam.  Our first batch produced 3 large jars.  <a href=\"http://purple.mytica.net/snape/index.php?about\">Professor Snape</a> says, \"I can teach you how to bottle fame, brew glory, even stopper death.\"  Well, without any kind of wizardly training, anybody can bottle summer.  I'm looking forward to enjoying these jams all winter long.</p>\n\
+    <h3>First batch: Marionberry jam</h3>\n\
+    <ul class=\"ingredients\">\n\
+    <li>8 cups marionberries</li>\n\
+    <li>5-6 cups sugar</li>\n\
+    <li>\xC3\x82\xC2\xBD cup lemon juice</li>\n\
+    <li>1 tbsp. pectin</li>\n\
+    <li>Big splash of <a href=\"http://www.chambordonline.com/\" title=\"Chambord liqueur\">Chambord</a></li>\n\
+    </ul>\n\
+    <p>I won't delve in to the details of the jam-making process: essentially, you boil all of the ingredients, pour the hot jam into sterilized mason jars, seal them, and drop them in to boiling water for 10 minutes to \"process\" them, which means driving the air out.  Then, as they cool, they seal themselves.  But there are a lot of tips and tricks, for which I would refer you to <a href=\"http://amazon.com/exec/obidos/tg/detail/-/1552854752/foliosuscom-20\" title=\"Well Preserved by Mary Anne Dragan\">a good canning book</a>.  Most of them have to do with keeping sterile and how to tell that your jam will set, and not be fruit soup or jello.</p>\n\
+    <p>The second batch was more of the same, with the pectin adjusted a little bit (to 1 tbsp), and a smidge less sugar (5 cups), to bring out the berry flavor more.  It was better.</p>\n\
+    <p>The third batch was different, and included some things we got at the farmer's market yesterday morning.</p>\n\
+    <h3>Third batch: Modified black and blue jam</h3>\n\
+    <ul class=\"ingredients\">\n\
+    <li>6 cups marionberries</li>\n\
+    <li>6 cups blueberries</li>\n\
+    <li>7 cups sugar</li>\n\
+    <li>2/3 cup lemon juice</li>\n\
+    <li>4 teaspoons of lemon zest</li>\n\
+    </ul>\n\
+    <p>It's called \"black and blue\" because it's intended for blackberries and blueberries.  It's more of a purple and blue when made with marionberries.  This is a spectacular jam, full of rich flavor as the blue and marion play off of each other, and the whole thing is lifted and brought out by the zest.  I highly recommend it.</p>\n\
+    <p>The fourth batch was spiced.</p>\n\
+    <h3>Fourth batch: Spiced marionberry and apple jam</h3>\n\
+    <ul class=\"ingredients\">\n\
+    <li>4 cups peeled, cored and chopped apples</li>\n\
+    <li>1 cup red wine vinegar</li>\n\
+    <li>Zest of 2 lemons</li>\n\
+    <li>6 cups marionberries</li>\n\
+    <li>5\xC3\x82\xC2\xBD cups sugar</li>\n\
+    <li>\xC3\x82\xC2\xBD teaspoon each of nutmeg, cinnamon and cloves</li>\n\
+    </ul>\n\
+    <p>In this case, you start out the apples, vinegar and lemon for about 10 minutes before adding the rest of the ingredients and the proceeding as you would with any other jam.  The spices are subtle in the finished product, and they mesh with the muskiness of the berries very well.  This would be fantastic on vanilla ice cream or on cheesecake, and tastes very autumn-like because of the spices.</p>\n\
+    <p>All in all, it's been a very productive day; we made <i>a lot</i> of jam.  And we'll be sure to enjoy it for the coming months.\n\
+    </p>\n"
+  status_id: 1
+  created_at: 2006-07-16 18:15:21 -07:00
+posts_004: 
+  permalink: the-best-vanilla-extract-in-the-world
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: The best vanilla extract in the world
+  id: 93
+  content: |-
+    Over on <a href="http://www.chefvault.com/" title="A good food group blog">Chef Vault</a>, bookchiq is speaking lovingly about <a href="http://chefvault.com/organic/cool-vanilla-beans/" title="Cool (vanilla) beans">her recent acquisition of vanilla beans</a>.  I'm almost out of my stash of this, but if you've got a lot of vanilla beans you can easily make a large amount of very delicious vanilla extract.  All it takes is some patience.  I practically grew up on this stuff, and I can't recommend it enough.
+    
+    <h3>Ingredients</h3>
+    <ul class="ingredients">
+    <li>New bottle of Jim Beam bourbon</li>
+    <li>3-6 vanilla beans</li>
+    </ul><!--more-->
+    
+    <h3>Method</h3>
+    First, slit the vanilla beans down one side.  Second, open the bottle of bourbon.  Third, put the beans in the bottle.  Fourth, put the cap back on the bottle.  Fifth, let it sit for at least 1 month.
+    
+    If you get a handle of bourbon instead of a fifth, add a vanilla bean or two.  The longer the bottle sits, the better it gets; the first 10% of the bottle is good vanilla extract, and the last 10% of the bottle is <em>fantastic</em> vanilla extract.  The best part, though, is that when you're finally done with the bottle, you can take the vanilla beans out and still use them for making vanilla ice cream, pastry cream, or any other vanilla-based confection.
+    
+    To get vanilla beans, you can pay far too much money for them at your local grocery store or cooking store, or you can try <a href="http://www.vanillaplantations.com/" title="Australian vanilla beans shipped worldwide">Vanilla Plantations</a>.
+  status_id: 1
+  created_at: 2006-01-25 23:24:16 -08:00
+posts_038: 
+  permalink: consolidating-multiple-databases-into-a-single-test-instance-with-rake
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Consolidating multiple databases into a single test instance with Rake
+  id: 127
+  content: |-
+    At my work we've got a complicated database setup: most of our Rails apps use 3 distinct back-end databases.  One of them is a data mart that flattens a lot of useful information out, one of them has app-specific tables, and the third is a massive legacy database that we can't "own." This makes a lot of our Rails use complicated.
+    
+    We've got a plugin that we share across our apps that gives us the multiple-database functionality for free.  That's quite convenient, but not the topic of this post.  I'll write about it sometime soon.  What I want to write about today is how we got a manageable testing environment coming from three databases.
+    
+    We couldn't make three testing databases.  The legacy database we use has something like 12 gigs of data, and much of it is structural. There is a development instance of this database, but we have to play nice with it: it's used by many of our internal clients and other developers.  Using it as our testing playground would make a lot of people unhappy.
+    
+    So we had to create a testing environment that pulls the appropriate model classes, and then loads those tables into the test db.
+  status_id: 0
+  created_at: 2008-05-05 08:11:27 -07:00
+posts_027: 
+  permalink: howto-upgrade-your-ruby-on-rails-install-to-version-2-0-on-leopard-mac-osx-10-5
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: "HOWTO: Upgrade your Ruby on Rails install to version 2.0 on Leopard (Mac OSX 10.5)"
+  id: 116
+  content: "This one's <em>real</em> easy.  Leopard ships with a default Rails installation (<code>/usr/bin/rails</code>), but overriding it is quite simple, since it's just a <code>gem</code>.\n\n\
+    <pre class=\"code shell\">sudo gem install rails --source http://gems.rubyonrails.org</pre>\n\n\
+    Then, enter \"y\" at each prompt, to install all of the dependencies.  That\xC3\xA2\xE2\x82\xAC\xE2\x84\xA2s it!  Check yourself with:\n\n\
+    <pre class=\"code shell\">rails -v</pre>\n\n\
+    Right now it will show <code>Rails 1.99.0</code> which is the current release candidate.  When rails goes fully 2.0, the same instructions should work to get the full release installed.\n\n\
+    And don't forget, you can always <code>rake rails:freeze</code> to lock a Rails app to a particular version of Rails by copying all of the Rails libraries into the <code>/vendor</code> directory.\n\n\
+    Happy coding!"
+  status_id: 1
+  created_at: 2007-11-13 08:37:35 -08:00
+posts_016: 
+  permalink: ruby-on-rails-has-the-same-appeal-as-the-macos
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Ruby on Rails has the same appeal as the MacOS
+  id: 105
+  content: |-
+    Why do people flip out over <a title="Ruby on Rails, a web application framework" href="http://www.rubyonrails/">RoR</a>?  Primarily, because it's fast.  It's so fast to develop new applications in RoR.  But why?  What separates RoR from any of the other frameworks out there?  The approach that defines RoR is "convention over configuration," and that's where much of the speed comes from.   I had an epiphany this morning: "convention over configuration" sounds familliar.  That's why I use a Mac. <!--more-->
+    
+    My current job is really the first time I've had to use Windows regularly since Windows for Workgroups 3.11.  That's way back in 1995 when Windows 95 was still vaporware, much like Vista is now.  Isn't it already 3 years overdue?  Anyway, that's not relevant to this discussion.
+    
+    I've had many discussions with people over the years about the old Mac vs. Windows debate.  I'm no rabid Mac advocate: it's not the best solution for all people at all times.  Hardcore Windows users frequently complain that on the Mac there is no Registry, that you can't really configure hardware devices etc.  I would argue that on the Mac you don't have to.  It's convention over configuration.
+    
+    When I first started using a Mac, I had many of the same misgivings.  Where were the menus with the bazillion options to choose from?  Why couldn't I regulate every little detail of the interface?  As I used my Mac more, I realized that I didn't have to.  The configuration options I wanted were absent, but the need for them was absent as well.  And I say the MacOS is better off for it, because it lowers the barrier to entry.
+    
+    I frequently think about interface design in terms of my mom.  I know, a lot of people do this, but it works.  My mom has fought with Windows for years: it doesn't do things the way she wants.  What she doesn't realize is that she probably can make it work the way she wants it to, if only she knew how.  And therein lies the problem.  It's too complicated to get Windows configured just so, and so most users end up just living with it.  Why should a $300 piece of software just be "lived with?"
+    
+    The MacOS takes a different approach.  It comes with a working configuration that is easier to use than what you get with Windows, and with fewer options.  This means that the application and system interface isn't cluttered with 1001 widgets all of which let you configure system, and so all you see are the features you want access to.  This seems to be the goal of the UI revisions in "Office 12," but they still don't seem to have figured it out.  Too many options mean that most of them just don't get used.
+    
+    If the system has good <em>conventions</em>, or default options, then you don't have to spend your time fighting with it, and it generally does 95% of the tasks that 95% of users need done without any hassle.  This is true of the Mac OS, and it's true of RoR.  The main difference is that the RoR folks have made their goal explicit.
+    
+    Accomplishing 95% of what I want to do easily: that's design elegance.
+    
+    &lt;/epiphany&gt;
+  status_id: 1
+  created_at: 2006-08-05 11:21:10 -07:00
+posts_005: 
+  permalink: great-photos-of-plants-without-flowers
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: Great photos of plants without flowers
+  id: 94
+  content: "Finally, I've found a great page with photos of non-flowering plants: <a href=\"http://www.humboldt.edu/~dkw1/\" title=\"Dr. Walker's home page\">Dr. Dennis Walker</a> of Humboldt State University has an <a href=\"\" title=\"Fantastic plant pics\">online gallery of plant images</a> that focusses mostly on non-flowering plants.  It has excellent coverage of ferns and conifers, but very little in the flowering plants.  The most interesting part is that many of the photos of weird species such as <span class=\"species\">Welwitschia</span> have full plant photos in the native habitats.  If you want to see what weird plants can look like, check the <a href=\"http://media.humboldt.edu/dkw1/view_album.php?set_albumName=Gnetopsida\" title=\"The strangest order of plants\">Gnetopsida gallery</a>.  Via <a href=\"http://www.ou.edu/cas/botany-micro/bot-linx/index.shtml\" title=\"The best botanical links collection on the web\">Scott's botanical links.</a>"
+  status_id: 1
+  created_at: 2006-02-13 16:48:52 -08:00
+posts_039: 
+  permalink: howto-monkeypatch-rake-overriding-a-rake-task
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: "HOWTO monkeypatch Rake: overriding a Rake task"
+  id: 128
+  content: |-
+    I know that some people really don't like monkeypatching, and I see why.  But sometimes it's just unavoidable.  Recently at work we came across a situation where the standard <code>rake db:schema:dump</code> task just wasn't working. So I started by writing the new version of the rake task that I wanted:
+    
+    <pre class="code ruby">namespace :db do
+      namespace :schema do
+        desc "Create a db/schema.rb file"
+        task :dump => :environment do
+          require 'active_record/schema_dumper'
+          puts "Creating schema:"
+          File.open(ENV['SCHEMA'] || "db/schema.rb", "w") do |file|
+            ActiveRecord::SchemaDumper.dump(ActiveRecord::Base.connection, file)
+          end
+        end
+      end
+    end</pre>
+    
+    This task as shown does exactly what the default rake task does, except for the <code>puts</code> line.  Let's just pretend that it's a radically different and wonderful version that solves world hunger and raises your children. Now, if you drop this into a rakefile in your app's <code>lib/tasks</code> directory, and then you run <code>rake db:schema:dump --trace</code> you'll notice that the schema.rb file gets created <strong>twice</strong>.  What the??? <!--more-->
+    
+    <h3>Check the docs</h3>
+    
+    So I started poking around the <a href="http://rake.rubyforge.org/" title="Read the RDocs for Rake">Rake docs</a>. <code>Rake::Task.define_task</code> does the following:
+    
+    <blockquote>Define a task given args and an option block. If a rule with the given name already exists, the prerequisites and actions are added to the existing task. Returns the defined task.</blockquote>
+    
+    Aha!  So instead of overriding the existing task (monkeypatching it), I'm adding to it.  That's why the schema gets dumped twice.  But what if I don't want that?  What to do if I want to replace the rake task with my new version?
+    
+    <h3>Check the internets</h3>
+    
+    About an hour of googling later, I finally came across <a href="http://matthewbass.com/2007/03/07/overriding-existing-rake-tasks/" title="The solution to my rake problems!">a post from Matthew Bass</a> explaining the solution to my problem:
+    
+    <pre class="code ruby">Rake::TaskManager.class_eval do
+      def remove_task(task_name)
+        @tasks.delete(task_name.to_s)
+      end
+    end
+     
+    def remove_task(task_name)
+      Rake.application.remove_task(task_name)
+    end
+     
+    # Override existing test task to prevent integrations
+    # from being run unless specifically asked for
+    remove_task 'db:schema:dump'
+    
+    # Now define db:schema:dump again, the way we did above</pre>
+    
+    And that was it. It's relatively straight-forward, but has a tendency to do strange things when rails gets updated.  So you could abstract it into <a href="http://www.taknado.com/2007/7/30/overriding-rake-tasks" title="Plugin to override or monkeypatch rake tasks">a plugin</a>, with tests, but don't forget to test it whenever you <code>gem update rails</code>.
+    
+    <h3>Alternative solution</h3>
+    
+    While I was googling I also ran into <a href="http://playtype.net/past/2008/3/27/multiple_databases_in_rails_without/" title="alias_task_chain source">a very interesting post on <code>alias_task_chain</code></a>, a method that patches Rake tasks to work like more typical methods with <code>alias_method_chain</code>.  If you were clever and wanted to spend the time, you could get a solution to the problem using this method.
+  status_id: 1
+  created_at: 2008-05-05 08:33:49 -07:00
+posts_028: 
+  permalink: connecting-ruby-on-rails-to-oracle-on-an-intel-mac-in-leopard-mac-osx-10-5
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Connecting Ruby on Rails to Oracle on an Intel Mac in Leopard (Mac OSX 10.5)
+  id: 117
+  content: |-
+    <strong>NOTE:</strong> This tutorial has been superseded by <a href="/2008/05/05/connecting-ruby-on-rails-to-oracle-on-an-intel-mac-in-leopard-take-2/" title="Read this tutorial!  The one you're looking at isn't any good any more.">a newer version</a> that takes advantage of the newly-released Intel Mac version of the Oracle InstantClient. The new version is much, much simpler, and causes far fewer headaches.
+    
+    <strong>Updated (12/11/07):</strong> The <code>ruby-oci8</code> library just went to full 1.0.0 release.  I've updated that section to reflect the new file names.
+    
+    <strong>Updated (5/5/08):</strong> The oracle adapter installation has been on-again-off-again with successive Rails releases, but there's an easy fix for it.  I've updated the relevant section.
+    
+    At my new job, I'm using Ruby on Rails to connect to multiple databases &mdash; multiple Oracle (10g) instances, as well as MySQL and FileMaker.  There's a lot of challenges to doing this, so I'm going to post some of the less obvious solutions as they come up.
+    
+    The first challenge I had was to get RoR to talk to Oracle.  There isn't a lot of information about this online, because the people who tend to use Oracle are not the people who tend to use open source software like Rails.
+    
+    <!--more-->
+    
+    <h2>Upgrade Rails to version 2.0</h2>
+    
+    To start out, I wanted to use the most recent release candidate of Rails: version 1.99.  I figured that I might as well upgrade before writing my first application, so that the codebase is all Rails 2.0 and up.  Leopard comes with both Ruby and Rails, and upgrading is actually very easy:
+    
+    <pre class="code shell">sudo gem install rails --source http://gems.rubyonrails.org</pre>
+    
+    Then enter "y" at each prompt, to install all of the dependencies.  That's it!  Check yourself with
+    
+    <pre class="code shell">rails -v</pre>
+    
+    You should see <code>Rails 1.99.0</code> or <code>Rails 2.0</code>.
+    
+    <h2>Getting Rails to talk to Oracle</h2>
+    
+    Now, install the oracle adapter:
+    
+    <pre class="code shell">sudo gem install activerecord-oracle-adapter --source http://gems.rubyonrails.org</pre>
+    
+    This doesn't, however, install the Ruby oci8 driver.  We'll do that now, to let the Oracle adapter talk to Oracle.
+    
+    Make sure you've got the <a title="Download the Oracle Instant Client SDK" href="http://www.oracle.com/technology/software/tech/oci/instantclient/htdocs/macsoft.html">Oracle Instant Client SDK</a> installed in your Oracle Instant Client directory (/Library/Oracle/instantclient/10.1.0.3)
+    
+    There's a problem on new Intel Macs with this library.  Oracle hasn't seen fit to release an Intel version of the library in the past year and a half, and that's going to cause problems since the Ruby binary is going to run as Intel-native, but the Instant Client will run under Rosetta.  To solve this, we have to make a PPC version of the Ruby binary.
+    
+    <h3>Make PPC and fat versions of Ruby</h3>
+    
+    This is easier than it sounds.  We don't have to recompile, since the Ruby binary in <code>/user/bin</code> is fat.  You can check this:
+    
+    <pre class="code shell">file `which ruby`</pre>
+    
+    This should show you a PPC and a i386 version:
+    
+    <pre class="code shell">/usr/bin/ruby_fat: Mach-O universal binary with 2 architectures
+    /usr/bin/ruby_fat (for architecture ppc7400):	Mach-O executable ppc
+    /usr/bin/ruby_fat (for architecture i386):	Mach-O executable i386</pre>
+    
+    All we have to do is extract the PPC version as a standalone binary, and trick the system into using that only.  It will make our Ruby slower, but it will get Ruby to talk to Oracle, so I'm willing to take the performance hit.  It's so fast on the Intel Macs anyway, unless your Rails apps are doing massive amounts of processing, you probably won't notice.
+    
+    We'll use <code>ditto</code> to extract the PPC version:
+    
+    <pre class="code shell">sudo ditto -arch ppc7400 /usr/bin/ruby /usr/bin/ruby_ppc
+    sudo mv /usr/bin/ruby /usr/bin/ruby_fat</pre>
+    
+    Now we've got two versions of the Ruby binary &mdash; the original fat version, and a PPC only version.
+    
+    There's a catch here, though: we actually have <em>two</em> copies of the <code>ruby</code> binary on our system.  The second binary is a part of the Ruby Framework, and that's the binary that's used by <code>irb</code>, <code>rake</code> and other very useful Rails helpers, so let's fix this one too:
+    
+    <pre class="code shell">sudo ditto -arch ppc7400 /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby_ppc
+    sudo mv /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby_fat</pre>
+    
+    Now we'll need a facility for switching between the fat and PPC only binaries.  Create <code>/usr/bin/ppc_ruby.sh</code>:
+    
+    <pre class="code shell">#!/bin/bash
+    ln -fs /usr/bin/ruby_ppc /usr/bin/ruby
+    ln -fs /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby_ppc /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby</pre>
+    
+    Create <code>/usr/bin/fat_ruby.sh</code>:
+    
+    <pre class="code shell">#!/bin/bash
+    ln -fs /usr/bin/ruby_fat /usr/bin/ruby
+    ln -fs /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby_fat /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby</pre>
+    Now, make them both executable:
+    
+    <pre class="code shell">sudo chmod 0711 /usr/bin/ppc_ruby.sh
+    sudo chmod 0711 /usr/bin/fat_ruby.sh</pre>
+    Run <code>ruby_ppc.sh</code> to switch to using the PPC version:
+    
+    <pre class="code">sudo /usr/bin/ppc_ruby.sh</pre>
+    Verify this worked:
+    
+    <pre class="code shell">file `which ruby`</pre>
+    This should return <code>/usr/bin/ruby: Mach-O executable PPC</code>.
+    
+    We're getting closer.  Now we need the ruby-oci8 library.
+    
+    <h3>Compile the ruby-oci8 library</h3>
+    The most recent stable version of the oci8 library is <a title="Ruby oci8 library" href="http://rubyforge.org/projects/ruby-oci8/">1.0.0</a>.  Download it and unpack the file in the finder: it should unzip into <code>~/Downloads/ruby-oci8-1.0.0</code>.
+    
+    Before we can compile this library, we have to fool the system into making it PPC only, or it's not going to work.  With your favorite text editor, edit <code>/usr/lib/ruby/1.8/universal-darwin9.0/rbconfig.rb</code>.  Comment out line 17 (<code>'-arch ppc -arch i386'</code> and replace it with <code>'-arch ppc'</code>.  Save your changes.  Leave the file open in your text editor, because we'll come back to it.
+    
+    Now we can finish configuring the environment before we compile the library.
+    
+    <pre class="code shell">cd ~/Downloads/ruby-oci8-1.0.0
+    export DYLD_LIBRARY_PATH=/Library/Oracle/instantclient/10.1.0.3
+    export SQLPATH=/Library/Oracle/instantclient/10.1.0.3
+    ruby setup.rb config
+    make
+    sudo make install</pre>
+    Now you can go back to your text editor and restore line 17, save your changes and exit.
+    
+    <h2>Test connectivity</h2>
+    At this point, we're done.  We've fooled our system into running a PPC version of Ruby under Rosetta, and we've installed the ruby-oci8 library.  Now it's a question of making sure that it works:
+    
+    <pre class="code">ruby /usr/bin/irb</pre>
+    In the IRb console, type:
+    
+    <pre class="code ruby">require 'oci8'</pre>
+    If the console returns <code>true</code>, you're in business.
+    
+    <h2>Configure your database.yml</h2>
+    The last step is to make your application use the Oracle connection.  In your database.yml, use the following to make it work:
+    
+    <pre class="code yaml">development:
+    adapter: oracle
+    database: your_instance_name
+    username: your_user_name
+    password: your_password</pre>
+    The database name comes straight out of your <code>/Library/Oracle/instantclient/10.1.0.3/network/admin/tnsnames.ora</code> file.  You don't need to specify any other connection information in database.yml, since the tnsnames.ora file has everything you need.
+    
+    Your application is now talking to Oracle!
+  status_id: 1
+  created_at: 2007-11-19 08:58:15 -08:00
+posts_017: 
+  permalink: ready-or-not-here-i-e7-come-s
+  updated_at: 2009-01-06 22:54:52 -08:00
+  title: Ready or not, here I(E7) come(s)
+  id: 106
+  content: "Whether or not you're ready for it, IE7 is coming.  And it's coming soon.  It's coming as an <a title=\"IE7 developers' blog\" href=\"http://blogs.msdn.com/ie/archive/2006/07/26/678149.aspx\">automatic update</a>, although the IE7 blog folks have been a little shy about specifying a date.\n\n\
+    This is great news!\n\n\
+    Wait a minute.  Let's try that again.\n\n\
+    This should be great news!\n\n\
+    <!--more-->The IE7 blog <a title=\"IE7 developers' blog\" href=\"http://blogs.msdn.com/ie/archive/2006/08/22/712830.aspx\">posted today</a> about all of the CSS rendering bugs that they've fixed. The list is extensive, including almost all of the problems from <a title=\"Insidious browser bugs revealed\" href=\"http://www.positioniseverything.net\">positioniseverything.net</a>.  Notice that I say almost.  The <a title=\"My previous rant on the subject\" href=\"/2006/03/23/is-microsoft-screg-the-web-community-again/\">float clearing bug</a> is still a bug in IE7.  It seems so strange to me \xC3\xA2\xE2\x82\xAC\xE2\x80\x9D they can squash all of the bugs but one?  That's like running the 100 yard dash and stopping at yard 98.  Why can't they seem to do what <a title=\"Firefox\" href=\"http://www.getfirefox.com\">every</a> <a title=\"Safari\" href=\"http://www.apple.com/macosx/features/safari/\">other</a> <a href=\"http://www.opera.com/\">major</a> browser developer has done?  Is Microsoft so incompetent that they can't even toe the line anymore?  So much for being the largest, richest, most powerful corporation in the computer industry.\n\n\
+    The impending mass adoption (because of the automatic update) of IE7, with is myriad bug fixes should make every web designer jump for joy, but alas it's a mixed bag, because IE7 falls a little short of expectations.  On the fateful day that IE7 rolls out, our sites will have to be instanteously compatible.  Thankfully, for the most part they will.  But be warned if you've ever used float clearing to make a layout work\xC3\xA2\xE2\x82\xAC\xC2\xA6\n\
+    At least there will still be ways to target IE7, despite the fixing of the Holly hack, * html hack, etc. by the IE7 dev team.  Not only have new hacks been discovered, which I won't comment on, but it's easy enough to put all IE7-directed CSS into a single file, and use <a title=\"Why you should stop using CSS hacks\" href=\"http://www.456bereastreet.com/archive/200510/stop_using_css_hacks_now/\">conditional comments</a> to target that file to IE7 alone.\n\n\
+    My point, however, is that we shouldn't have to.  IE7 should just render the standard which Microsoft, as a member of the W3C, helped create.  Just like everybody else.\n\n\
+    Before I convince people that I'm just a cynical reflexive MS critic, I have to say that they've done quite a bit more than I thought they would.  I mean, they made it to yard 98.  I honestly didn't think that the initial release of IE7 would get that far in the race for standards compliance.  Kudos to the IE7 dev team for that.\n\n\
+    For an interesting discussion about what people think, look at the conversation on <a href=\"http://mezzoblue.com/archives/2006/08/23/new_headache/\">Dave Shea's post</a> in the comments."
+  status_id: 1
+  created_at: 2006-08-23 15:48:44 -07:00
+posts_006: 
+  permalink: sourdough-pancakes
+  updated_at: 2009-01-06 22:54:51 -08:00
+  title: Sourdough pancakes
+  id: 95
+  content: |-
+    <div class="image_frame"><a href="http://www.flickr.com/photos/foliosus/90378172/" title="Link to Ventry sourdough pancakes picture"><img src="http://farm1.static.flickr.com/16/90378172_bb3403a40d_m.jpg" width="240" height="159" alt="Ventry sourdough pancackes" /></a><span class="image_caption"><a href="http://www.flickr.com/photos/foliosus/90378172/" title="Link to Ventry sourdough pancakes picture">Ventry sourdough pancakes</a></span></div>
+    
+    A good friend of ours just came up from L.A. to visit over the weekend, and as a special treat I thought I would make a tasty breakfast Sunday morning.  I gave our guest some choices, and she settled on pancakes.  My current favorite is a recipe for some very, very thick and solid yeast-risen sourdough pancakes.  I've been growing the starter for a little over a month, and I have to say that it's very good and getting better.  If you make pancakes regularly, you have to make the sourdough starter once, and then just refresh when you make 'em.  The recipe these came from is called "Ventry Sourdough Pancakes," from Jeffrey Alford and Naomi Duguid's <a href="http://www.amazon.com/exec/obidos/ASIN/B000C1ZX8G/foliosuscom-20/" title="Purchase Home Baking from Amazon">Home Baking</a>, which is a pretty good book about baking traditions from around the world.  In any case, the pancakes from this recipe come out easily a half inch thick, and absorb maple syrup like nobody's business.  The sourdough isn't overpowering, and provides a subtle alternative to buttermilk; the yeastiness of them is fantastic. <!--more-->
+    
+    <h3>Ingredients</h3>
+    
+    <h4>Sourdough Starter</h4>
+    
+    <ul class="ingredients">
+    <li>1/4 teaspoon active dry yeast</li>
+    <li>2 cups lukewarm water</li>
+    <li>2 cups all-purpose flour</li>
+    </ul>
+    
+    <h4>Pancakes</h4>
+    
+    <ul class="ingredients">
+    <li>2 large or extra large eggs</li>
+    <li>1/4 cup sugar</li>
+    <li>1/4 cup vegetable oil</li>
+    <li>1 tablespoon salt</li>
+    <li>1 teaspoon baking soda</li>
+    <li>About 2 cups all-purpose flour</li>
+    </ul>
+    
+    <h3>Method</h3>
+    
+    To make the starter, dissolve the yeast in the water, then add the flour and stir vigorously to make a smooth batter.  Let stand, covered, for 12-24 hours at room temperature.  Before using the starter, take out 1/2 cup and save in a well-sealed glass jar in the refrigerator for use at a later date.  The next time you make these, take the starter out of the fridge the day before, and add 2 cups of water and 2 cups of flour and stir well, then cover and refrigerate overnight.  Bring back to room temperature and save 1/2 cup before using.
+    
+    To make the pancackes, place the remaining 3 1/2 cups of starter in a bowl.  Stir in the eggs, sugar, oil, salt and baking soda and beat until smooth.  Add the flour and stir until you have a thick, pourable batter.
+    
+    Cook the pancakes in a lightly oiled heavy skillet over medium heat.  Feel free to encourage the batter to flow around the pan by tilting it to make round shapes.  Cook each pancake until the top surface shows bubbles all over, about 3 minutes, then flip and cook until the second side is golden, about 2 minutes more.
+  status_id: 1
+  created_at: 2006-01-23 14:15:45 -08:00

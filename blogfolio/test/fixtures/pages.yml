@@ -1,0 +1,119 @@
+--- 
+pages_001: 
+  name: Web design services
+  updated_at: 2009-02-09 00:27:35 -08:00
+  secondary_content: |-
+    <h2>Interested?</h2>
+    
+    <p>Please <a href="/contact" title="Send in a request right now">get in touch</a> if you'd like to chat about a project.</p>
+    
+    <h2>What if Foliosus isn't a good fit?</h2>
+    
+    <p>Don't worry. We'll be the first to tell you if we can't accomplish your project. We won't string you along and outsource the work. We only sign good business deals, and a deal is only good if it's good for everyone involved.</p>
+  url: services
+  id: 2
+  description: Foliosus Web Design offers several services to its clients, including custom site design and application development.
+  content: |-
+    <p>At Foliosus Web Design, we pride ourselves on building sites that fit our clients' needs. Bespoke software should fit your organization the way a good suit should fit you.</p>
+    
+    <p>We want to build websites that we can be proud of, and that our clients can be proud of as well. Our sites are good for their users, and good under the hood, too.</p>
+    
+    <h2>Our skills</h2>
+    
+    <ul>
+      <li><strong>Branding:</strong> logo design, visual identity</li>
+      <li><strong>Graphic design:</strong> not just for web pages, but print design as well (business cards, letterhead, etc.</li>
+      <li><strong>Custom web sites:</strong> your website, the way you want it</li>
+      <li><strong>Custom applications:</strong> if your site is more than a marketing brochure, we can build it</li>
+    </ul>
+    
+    <h2>Our process</h2>
+    
+    <p>Typically, a new site or site redesign process will go through the following stages:</p>
+    
+    <ol>
+      <li>
+        <h4>Investigation</h4>
+        <p>This is the hardest phase for our clients; we ask lots of questions about who you are, who you want to be, and what your message is.  This is all information that will help us put together your branding or visual identity, or understand what your current branding is to apply to the new site.  We will also ask lots of questions about the content you anticipate having on your site.</p>
+      </li>
+      <li>
+        <h4>Site planning</h4>
+        <p>The site planning phase is quite fun; we will work together through multiple feedback cycles to put together a shared vision for the final product. This will involve wireframes, mockups, and lots of conversation.</p>
+      </li>
+      <li>
+        <h4>Site construction</h4>
+        <p>For our clients, this phase is perhaps the most boring; they sit back while we take over the work, with occasional questions about important decisions that need to be made.</p>
+      </li>
+      <li>
+        <h4>Site approval</h4>
+        <p>This is where it all comes together: the client sees the first beta of the site.  Although we would love to deliver finished software, at this time, and really surprise our clients, realistically that isn't possible.  The clients need to click through the site and make that everything is ok; the text reads how they want, the applications behave how they want.  In this phase, we will go through as many feedback cycles as necessary until everyone is happy with the final product.</p>
+      </li>
+      <li>
+        <h4>Launch!</h4>
+        <p>Once final approval is granted, we will launch your site. this is the most exciting part of the process. If necessary, that will include submission to the top search engines for indexing, to help your site do well in search placement. This is where our clients let their clients and friends know that they have a new site.</p>
+      </li>
+    </ol>
+  created_at: 2008-12-28 12:19:14 -08:00
+pages_002: 
+  name: Resume
+  updated_at: 2009-02-07 00:10:02 -08:00
+  secondary_content: |-
+    <h3>Find me elsewhere</h3>
+    <ul>
+      <li><a href="http://www.linkedin.com/in/foliosus" title="My LinkedIn profile">LinkedIn</a></li>
+      <li><a href="http://www.flickr.com/photos/foliosus" title="My photostream">Flickr</a></li>
+    </ul>
+  url: resume
+  id: 3
+  description: Professional resume for Brent Miller, owner and principal at Foliosus Web Design in Portland, Oregon
+  content: |-
+    <h3>Technical Proficiency</h3>
+    <ul>
+      <li>Semantic HTML and XHTML, CSS</li>
+      <li>Ruby on Rails</li>
+      <li>LAMP (Linux, Apache, MySQL, PHP) and MAMP (on a Mac)</li>
+      <li>SQL, Oracle, MySQL and FileMaker Pro</li>
+      <li>JavaScript and DOM scripting</li>
+      <li>Photoshop, Illustrator, InDesign, Dreamweaver, Fireworks</li>
+      <li>MS Office, iWork, Aperture</li>
+    </ul>
+    
+    <h3>Prior Experience</h3>
+    <ul>
+      <li>
+        <h4>Web Application Developer, Reed College, 2007&ndash;present</h4>
+        <p>Web application development in Ruby on Rails for <a href="http://web.reed.edu/" title="A small liberal arts college of distinction">Reed College</a>.  Tasks include migrating old applications from Witango to RoR, as well as the development of new applications, in a complex data and hardware landscape. Major apps designed and developed: online registration, housing lottery, digital asset management favorites.</p>
+      </li>
+      <li>
+      <h4>Owner and operator, Foliosus Web Design, 2005&ndash;present</h4>
+        <p>Please see my <a href="/portfolio/" title="Brent Miller''s Portfolio">portfolio</a> for examples of recent work.</p>
+      </li>
+      <li>
+        <h4>Senior Web Author, CDI Corp. at Intel, 2006&ndash;2007</h4>
+        <p>Web coding and development for <a href="http://www.intel.com/" title="Leap Ahead">Intel.com</a>, primarily for the campaigns group that handled all major launches.  All code was hand-rolled, mostly using pre-formed corporate templates, with occasional odd pages, JavaScript and CSS development.  I also created and maintained a custom workflow tracking and management application in Rails.</p>
+      </li>
+      <li>
+        <h4>Junior Systems Administrator, Reed College Web Systems and Services, Portland, Oregon, 1999&ndash;2000</h4>
+        <p>Web page conception and development primarily using Tango in order to connect Oracle (Banner) and FileMaker Pro databases to the web with fully interactive applications, including security design. Projects included a news release system, and a complete rework of the alumni portal.</p>
+      </li>
+    </ul>
+    
+    <h3>Education</h3>
+    <ul>
+      <li>M.S. in evolutionary ecology, UC Santa Barbara, 2005<br />
+    Prof. Susan Mazer, advisor<br />Topic: Sexual selection and genetic conflict plants</li>
+      <li>B.A. in biology, Reed College, 2000<br />Prof. Keith Karoly, advisor<br />Senior thesis: <a href="/wp-content/uploads/2006/01/thesis.pdf" title="My undergraduate thesis">&quot;Clonal foraging in plants: a review and simulation study&quot;</a><br />One year spent at the <a href="http://www.unige.ch" title="University of Geneva, founded 450 years ago by Jean Calvin">Universit&eacute; de Gen&egrave;ve</a> in the <a href="http://www.unige.ch/sciences/biologie/index.html" title="Biology department">Facult&eacute; des Sciences</a></li>
+    </ul>
+    
+    <h3>Language Proficiency</h3>
+    <ul>
+    <li>Native English fluency</li>
+    <li>Native French fluency</li>
+    <li>Japanese operational fluency</li>
+    </ul>
+    
+    <h3>Other Interests</h3>
+    <ul>
+    <li>Aikido, cooking, eating, Japanese calligraphy, botanizing, travel and photography; I have even been known to enjoy some of these simultaneously.</li>
+    </ul>
+  created_at: 2009-02-07 00:10:02 -08:00
