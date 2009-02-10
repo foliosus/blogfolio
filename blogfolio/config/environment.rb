@@ -62,7 +62,6 @@ Rails::Initializer.run do |config|
   config.gem 'hpricot', :version => '0.6.164'
   config.gem 'flickr-fu', :lib => 'flickr_fu', :version => '>=0.1.4'
   config.gem 'syntax', :lib => 'syntax/convertors/html', :version => '1.0.0'
-  config.gem 'paperclip', :version => '2.1.2'
   
   config.action_mailer.default_url_options = { :host => "foliosus.com" }
 end
