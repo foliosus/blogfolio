@@ -5,18 +5,12 @@ class CreateCategories < ActiveRecord::Migration
       t.timestamps
     end
     
-    create_table :categories_posts do |t|
+    create_table :categories_posts, :id => false do |t|
       t.integer     :category_id, :null => false
       t.integer     :post_id, :null => false
       t.timestamps
     end
 
-    execute "ALTER TABLE categories_posts DROP PRIMARY KEY, DROP id, ADD PRIMARY KEY (category_id, post_id)"
-    
-    Category.create(:name => 'Rails')
-    Category.create(:name => 'Browsers')
-    Category.create(:name => 'Food')
-    
   end
 
   def self.down
