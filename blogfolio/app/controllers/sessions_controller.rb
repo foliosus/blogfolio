@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
+    @meta[:title] = "Please log in"
   end
 
   def create
@@ -16,6 +17,8 @@ class SessionsController < ApplicationController
       redirect_back_or_default('/')
       flash[:notice] = "Logged in successfully"
     else
+      flash[:error] = "Your login and password combo wasn't found in the database."
+      @meta[:title] = "Please try again"
       render :action => 'new'
     end
   end
