@@ -1,6 +1,8 @@
 class Comment < ActiveRecord::Base
   include ModelSecurity
   @permissions = {:update => :admin, :delete => :admin}
+  
+  include Captcha
 
   belongs_to    :post
   

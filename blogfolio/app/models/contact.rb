@@ -1,4 +1,6 @@
 class Contact < ActiveRecord::Base
+  include Captcha
+  
   acts_as_tableless [:name, :email, :email_confirmation, :subject, :body]
   
   email_name_regex  = '[\w\.%\+\-]+'.freeze

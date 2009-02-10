@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
   # GET /comments.xml
   def index
     @comments = Comment.find(:all, :include => :post, :order => 'comments.created_at DESC')
+    @meta[:title] = 'Comments'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +19,7 @@ class CommentsController < ApplicationController
   # GET /comments/1.xml
   def show
     @comment = Comment.find(params[:id])
+    @meta[:title] = "Comment from #{@comment.author}"
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,6 +31,7 @@ class CommentsController < ApplicationController
   # GET /comments/new.xml
   def new
     @comment = Comment.new
+    @meta[:title] = 'New comment'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +43,7 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
     @post = @comment.post
+    @meta[:title] = "Comment from #{@comment.author}"
   end
 
   # POST /comments
@@ -55,7 +59,8 @@ class CommentsController < ApplicationController
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         @post = @comment.post
-        format.html { render :template => 'posts/show' }
+        @meta[:title] = @post.title
+        format.html { render :template => 'posts/show', :layout => 'blog' }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
     end
@@ -72,6 +77,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to(@comment) }
         format.xml  { head :ok }
       else
+        @meta[:title] = "Comment from #{@comment.author}"
         format.html { render :action => "edit" }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
@@ -83,6 +89,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
+    flash[:notice] = "Comment destroyed"
 
     respond_to do |format|
       format.html { redirect_to(comments_url) }
