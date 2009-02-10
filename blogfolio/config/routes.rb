@@ -21,7 +21,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => 'pages', :action => 'index_page'
   
-  # map.static_page '/:id', :controller => 'pages', :action => 'show', :id => eval("/#{Page.all.collect{|p| p.url}.join('|')}/")
+  map.static_page '/:id', :controller => 'pages', :action => 'show', :id => eval("/#{Page.all.collect{|p| p.url}.join('|')}/")
 
   map.dated_blog_post '/blog/:year/:month/:day/:id', :controller => 'blog', :action => 'show',
                                                      :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
