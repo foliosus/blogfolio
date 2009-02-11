@@ -16,7 +16,7 @@
     <tbody>
   <% for post in posts %>
       <tr class="<%= cycle 'odd', 'even' %>">
-        <td><%= format_date(post.created_at) %></td>
+        <td><%= format_date(post.published_at || post.created_at) %></td>
         <td><%= link_to h(post.title), post_url(post) %></td>
         <td><%= post.categories_list.collect{|c| h(c) }.join(', ').capitalize %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>

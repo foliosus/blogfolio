@@ -11,13 +11,13 @@ class Post < ActiveRecord::Base
   
   STATUSES = ['draft', 'published']
   
-  named_scope :reverse_chronological_order, :order => 'posts.created_at DESC'
+  named_scope :reverse_chronological_order, :order => 'published_at DESC, posts.created_at DESC'
   named_scope :full_information, {:include => [:comments, :categories]}
   named_scope :published, {:conditions => {:status_id => STATUSES.index('published')}}
   named_scope :draft, {:conditions => {:status_id => STATUSES.index('draft')}}
   named_scope :status, lambda{|status| {:conditions => {:status_id => status}} }
   named_scope :contains, lambda{|text| {:conditions => ["title LIKE :s OR content LIKE :s", {:s => "%#{text}%"}]}}
-
+  
   # Return the status as text, taken from Post::STATUSES
   def status
     STATUSES[self.status_id || 0]
@@ -30,24 +30,24 @@ class Post < ActiveRecord::Base
   
   # Set the post's status to 'published'
   def publish
-    self.status_id = STATUSES.index('published')
+    status_id = STATUSES.index('published')
+    published_at = Time.now
   end
   
   # Set the post's status to 'published' and save the record
   def publish!
-    self.publish
-    self.save
+    publish
+    save
+  end
+  
+  # Set the post's status to 'draft'
+  def unpublish
+    status_id = STATUSES.index('draft')
+    published_at = nil
   end
   
   # Return a summary of the post
   def summary
     self.content.gsub(/\r?\n\r?\n(.*)/m, '') # break after the first paragraph
-  end
-  
-  # List all posts
-  def self.list(options = {})
-    status = options[:status] || STATUSES.index(options.delete(:status).to_s) || STATUSES.index('published')
-    options.reverse_merge!(:order => 'posts.created_at desc', :include => [:comments, :categories], :conditions => ['status_id = ?', status])
-    self.find(:all, options)
   end
 end

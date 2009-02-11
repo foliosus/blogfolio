@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090112025346) do
+ActiveRecord::Schema.define(:version => 20090210085042) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :limit => 25, :null => false
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(:version => 20090112025346) do
   create_table "categories_posts", :id => false, :force => true do |t|
     t.integer  "category_id", :null => false
     t.integer  "post_id",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "clients", :force => true do |t|
+    t.string   "name",       :limit => 80,  :null => false
+    t.string   "slug",       :limit => 80,  :null => false
+    t.text     "teaser",                    :null => false
+    t.text     "content",                   :null => false
+    t.string   "url",        :limit => 120
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,12 +75,13 @@ ActiveRecord::Schema.define(:version => 20090112025346) do
   end
 
   create_table "posts", :force => true do |t|
-    t.string   "title",      :limit => 120,                :null => false
+    t.string   "title",        :limit => 120,                :null => false
     t.text     "content"
-    t.string   "permalink",  :limit => 200
-    t.integer  "status_id",                 :default => 0, :null => false
+    t.string   "permalink",    :limit => 200
+    t.integer  "status_id",                   :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "published_at"
   end
 
   create_table "users", :force => true do |t|
