@@ -1,20 +1,13 @@
 <%- if @pages.blank? && @posts.blank? -%>
   <h2>Nothing!</h2>
   <p>Sorry, we've got nothing for your search terms. Would you like to try again?</p>
-  <%= render :partial => "shared/search_form" %>
+  <%= render :partial => "search/form" %>
 <%- else -%>
-  <p>Your search returned <%= link_to_unless(@posts.blank?, pluralize(@posts.length, 'post'), '#posts', :title => 'Jump to the blog posts') %> and <%= link_to_unless(@pages.blank?, pluralize(@pages.length, 'page'), '#pages', :title => 'Jump to the static pages') %></p>
+  <p>Your search returned <%= link_to_unless(@pages.blank?, pluralize(@pages.length, 'page'), '#pages', :title => 'Jump to the static pages') + ' and ' if @posts.current_page == 1 %><%= link_to_unless(@posts.blank?, pluralize(@posts.total_entries, 'post'), '#posts', :title => 'Jump to the blog posts') %></p>
   
   <h3>Try again?</h3>
-  <%= render :partial => "shared/search_form" %>
+  <%= render :partial => "search/form" %>
   
-  <%- unless @posts.blank? -%>
-  <h2 id="posts">Blog posts</h2>
-    <%- for post in @posts do -%>
-    <%= highlight(single_post(post, :excerpt => true, :comments => false), @search_terms) %>
-    <%- end -%>
-  <%- end -%>
-
   <%- unless @pages.blank? -%>
   <h2 id="pages">Pages</h2>
     <%- for page in @pages do -%>
@@ -23,8 +16,17 @@
     <%- end -%>
   <%- end -%>
 
+  <%- unless @posts.blank? -%>
+  <h2 id="posts">Blog posts</h2>
+    <%= will_paginate @posts %>
+    <%- for post in @posts do -%>
+    <%= highlight(single_post(post, :excerpt => true, :comments => false), @search_terms) %>
+    <%- end -%>
+    <%= will_paginate @posts %>
+  <%- end -%>
+
   <h2 id="search_again">Find what you needed?</h3>
->   <p>If you didn't find what you were looking for, how about trying a different search?</p>
-  <%= render :partial => "shared/search_form" %>
+   <p>If you didn't find what you were looking for, how about trying a different search?</p>
+  <%= render :partial => "search/form" %>
   
 <%- end -%>

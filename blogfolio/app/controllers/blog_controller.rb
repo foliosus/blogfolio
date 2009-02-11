@@ -31,8 +31,7 @@ class BlogController < ApplicationController
 
     @meta[:title] = "Posts in \"#{@category.name.downcase}\""
     
-    @posts = @category.posts.published.reverse_chronological_order.all
-    raise ActiveRecord::RecordNotFound unless @posts.length > 0
+    @posts = @category.posts.published.reverse_chronological_order.paginate(:page => params[:page], :per_page => 10)
   end
   
   # Number to show per page of results

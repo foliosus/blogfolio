@@ -1,1 +1,13 @@
-<%= @posts.collect{|post| single_post(post, :excerpt => true, :comments => false)}.join("\r\n") %>
+<%- if @posts.blank? -%>
+  <h2>Sorry</h2>
+  
+  <p>No posts were found in the category <%=h @category.name %>.</p>
+  
+  <h3>Try searching instead</h3>
+  <%= render :partial => "search/form" %>
+  
+<%- else -%>
+  <%= will_paginate @posts %>
+  <%= @posts.collect{|post| single_post(post, :excerpt => true, :comments => false)}.join("\r\n") %>
+  <%= will_paginate @posts %>
+<%- end -%>
