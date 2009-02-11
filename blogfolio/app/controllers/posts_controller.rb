@@ -5,10 +5,12 @@ class PostsController < ApplicationController
   before_filter   :preload_validation_data
   before_filter   :preload_post, :only => [:show, :edit, :update, :destroy]
   
+  layout 'blog'
+  
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.published.reverse_chronological_order.all
+    @posts = Post.published.reverse_chronological_order.all(:include => :categories)
     @drafts = Post.draft.reverse_chronological_order.all
     @meta[:title] = 'Blog posts'
 

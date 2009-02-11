@@ -5,7 +5,7 @@ class BlogController < ApplicationController
   
   # Show recent posts
   def index
-    @posts = Post.published.reverse_chronological_order.full_information.all(:limit => 10)
+    @posts = Post.published.reverse_chronological_order.paginate(:include => :comments, :page => params[:page], :per_page => 10)
     @meta[:title] = 'Foliosus blog: recent posts'
   end
   
@@ -33,6 +33,11 @@ class BlogController < ApplicationController
     
     @posts = @category.posts.published.reverse_chronological_order.all
     raise ActiveRecord::RecordNotFound unless @posts.length > 0
+  end
+  
+  # Number to show per page of results
+  def per_page
+    10
   end
   
   protected

@@ -36,7 +36,7 @@ p img.left {float:left;margin:1.5em 1.5em 1.5em 0;padding:0;}
 p img.right {float:right;margin:1.5em 0 1.5em 1.5em;}
 a, a:link {color:#f70;text-decoration:none; border-bottom: 1px dotted;}
 a:visited {color: #429E5F;}
-a:focus, a:hover {border-bottom: 1px solid;}
+a:focus, a:hover {border-bottom: 1px solid; color: #3fc9ff;}
 h1 a, h1 a:link, h2 a, h2 a:link, h3 a, h3 a:link, h4 a, h4 a:link, h5 a, h5 a:link, h6 a, h6 a:link { border-bottom: none; }
 blockquote {margin:1.5em;color:#666;font-style:italic;}
 strong {font-weight:bold;}
@@ -150,18 +150,24 @@ ul.photos { list-style-type: none; margin: 0 0 1.5em; }
   .plant_of_the_moment img { max-width: 344px; }
 
 /* Blog */
-.post { position: relative; border-top: 0.1em solid #ccc; padding-top: 1.4em; padding-bottom: 1.5em; }
+.post { position: relative; border-top: 0.1em solid #ccc; padding-top: 1.4em; padding-bottom: 1.5em; clear: both; }
   .post h2.title { margin-left: 2.5em; margin-bottom: 0; }
   .post .date { position: absolute; top: 1.7em; left: 0; border: 1px solid; padding: 0.5em; text-align: center; width: 3em; line-height: 1; color: #aaa; -moz-border-radius: 3px; -webkit-border-radius: 3px; background-color: #ecf9ff; }
     .post .date .month { font-size: 0.8em; }
     .post .date .day { display: block; font-size: 2em; text-shadow: #bbb 0.05em 0.05em 0.1em; }
-    .post .date .year { display: none; width: 3em; height: 2em; position: absolute; top: 0.5em; left: 0.5em; padding-top: 0.75em; background-color: #ecf9ff; }
+    .post .date .year { display: none; width: 3em; height: 2.2em; position: absolute; top: 0.5em; left: 0.5em; padding-top: 0.75em; background-color: #ecf9ff; }
     .post .date:hover .year { display: block; }
   .post .metadata { margin-left: 5em; color: #999; }
 
 .categories { list-style-type: none; margin-left: 0; margin-right: 0; width: 10em; float: left; margin-right: 4em; }
 
 .post .more { display: inline-block; }
+
+.post img { border: 0.1em solid; }
+.post img, .post .image_frame { float: right; margin-left: 1em; margin-bottom: 1em; text-align: center; }
+  .post .image_frame a { border-bottom: none; }
+  .post .image_frame img { float: none; margin: 0 auto 1em; }
+  .post .image_frame .image_caption { display: block; }
 
 h2.comments { border-top: 0.3333em solid #deebf4; padding-top: 0.3333em; }
 ol.comments { list-style-type: none; margin-left: 0; margin-right: 0; }
@@ -186,6 +192,13 @@ ul.portfolio { list-style-type: none; margin-left: 0; margin-right: 0; }
   ul.portfolio img { float: left; margin-bottom: 1.5em; }
   ul.portfolio p, ul.portfolio h3 { margin-left: 192px; }
   ul.portfolio li { clear: left; min-height: 152px; }
+
+/* Pagination */
+.pagination { text-align: center; position: relative; left: 50%; margin-left: -268px; width: 536px; margin-bottom: 1.4em; }
+  .pagination span, .pagination a { display: inline-block; padding: 0.5em 1em; margin-bottom: 0.5em; margin-right: 0.5em; border: 0.1em solid; }
+  .pagination span { border-color: #ccc; color: #ccc; }
+  
+
 
 /* Code coloring */
 .ruby .normal {}
