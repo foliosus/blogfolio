@@ -10,8 +10,8 @@
   <%- if @client.has_testimonial? -%>
   <h2>Testimonial</h2>
   <blockquote>
-    <%= simple_format @client.testimonial_text %>
-    <cite>&mdash; <%= @client.testimonial_author %></cite>
+    <%= simple_format h(@client.testimonial_text) %>
+    <cite>&mdash; <%=h @client.testimonial_author %></cite>
   </blockquote>
   <%- end -%>
 <%- end -%>

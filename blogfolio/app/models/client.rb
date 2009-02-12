@@ -31,11 +31,12 @@ class Client < ActiveRecord::Base
     "#{PATH}/#{image_filename}"
   end
   
+  # Does the Client have a testimonial?
   def has_testimonial?
     testimonial_text?
   end
   
-  # Testimonial author
+  # Who is the author of the testimonial? If none exists, use the Client name.
   def testimonial_author
     read_attribute(:testimonial_author) || name
   end
