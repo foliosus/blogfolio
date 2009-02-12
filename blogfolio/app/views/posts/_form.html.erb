@@ -1,6 +1,6 @@
 <% f.fieldset "Post" do %>
-  <%= f.text_field :title, :label => "Title", :size => 45 %>
-  <%= f.text_area :content, :label => "Content", :size => '45x45' %>
+  <%= f.text_field :title, :label => "Title", :size => 45, :required => true %>
+  <%= f.text_area :content, :label => "Content", :size => '45x45', :required => true %>
   <% f.multiple_field_group :label => 'Categories' do %>
     <%- @categories.each do |category| -%>
     <label class="nestedLabel"><%=h category.name %></label><%= check_box_tag "post[category_ids][]", category.id, @post.categories.include?(category) %>

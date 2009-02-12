@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090210085042) do
+ActiveRecord::Schema.define(:version => 20090212040226) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",       :limit => 25, :null => false
@@ -26,17 +26,15 @@ ActiveRecord::Schema.define(:version => 20090210085042) do
   end
 
   create_table "clients", :force => true do |t|
-    t.string   "name",                    :limit => 80,  :null => false
-    t.string   "slug",                    :limit => 80,  :null => false
-    t.text     "teaser",                                 :null => false
-    t.text     "content",                                :null => false
-    t.string   "url",                     :limit => 120
+    t.string   "name",               :limit => 80,  :null => false
+    t.string   "slug",               :limit => 80,  :null => false
+    t.text     "teaser",                            :null => false
+    t.text     "content",                           :null => false
+    t.string   "url",                :limit => 120
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "screenshot_file_name",    :limit => 40
-    t.string   "screenshot_content_type", :limit => 40
-    t.integer  "screenshot_file_size"
-    t.datetime "screenshot_updated_at"
+    t.string   "testimonial_author", :limit => 60
+    t.text     "testimonial_text"
   end
 
   create_table "comments", :force => true do |t|
@@ -61,11 +59,28 @@ ActiveRecord::Schema.define(:version => 20090210085042) do
     t.text     "secondary_content"
   end
 
+  create_table "photos", :force => true do |t|
+    t.string   "title",         :limit => 250, :null => false
+    t.text     "caption"
+    t.string   "filename",      :limit => 250, :null => false
+    t.integer  "width",                        :null => false
+    t.integer  "height",                       :null => false
+    t.string   "content_type",  :limit => 100
+    t.datetime "image_date",                   :null => false
+    t.string   "keywords",      :limit => 250
+    t.integer  "aperture"
+    t.string   "focal_length",  :limit => 11
+    t.string   "shutter_speed", :limit => 8
+    t.integer  "speed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posts", :force => true do |t|
-    t.string   "title",                       :null => false
+    t.string   "title",        :limit => 120,                :null => false
     t.text     "content"
-    t.string   "permalink"
-    t.integer  "status_id",    :default => 0, :null => false
+    t.string   "permalink",    :limit => 200
+    t.integer  "status_id",                   :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "published_at"

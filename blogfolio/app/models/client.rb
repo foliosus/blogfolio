@@ -11,21 +11,32 @@ class Client < ActiveRecord::Base
   
   PATH = '/clients'
   
-  # Path to the thumbnail
+  # Thumbnail file name
   def thumb_filename
     "#{slug}_thumb.jpg"
   end
   
-  # Path to the full-size image
+  # Full size image file name
   def image_filename
     "#{slug}.jpg"
   end
   
+  # Path to the thumbnail
   def thumb_path
     "#{PATH}/#{thumb_filename}"
   end
   
+  # Path to the full-size image
   def image_path
     "#{PATH}/#{image_filename}"
+  end
+  
+  def has_testimonial?
+    testimonial_text?
+  end
+  
+  # Testimonial author
+  def testimonial_author
+    read_attribute(:testimonial_author) || name
   end
 end

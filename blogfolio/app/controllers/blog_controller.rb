@@ -5,7 +5,7 @@ class BlogController < ApplicationController
   
   # Show recent posts
   def index
-    @posts = Post.published.reverse_chronological_order.paginate(:include => :comments, :page => params[:page], :per_page => 10)
+    @posts = Post.published.full_information.reverse_chronological_order.paginate(:page => params[:page], :per_page => 10)
     @meta[:title] = 'Foliosus blog: recent posts'
   end
   
