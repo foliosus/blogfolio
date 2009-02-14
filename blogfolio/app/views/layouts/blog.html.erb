@@ -11,7 +11,7 @@
     <%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
     
     <h3>About the author</h3>
-    <p>Brent Miller is the owner and principal web designer of <a href="http://foliosus.com/" title="Home page">Foliosus Web Design LLC</a> in Portland, Oregon. He enjoys food, plants, and the color green. Read the &#8220;about&#8221; page for more about him. If you are interested in hiring him for web work, please contact him.</p>
+    <p>Brent Miller is the owner and principal web designer of <%= link_to 'Foliosus Web Design LLC', root_path, :title => 'Home page' %> in Portland, Oregon. He enjoys food, plants, and the color green. If you are interested in hiring him for web work, please <%= link_to 'contact him', contact_path, :title => 'Send a request via a web form' %>.</p>
     
     <h3>Categories</h3>
     <%= render :partial => "blog/categories" %>
