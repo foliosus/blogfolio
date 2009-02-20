@@ -133,10 +133,16 @@ input.error { color: #666; }
   .index_content_region.blog { background: #fcd7ac url(../images/orange_background.gif) bottom repeat-x; border-bottom: 1px solid #ffb258; }
   .index_content_region .primary_content, .index_content_region .secondary_content { position: relative; }
   .index_content_region h2 { width: 152px; position: absolute; top: 0; left: 0; }
-  .index_content_region p, .index_content_region ul, .index_content_region ol { margin-left: 192px; }
+  .index_content_region p, .index_content_region ul, .index_content_region ol,
+  .index_content_region h3, .index_content_region h4, .index_content_region .post { margin-left: 192px; }
   .index_content_region ul#portfolio_teaser { width: 166px; float: right; }
   .pages.index_page #container { border-bottom: none; }
-
+  .index_content_region .post { border-top: none; padding-top: 1.5em; }
+  .index_content_region .post p, .index_content_region .post .ul, .index_content_region .post ol,
+  .index_content_region .post h3, .index_content_region .post h4 { margin-left: 0; }
+  .index_content_region .post h3.title { margin-left: 3.333333em; }
+  .index_content_region .post p.metadata { margin-left: 5em; }
+  
 /* Images */
 img { border: 1px solid #000; }
 
@@ -152,6 +158,7 @@ ul.photos { list-style-type: none; margin: 0 0 1.5em; }
 /* Blog */
 .post { position: relative; border-top: 0.1em solid #c9e9ff; padding-top: 1.4em; padding-bottom: 1.5em; clear: both; }
   .post h2.title { margin-left: 2.5em; margin-bottom: 0; }
+  .post h3.title { margin-left: 3.3333333em; margin-bottom: 0; }
   .post .date { position: absolute; top: 1.7em; left: 0; border: 1px solid; padding: 0.5em; text-align: center; width: 3em; line-height: 1; color: #aaa; -moz-border-radius: 3px; -webkit-border-radius: 3px; background-color: #c9e9ff; border-color: #999; }
     .post .date .month { font-size: 0.8em; }
     .post .date .day { display: block; font-size: 2em; text-shadow: #bbb 0.05em 0.05em 0.1em; }
