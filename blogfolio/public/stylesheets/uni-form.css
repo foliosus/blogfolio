@@ -12,7 +12,7 @@
 .uniForm fieldset {
   margin: 0 0 1.5em 0;
   border: none;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #c9e9ff;
   padding-bottom: 1.5em;
 }
 
@@ -30,7 +30,7 @@
     background-color: #c9e9ff;
   }
   .uniForm .ctrlHolder.focused {
-    background: #deebf4;
+    background: #ecf9ff;
   }
 
 .uniForm .buttonHolder {

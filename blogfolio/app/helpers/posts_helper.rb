@@ -3,7 +3,7 @@ require 'hpricot'
 module PostsHelper
   # Show the metadata for a post, wrapped in a <p class="metadata">
   def show_metadata(post)
-    content_tag(:p, post.created_at.strftime('<span class="month">%b</span> <span class="day">%d</span> <span class="year">%Y</span>'), :class => 'date') + content_tag(:p, "Filed in #{post.categories.collect{|cat| link_to cat.name.downcase, blog_category_path(cat)}.join(', ')}", :class => 'metadata')
+    content_tag(:p, post.created_at.strftime('<span class="month">%b</span> <span class="day">%d</span> <span class="year">&rsquo;%y</span>'), :class => 'date') + content_tag(:p, "Filed in #{post.categories.collect{|cat| link_to cat.name.downcase, blog_category_path(cat)}.join(', ')}", :class => 'metadata')
   end
   
   # Format a single post for output.  Accepts the following options (with their defaults): 

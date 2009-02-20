@@ -57,9 +57,9 @@ dl dt {font-weight:bold;}
 dd {margin-left:1.5em;}
 table {margin-bottom:1.4em;width:100%;}
 th {font-weight:bold;}
-thead th {background:#c3d9ff;}
 th, td, caption {padding:4px 10px 4px 5px;}
-tr.even td {background:#e5ecf9;}
+tbody tr.even {background:#c9e9ff;}
+thead th, tbody tr:hover {background:#daf0ff;}
 tfoot {font-style:italic;}
 caption {background:#eee;}
 .small {font-size:.8em;margin-bottom:1.875em;line-height:1.875em;}
@@ -150,12 +150,12 @@ ul.photos { list-style-type: none; margin: 0 0 1.5em; }
   .plant_of_the_moment img { max-width: 344px; }
 
 /* Blog */
-.post { position: relative; border-top: 0.1em solid #ccc; padding-top: 1.4em; padding-bottom: 1.5em; clear: both; }
+.post { position: relative; border-top: 0.1em solid #c9e9ff; padding-top: 1.4em; padding-bottom: 1.5em; clear: both; }
   .post h2.title { margin-left: 2.5em; margin-bottom: 0; }
-  .post .date { position: absolute; top: 1.7em; left: 0; border: 1px solid; padding: 0.5em; text-align: center; width: 3em; line-height: 1; color: #aaa; -moz-border-radius: 3px; -webkit-border-radius: 3px; background-color: #ecf9ff; }
+  .post .date { position: absolute; top: 1.7em; left: 0; border: 1px solid; padding: 0.5em; text-align: center; width: 3em; line-height: 1; color: #aaa; -moz-border-radius: 3px; -webkit-border-radius: 3px; background-color: #c9e9ff; border-color: #999; }
     .post .date .month { font-size: 0.8em; }
     .post .date .day { display: block; font-size: 2em; text-shadow: #bbb 0.05em 0.05em 0.1em; }
-    .post .date .year { display: none; width: 3em; height: 2.2em; position: absolute; top: 0.5em; left: 0.5em; padding-top: 0.75em; background-color: #ecf9ff; }
+    .post .date .year { display: none; font-size: 2em; text-shadow: #bbb 0.05em 0.05em 0.1em; width: 1.5em; height: 1.1em; position: absolute; top: 0.25em; left: 0.25em; padding-top: 0.375em; background-color: #c9e9ff; }
     .post .date:hover .year { display: block; }
   .post .metadata { margin-left: 5em; color: #999; }
 
@@ -169,14 +169,14 @@ ul.photos { list-style-type: none; margin: 0 0 1.5em; }
   .post .image_frame img { float: none; margin: 0 auto 1em; }
   .post .image_frame .image_caption { display: block; }
 
-h2.comments { border-top: 0.3333em solid #deebf4; padding-top: 0.3333em; }
+h2.comments { border-top: 0.3333em solid #c9e9ff; padding-top: 0.3333em; }
 ol.comments { list-style-type: none; margin-left: 0; margin-right: 0; }
-  ol.comments li { margin-bottom: 0; padding: 0.5em 1em 1px; overflow: hidden; position: relative; border: 1px solid #deebf4; border-top: none; }
-    ol.comments li.first { border-top: 1px solid #deebf4; }
-    ol.comments li.even { background-color: #ecf9ff; }
+  ol.comments li { margin-bottom: 0; padding: 0.5em 1em 1px; overflow: hidden; position: relative; border: 1px solid #c9e9ff; border-top: none; }
+    ol.comments li.first { border-top: 1px solid #c9e9ff; }
+    ol.comments li.even { background-color: #c9e9ff; }
     ol.comments li.author { background-color: #fffade; }
     ol.comments li.author .number { color: #b0daff; }
-    ol.comments .number { color: #deebf4; position: absolute; right: -0.1em; bottom: -0.5em; font-size: 12em; z-index: 1; font-weight: bold; }
+    ol.comments .number { color: #ecf9ff; position: absolute; right: -0.1em; bottom: -0.5em; font-size: 12em; z-index: 1; font-weight: bold; }
   ol.comments p { z-index: 5; position: relative; }
 
 .secondary_content h3 { clear: both; font-family: Eurostile, 'Eurostile LT Std', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
@@ -197,8 +197,6 @@ ul.portfolio { list-style-type: none; margin-left: 0; margin-right: 0; }
 .pagination { text-align: center; position: relative; left: 50%; margin-left: -268px; width: 536px; margin-bottom: 1.4em; }
   .pagination span, .pagination a { display: inline-block; padding: 0.5em 1em; margin-bottom: 0.5em; margin-right: 0.5em; border: 0.1em solid; }
   .pagination span { border-color: #ccc; color: #ccc; }
-  
-
 
 /* Code coloring */
 .ruby .normal {}
