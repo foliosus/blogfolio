@@ -8,13 +8,13 @@ require 'pathname'
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 class ExceptionNotifier < ActionMailer::Base
-  @@sender_address = %("Exception Notifier" <webmaster@oregonmontessori.org>)
+  @@sender_address = %("Exception Notifier" <webmaster@foliosus.com>)
   cattr_accessor :sender_address
 
-  @@exception_recipients = []
+  @@exception_recipients = ['Brent Miller <foliosus@foliosus.com>']
   cattr_accessor :exception_recipients
 
-  @@email_prefix = "[OMA] "
+  @@email_prefix = "[Foliosus] "
   cattr_accessor :email_prefix
 
   @@sections = %w(request session environment backtrace)
@@ -27,8 +27,6 @@ class ExceptionNotifier < ActionMailer::Base
 
   # Send out a notification e-mail
   def exception_notification(exception, controller, request, data={})
-    content_type "text/plain"
-
     subject    "#{email_prefix} Server error (#{Time.now.to_s(:db)})"
 
     recipients exception_recipients
