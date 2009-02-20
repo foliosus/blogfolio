@@ -28,6 +28,7 @@ class BlogController < ApplicationController
   
   # Show posts for a single category
   def category
+    raise ActiveRecord::RecordNotFound if params[:category] == 'admin'
     @category = Category.find(params[:category])
 
     @meta[:title] = "Posts in \"#{@category.name.downcase}\""
