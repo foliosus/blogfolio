@@ -21,6 +21,7 @@ class ExceptionNotifier < ActionMailer::Base
   cattr_accessor :sections
   
   CUSTOM_TEMPLATES_PATH = "#{Rails.root}/vendor/plugins/exception_notification/views"
+  self.template_root = CUSTOM_TEMPLATES_PATH
 
   def self.reloadable?; false; end
 
@@ -41,10 +42,6 @@ class ExceptionNotifier < ActionMailer::Base
                             :rails_root => rails_root,
                             :data => data,
                             :sections => sections })
-  end
-
-  def template_root
-    CUSTOM_TEMPLATES_PATH
   end
 
   private
