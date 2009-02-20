@@ -34,9 +34,9 @@ h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
 p {margin:0 0 1.5em;}
 p img.left {float:left;margin:1.5em 1.5em 1.5em 0;padding:0;}
 p img.right {float:right;margin:1.5em 0 1.5em 1.5em;}
-a, a:link {color:#f70;text-decoration:none; border-bottom: 1px dotted;}
+a, a:link {color:#0074ff;text-decoration:none; border-bottom: 1px dotted;}
 a:visited {color: #358609;}
-a:focus, a:hover {border-bottom: 1px solid; color: #0074ff;}
+a:focus, a:hover {border-bottom: 1px solid; color: #ed7600;}
 h1 a, h1 a:link, h2 a, h2 a:link, h3 a, h3 a:link, h4 a, h4 a:link, h5 a, h5 a:link, h6 a, h6 a:link { border-bottom: none; }
 blockquote {margin:1.5em;color:#666;font-style:italic;}
 strong {font-weight:bold;}
@@ -146,7 +146,7 @@ ul.photos { list-style-type: none; margin: 0 0 1.5em; }
   ul.photos li { float: left; margin-left: 12px; margin-bottom: 0.5em; }
   ul.photos li.first { margin-left: 0; }
   ul.photos a, ul.photos a:hover, a.plant_of_the_moment, a.plant_of_the_moment:hover, a.photo, a.photo:hover { border-bottom: none; }
-  ul.photos img:hover, .plant_of_the_moment img:hover, a.photo img:hover { border-color: #f70; }
+  ul.photos img:hover, .plant_of_the_moment img:hover, a.photo img:hover { border-color: #f83; }
   .plant_of_the_moment img { max-width: 344px; }
 
 /* Blog */
@@ -159,7 +159,7 @@ ul.photos { list-style-type: none; margin: 0 0 1.5em; }
     .post .date:hover .year { display: block; }
   .post .metadata { margin-left: 5em; color: #999; }
 
-.categories { list-style-type: none; margin-left: 0; margin-right: 0; width: 10em; float: left; margin-right: 4em; }
+ul.categories { list-style-type: none; margin-left: 0; margin-right: 0; width: 10em; float: left; margin-right: 4em; }
 
 .post .more { display: inline-block; }
 
@@ -196,7 +196,7 @@ ul.portfolio { list-style-type: none; margin-left: 0; margin-right: 0; }
 /* Pagination */
 .pagination { text-align: center; position: relative; left: 50%; margin-left: -268px; width: 536px; margin-bottom: 1.4em; }
   .pagination span, .pagination a { display: inline-block; padding: 0.5em 1em; margin-bottom: 0.5em; margin-right: 0.5em; border: 0.1em solid; }
-  .pagination span { border-color: #ccc; color: #ccc; }
+  .pagination span { border-color: #c9e9ff; color: #c9e9ff; }
 
 /* Code coloring */
 .ruby .normal {}

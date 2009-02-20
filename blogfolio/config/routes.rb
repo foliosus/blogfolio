@@ -12,21 +12,23 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   
-  map.blog '/blog', :controller => 'blog'
-  map.rss '/blog/rss', :controller => 'blog', :action => 'rss', :format => 'xml'
-  map.blog_post '/blog/:id', :controller => 'blog', :action => 'show'
-  map.blog_category '/blog/category/:category', :controller => 'blog', :action => 'category'
+  map.with_options(:controller => 'blog') do |m|
+    m.blog '/blog', :action => 'index'
+    m.rss '/blog/rss', :action => 'rss', :format => 'xml'
+    m.blog_post '/blog/:id', :action => 'show'
+    m.blog_category '/blog/category/:category', :action => 'category'
+    m.legacy_blog_category '/category/:category', :action => 'category'
+    m.dated_blog_post '/blog/:year/:month/:day/:id',  :controller => 'blog', :action => 'show',
+                                                      :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
+    m.legacy_dated_blog_post '/:year/:month/:day/:id',:controller => 'blog', :action => 'show',
+                                                      :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
+  end
   
   map.contact '/contact', :controller => 'contact', :action => 'index'
 
   map.root :controller => 'pages', :action => 'index_page'
   
   map.static_page '/:id', :controller => 'pages', :action => 'show', :id => eval("/#{Page.all.collect{|p| p.url}.join('|')}/")
-
-  map.dated_blog_post '/blog/:year/:month/:day/:id', :controller => 'blog', :action => 'show',
-                                                     :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
-  map.legacy_dated_blog_post '/:year/:month/:day/:id', :controller => 'blog', :action => 'show',
-                                                        :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
   
   # Install the default routes as the lowest priority.
   # map.connect ':controller/:action/:id'
