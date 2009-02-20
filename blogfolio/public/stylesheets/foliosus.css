@@ -135,13 +135,15 @@ input.error { color: #666; }
   .index_content_region h2 { width: 152px; position: absolute; top: 0; left: 0; }
   .index_content_region p, .index_content_region ul, .index_content_region ol,
   .index_content_region h3, .index_content_region h4, .index_content_region .post { margin-left: 192px; }
+  .index_content_region .secondary_content h3 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
   .index_content_region ul#portfolio_teaser { width: 166px; float: right; }
   .pages.index_page #container { border-bottom: none; }
-  .index_content_region .post { border-top: none; padding-top: 1.5em; }
-  .index_content_region .post p, .index_content_region .post .ul, .index_content_region .post ol,
-  .index_content_region .post h3, .index_content_region .post h4 { margin-left: 0; }
-  .index_content_region .post h3.title { margin-left: 3.333333em; }
-  .index_content_region .post p.metadata { margin-left: 5em; }
+  .index_content_region .post { border-top: none; padding-top: 0; }
+    .index_content_region .post .date { top: 0.2em; }
+    .index_content_region .post p, .index_content_region .post .ul, .index_content_region .post ol,
+    .index_content_region .post h3, .index_content_region .post h4 { margin-left: 0; }
+    .index_content_region .post h3.title { margin-left: 3.333333em; }
+    .index_content_region .post p.metadata { margin-left: 5em; }
   
 /* Images */
 img { border: 1px solid #000; }

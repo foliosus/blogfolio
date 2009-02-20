@@ -2,8 +2,7 @@
   <div class="primary_content">
     <h2>Who we are</h2>
     <p>Foliosus Web Design LLC is a design studio based in Portland, Oregon. At Foliosus we don’t believe in flashy, wow-me sites that are unusable. We are commited to building <%= link_to 'accessible, easy to use sites', clients_path, :title => 'See our portfolio!' %>.</p>
-    <h4>We are committed to <strong>your website, done right</strong>.</h4>
-    <p>
+    <h3>We are committed to<br /><strong>your website, done right</strong>.</h3>
   </div> <!-- /primary_content -->
 
   <div class="secondary_content">
@@ -16,20 +15,20 @@
 <div class="index_content_region what">
   <div class="primary_content">
     <h2>What we do</h2>
-    <p>Foliosus is a one-stop shop. We do <%= link_to 'the full range of web-related services', static_page_path('services'), :title => 'Read about what we do' %> for your business or organization, starting with basic branding through custom application design and site maintenance:</p>
+    <p>Foliosus is a <strong>one-stop shop</strong>. We do <%= link_to 'the full range of web-related services', static_page_path('services'), :title => 'Read about what we do' %> for your business or organization, starting with basic branding through custom application design and site maintenance:</p>
     
     <ul>
       <li>Logo design and branding</li>
-      <li>Custom web site design</li>
-      <li>Custom web application design</li>
+      <li>Custom web sites designed and built</li>
+      <li>Custom web apps designed and built</li>
       <li>Content management system (CMS) implementation</li>
     </ul>
   </div> <!-- /primary_content -->
 
   <div class="secondary_content">
     <h2>Interested?</h2>
-    <p>Great! <%= link_to 'Get in touch', contact_path, :title => 'Send us an email now!' %> to talk about your project!</p>
-    <p>We offer free initial consultations for all projects.</p>
+    <p>Great! We offer <strong>free initial consultations</strong> for all projects.</p>
+    <p><strong><%= link_to 'Get in touch', contact_path, :title => 'Send us an email now!' %></strong><br />to talk about your project!</p>
   </div> <!-- /secondary_content -->
 </div> <!-- /index_content_region what -->
 
@@ -37,6 +36,7 @@
   <div class="primary_content">
     <h2>From the blog</h2>
     <%= single_post(@posts.shift, :comments => false, :excerpt => true, :heading => :h3)%>
+    <h3>Recent posts</h3>
     <ul>
       <%- for post in @posts -%>
       <li><%= link_to h(post.title), blog_post_path(post) %></li>

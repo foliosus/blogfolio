@@ -5,7 +5,7 @@
     <%= f.text_field :email, :label => 'Your email', :size => 40, :max_length => 80, :required => true %>
     <%= f.text_field :email_confirmation, :label => 'Your email (again)', :size => 40, :max_length => 80, :required => true %>
     <%= f.text_field :subject, :label => 'Subject of your inquiry', :size => 40, :max_length => 80, :required => true %>
-    <%= f.text_field :captcha, :label => 'Are you human?', :size => 3, :maxlength => 3, :hint => "Enter the word <strong>#{Captcha::CORRECT_ANSWER}</strong> to confirm that you are a human being"%>
+    <%= f.text_field :captcha, :label => 'Are you human?', :size => 3, :maxlength => 3, :hint => "Enter the word <strong>#{Captcha::CORRECT_ANSWER}</strong> to confirm that you are a human being", :required => true %>
     <%= f.text_area  :body, :label => 'Your message', :required => true %>
     <%= f.submit 'Send it!' %>
   <%- end -%>
