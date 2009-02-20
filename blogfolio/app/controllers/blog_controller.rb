@@ -20,6 +20,7 @@ class BlogController < ApplicationController
   # Show a single post, with comments form
   def show
     @post = Post.published.full_information.find(params[:id])
+    raise ActiveRecord::RecordNotFound unless @post
 
     @meta[:description] = @post.summary
     @meta[:title] = @post.title
