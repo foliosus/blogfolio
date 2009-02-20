@@ -23,10 +23,14 @@ class ApplicationController < ActionController::Base
     
     # Load photos for sidebar
     def load_photos(options = {})
-      logger.warn("** Loading Flickr photos")
-      options = options.reverse_merge(:user_id => '88016824@N00', :per_page => 8)
-      @flickr = Flickr.new("#{RAILS_ROOT}/config/flickr_fu.yml")
-      @plant_photo = @flickr.photos.search(options.merge(:tags => 'plants', :per_page => 8, :page => 2)).photos.compact.rand
-      @photos = @flickr.photos.search(options)
+      unless Rails.cache.exist?('photos') && Rails.cache.exist?('plant_photo')
+        logger.warn("** Loading Flickr photos")
+        options = options.reverse_merge(:user_id => '88016824@N00', :per_page => 8)
+        flickr = Flickr.new("#{Rails.root}/config/flickr_fu.yml")
+        Rails.cache.write('plant_photo', flickr.photos.search(options.merge(:tags => 'plants', :per_page => 8, :page => 2)).photos.compact.rand)
+        Rails.cache.write('photos', flickr.photos.search(options))
+      end
+      @photos = Rails.cache.read('photos')
+      @plant_photo = Rails.cache.read('plant_photo')
     end
 end

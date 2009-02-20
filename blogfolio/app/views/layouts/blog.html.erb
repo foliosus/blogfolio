@@ -17,7 +17,7 @@
     <%= render :partial => "blog/categories" %>
     
     <%- if @plant_photo -%>
-    <h3>Plant of the moment</h3>
+    <h3>Plant of the day</h3>
     <a href="<%= flickr_url(@plant_photo) %>" title="<%=h @plant_photo.title %>" class="plant_of_the_moment"><img src="<%= flickr_image_url(@plant_photo, :medium) %>" alt="<%= @plant_photo.title %>" /></a>
     <p><%=h @plant_photo.title %></p>
     <%- end -%>
