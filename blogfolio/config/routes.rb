@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.with_options(:controller => 'blog') do |m|
     m.blog '/blog', :action => 'index'
     m.rss '/blog/rss', :action => 'rss', :format => 'xml'
+    m.legacy_rss '/feed', :action => 'rss', :format => 'xml'
     m.blog_post '/blog/:id', :action => 'show'
     m.blog_category '/blog/category/:category', :action => 'category'
     m.legacy_blog_category '/category/:category', :action => 'category'
