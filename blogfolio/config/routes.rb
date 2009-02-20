@@ -16,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
     m.blog '/blog', :action => 'index'
     m.rss '/blog/rss', :action => 'rss', :format => 'xml'
     m.legacy_rss '/feed', :action => 'rss', :format => 'xml'
+    m.legacy_atom '/feed/atom', :acton => 'rss', :format => 'xml'
     m.blog_post '/blog/:id', :action => 'show'
     m.blog_category '/blog/category/:category', :action => 'category'
     m.legacy_blog_category '/category/:category', :action => 'category'
