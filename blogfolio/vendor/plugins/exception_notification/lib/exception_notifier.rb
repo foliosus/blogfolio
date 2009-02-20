@@ -20,7 +20,7 @@ class ExceptionNotifier < ActionMailer::Base
   @@sections = %w(request session environment backtrace)
   cattr_accessor :sections
   
-  CUSTOM_TEMPLATES_PATH = "#{RAILS_ROOT}/vendor/plugins/exception_notification/lib/../views"
+  CUSTOM_TEMPLATES_PATH = "#{Rails.root}/vendor/plugins/exception_notification/views"
 
   def self.reloadable?; false; end
 
