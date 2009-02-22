@@ -39,6 +39,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.static_page '/:id', :controller => 'pages', :action => 'show', :id => eval("/#{Page.all.collect{|p| p.url}.join('|')}/")
   
+  # Grab anything that hasn't been matched, and show a 404
+  map.connect '*path', :controller => 'not_found', :action => 'index'
+  
   # Install the default routes as the lowest priority.
   # map.connect ':controller/:action/:id'
   # map.connect ':controller/:action/:id.:format'
