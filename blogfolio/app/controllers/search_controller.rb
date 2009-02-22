@@ -11,7 +11,7 @@ class SearchController < ApplicationController
     @search_terms = params[:search].split(' ')
 
     @posts = Post.contains(params[:search]).reverse_chronological_order.paginate(:per_page => 10, :page => params[:page])
-    @pages = Page.contains(params[:search]).all(:order => :name) if params[:page] && params[:page].to_i == 1
+    @pages = Page.contains(params[:search]).all(:order => :name) unless params[:page] && params[:page].to_i > 1
   end
   
 end
