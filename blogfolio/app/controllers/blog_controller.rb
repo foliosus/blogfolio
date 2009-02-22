@@ -1,7 +1,11 @@
 class BlogController < ApplicationController
-  before_filter   :prepare_secondary_content, :except => :rss
+  before_filter   :prepare_secondary_content, :except => :feed
   
-  skip_before_filter :load_photos, :only => :rss
+  skip_before_filter :load_photos, :only => :feed
+  skip_before_filter :set_meta_data, :only => :feed
+  
+  caches_page :index
+  caches_page :feed
   
   # Show recent posts
   def index
@@ -10,10 +14,11 @@ class BlogController < ApplicationController
   end
   
   # RSS feed
-  def rss
+  def feed
     @posts = Post.published.reverse_chronological_order.full_information.all(:limit => 10)
     respond_to do |format|
-      format.xml
+      format.rss
+      format.atom
     end
   end
   
@@ -28,17 +33,12 @@ class BlogController < ApplicationController
   
   # Show posts for a single category
   def category
-    raise ActiveRecord::RecordNotFound if params[:category] == 'admin' # Fix for Yahoo Slurp suckage
+    raise ActiveRecord::RecordNotFound if params[:category] == 'admin' # This is a fix for Yahoo Slurp suckage
     @category = Category.find(params[:category])
 
     @meta[:title] = "Posts in \"#{@category.name.downcase}\""
     
     @posts = @category.posts.published.reverse_chronological_order.paginate(:page => params[:page], :per_page => 10)
-  end
-  
-  # Number to show per page of results
-  def per_page
-    10
   end
   
   protected

@@ -11,7 +11,8 @@
   <%= tag :meta, :name => 'description', :content => @meta[:description] %>
   <%= javascript_include_tag :all, :cache => true %>
   
-  <%= auto_discovery_link_tag :rss, rss_url, :title => "RSS 2.0 syndication feed" %>
+  <%= auto_discovery_link_tag :rss, rss_url, :title => "RSS 2.0 feed: All blog posts" %>
+  <%= auto_discovery_link_tag :rss, atom_url, :title => 'Atom feed: All blog posts' %>
   
   <%= yield :head %>
 </head>

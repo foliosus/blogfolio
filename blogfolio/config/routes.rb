@@ -13,10 +13,17 @@ ActionController::Routing::Routes.draw do |map|
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   
   map.with_options(:controller => 'blog') do |m|
-    m.blog '/blog', :action => 'index'
-    m.rss '/blog/rss', :action => 'rss', :format => 'xml'
-    m.legacy_rss '/feed', :action => 'rss', :format => 'xml'
-    m.legacy_atom '/feed/atom', :acton => 'rss', :format => 'xml'
+    m.blog '/blog/:page', :action => 'index', :page => 1, :requirements => {:page => /\d/}
+    m.with_options(:action => 'feed') do |n|
+      n.with_options(:format => 'rss') do |o|
+        o.rss '/blog/rss'
+        o.legacy_rss '/feed'
+      end
+      n.with_options(:format => 'atom') do |o|
+        o.atom '/blog/atom'
+        o.legacy_atom '/feed/atom'
+      end
+    end
     m.blog_post '/blog/:id', :action => 'show'
     m.blog_category '/blog/category/:category', :action => 'category'
     m.legacy_blog_category '/category/:category', :action => 'category'

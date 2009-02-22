@@ -1,11 +1,13 @@
 class PostsController < ApplicationController
+  layout 'blog'
+
   before_filter   :login_required
   before_filter   :check_role_admin
   
   before_filter   :preload_validation_data
   before_filter   :preload_post, :only => [:show, :edit, :update, :destroy]
   
-  layout 'blog'
+  cache_sweeper :post_sweeper, :only => [:create, :update, :destroy]
   
   # GET /posts
   # GET /posts.xml
@@ -86,6 +88,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.xml
   def destroy
     @post.destroy
+    flash[:notice] = 'Post destroyed.'
 
     respond_to do |format|
       format.html { redirect_to(posts_url) }
