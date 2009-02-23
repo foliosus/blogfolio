@@ -8,7 +8,7 @@ module Captcha
     end
     
     def captcha_is_correct
-      errors.add(:captcha, "must be filled out correctly") unless self.captcha? && self.captcha.downcase == CORRECT_ANSWER
+      errors.add(:captcha, "must be filled out correctly") unless self.captcha && self.captcha.downcase == CORRECT_ANSWER
     end
   end
 end
