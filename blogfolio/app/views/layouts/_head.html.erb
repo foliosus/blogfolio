@@ -10,6 +10,10 @@
   <%= stylesheet_link_tag 'print', :media => 'print' %>
   <%= tag :meta, :name => 'description', :content => @meta[:description] %>
   <%= javascript_include_tag :all, :cache => true %>
+  <script type="text/javascript">
+    Cufon.replace('h1');
+    Cufon.replace('h2');
+  </script>
   
   <%= auto_discovery_link_tag :rss, rss_url, :title => "RSS 2.0 feed: All blog posts" %>
   <%= auto_discovery_link_tag :rss, atom_url, :title => 'Atom feed: All blog posts' %>
