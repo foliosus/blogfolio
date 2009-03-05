@@ -18,6 +18,8 @@ class Post < ActiveRecord::Base
   named_scope :status, lambda{|status| {:conditions => {:status_id => status}} }
   named_scope :contains, lambda{|text| {:conditions => ["title LIKE :s OR content LIKE :s", {:s => "%#{text}%"}]}}
   
+  before_save :set_published_at
+  
   # Return the status as text, taken from Post::STATUSES
   def status
     STATUSES[self.status_id || 0]
@@ -31,13 +33,18 @@ class Post < ActiveRecord::Base
   # Set the post's status to 'published'
   def publish
     status_id = STATUSES.index('published')
-    published_at = Time.now
+    set_published_at
   end
   
   # Set the post's status to 'published' and save the record
   def publish!
     publish
     save
+  end
+  
+  # Set the published_at time
+  def set_published_at
+    self.published_at ||= Time.now if status_id == STATUSES.index('published')
   end
   
   # Set the post's status to 'draft'
