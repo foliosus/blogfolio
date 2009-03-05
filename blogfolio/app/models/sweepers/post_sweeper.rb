@@ -17,6 +17,7 @@ class PostSweeper < ActionController::Caching::Sweeper
   
   def expire_single_post(post)
     9.times{|n| expire_page(blog_path(:page => n + 1)) }
+    9.times{|n| expire_page(blog_category_path(:page => n + 1)) }
     expire_page(rss_path)
     expire_page(atom_path)
   end

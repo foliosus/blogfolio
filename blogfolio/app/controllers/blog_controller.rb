@@ -6,6 +6,7 @@ class BlogController < ApplicationController
   
   caches_page :index
   caches_page :feed
+  caches_page :category
   
   # Show recent posts
   def index

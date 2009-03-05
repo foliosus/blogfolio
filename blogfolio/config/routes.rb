@@ -25,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
       end
     end
     m.blog_post '/blog/:id', :action => 'show'
-    m.blog_category '/blog/category/:category', :action => 'category'
+    m.blog_category '/blog/category/:category/:page', :action => 'category', :page => 1, :requirements => {:page => /\d/}
     m.legacy_blog_category '/category/:category', :action => 'category'
     m.dated_blog_post '/blog/:year/:month/:day/:id',  :controller => 'blog', :action => 'show',
                                                       :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
