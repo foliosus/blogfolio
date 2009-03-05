@@ -35,7 +35,7 @@ module PostsHelper
     
     # Perform the excerpting
     if options[:excerpt]
-      link = link_to(options[:more_text], post_path(post), :title => "Read the rest of #{post.title}", :class => 'more' )
+      link = link_to(options[:more_text], blog_post_path(post), :title => "Read the rest of #{post.title}", :class => 'more' )
       post.content =~ /(.*)<!--\s?more\s?-->(.*)/m
       if $2
         post.content = $1 + link
