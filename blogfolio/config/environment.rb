@@ -40,7 +40,7 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => "_blogfolio_#{Rails.env}_session",
+    :key => "_blogfolio_#{Rails.env}_session",
     :secret      => '9c9e8d115934dce9cfa7c170972ff72e40337413b70dff8e5846705ab425d0f960ac219e0eb3793cda8f0b59521c52dd782492aaf5f8f39b9dda8e2d6f515ae5'
   }
 
@@ -61,7 +61,7 @@ Rails::Initializer.run do |config|
   # config.active_record.default_timezone = :utc
   
   config.gem 'hpricot', :version => '0.6.164'
-  config.gem 'flickr-fu', :lib => 'flickr_fu', :version => '>=0.1.4'
+  config.gem 'flickr-fu', :lib => 'flickr_fu', :version => '0.1.4'
   config.gem 'syntax', :lib => 'syntax/convertors/html', :version => '1.0.0'
   config.gem 'mislav-will_paginate', :version => '2.3.7', :lib => 'will_paginate', :source => 'http://gems.github.com'
   
