@@ -135,6 +135,7 @@ input.error { color: #666; }
   .index_content_region h2 { width: 152px; position: absolute; top: 0; left: 0; }
   .index_content_region p, .index_content_region ul, .index_content_region ol,
   .index_content_region h3, .index_content_region h4, .index_content_region .post { margin-left: 192px; }
+  .index_content_region.what .secondary_content p { margin-left: 180px; }
   .index_content_region .secondary_content h3 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
   .index_content_region ul#portfolio_teaser { width: 166px; float: right; }
   .pages.index_page #container { border-bottom: none; }

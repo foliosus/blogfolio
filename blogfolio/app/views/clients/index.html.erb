@@ -8,3 +8,11 @@
   </li>
 <%- end -%>
 </ul>
+
+<%- content_for :secondary_content do -%>
+  <h3>A note about markup</h3>
+  
+  <p>All of the sites listed here, at delivery, were valid XHTML 1.1 and CSS 2.1. Validation isn't an end unto itself, but rather a mean of guaranteeing code quality: it saves you from having unclosed tags, or otherwise difficult to parse markup which can cause browsers to fail.</p>
+  
+  <p>Since most of these sites are maintained by their owners, however, we can no longer guarantee the quality of the code.</p>
+<%- end -%>
