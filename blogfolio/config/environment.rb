@@ -40,7 +40,7 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :key => "_foliosus_#{Rails.env[0,3]}_session",
+    :key => "_foliosus_session",
     :secret      => '9c9e8d115934dce9cfa7c170972ff72e40337413b70dff8e5846705ab425d0f960ac219e0eb3793cda8f0b59521c52dd782492aaf5f8f39b9dda8e2d6f515ae5'
   }
 
