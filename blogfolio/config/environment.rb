@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.1' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -28,7 +28,7 @@ Rails::Initializer.run do |config|
 
   # Add additional load paths for your own custom dirs
   %w(observers sweepers mailers modules).each do |dir|
-    config.load_paths << "#{RAILS_ROOT}/app/models/#{dir}"
+    config.load_paths << "#{Rails.root}/app/models/#{dir}"
   end
 
   # Force all environments to use the same logger level
@@ -40,7 +40,7 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :key => "_foliosus_session",
+    :key => "_foliosus_#{Rails.env[0,3]}_session",
     :secret      => '9c9e8d115934dce9cfa7c170972ff72e40337413b70dff8e5846705ab425d0f960ac219e0eb3793cda8f0b59521c52dd782492aaf5f8f39b9dda8e2d6f515ae5'
   }
 
