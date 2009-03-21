@@ -22,5 +22,6 @@ class PostSweeper < ActionController::Caching::Sweeper
     end
     expire_page(rss_path)
     expire_page(atom_path)
+    expire_page(root_path)
   end
 end
