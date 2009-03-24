@@ -5,5 +5,17 @@
   <p>All content Copyright &copy; Foliosus Web Design LLC | <a href="http://validator.w3.org/check/referer" title="Validate this page's XHTML">XHTML</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer" title="Valiadte this page's CSS">CSS</a> | <%= link_to 'Got feedback?', contact_path %></p>
 </div> <!-- /footer -->
 
+<%- code = <<-CODE
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-8055583-1");
+pageTracker._trackPageview();
+} catch(err) {}
+CODE
+-%>
+<%= content_tag(:script, code, :type => 'text/javascript') if Rails.env.production? %>
 </body>
 </html>
