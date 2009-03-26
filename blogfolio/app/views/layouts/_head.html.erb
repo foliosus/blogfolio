@@ -9,8 +9,8 @@
   <%= stylesheet_link_tag 'foliosus' %>
   <%= stylesheet_link_tag 'print', :media => 'print' %>
   <%= tag :meta, :name => 'description', :content => @meta[:description] %>
-  <%= javascript_include_tag ['cufon', 'eurostile'], :cache => 'cufon' %>
-  <%= javascript_include_tag ['jquery', 'jquery-ui', 'jrails', 'application', 'uni-form'], :cache => true %>
+  <%= javascript_include_tag 'cufon', 'eurostile', :cache => 'cufon' %>
+  <%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 'application', 'uni-form', :cache => true %>
   <script type="text/javascript">
     $(document).ready(function() {
       Cufon.replace('h1');
