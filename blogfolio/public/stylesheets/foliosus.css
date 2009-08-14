@@ -175,7 +175,7 @@ ul.categories { list-style-type: none; margin-left: 0; margin-right: 0; width: 1
 
 .post img { border: 0.1em solid; }
 .post img, .post .image_frame { float: right; margin-left: 1em; margin-bottom: 1em; text-align: center; }
-  .post img.prominent, .post .image_frame.prominent { float: none; margin: 0 0 1em 0; position: relative; left: 50%; }
+  .post img.prominent, .post .image_frame.prominent { float: none; margin: 0 0 1em 0; }
   .post .image_frame a { border-bottom: none; }
   .post .image_frame img { float: none; margin: 0 auto 1em; }
   .post .image_frame .image_caption { display: block; }
