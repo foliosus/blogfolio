@@ -55,7 +55,7 @@ module PostsHelper
     end
 
     # Simple format & auto-link the body
-    body = simple_format(auto_link(sanitize(body.to_html, :tags => %w(pre ol ul blockquote h1 h2 h3 h4 div p object param embed a), :attributes => %w(allowscriptaccess allowfullscreen alt class height href name src title type width value))))
+    body = simple_format(auto_link(sanitize(body.to_html, :tags => %w(pre ol ul blockquote h1 h2 h3 h4 div p object param embed a img), :attributes => %w(allowscriptaccess allowfullscreen alt class height href name src title type width value))))
     body = Hpricot(body)
     body.search("pre p"){|e| e.swap(e.inner_html)}
     body.search("pre br").remove # Remove <br /> tags inside <pre> tags -- the simple_format method incorrectly inserts them

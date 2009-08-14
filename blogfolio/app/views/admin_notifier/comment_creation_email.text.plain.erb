@@ -1,0 +1,3 @@
+A new comment by <%= @comment.author %> (<%= @comment.email %><%= ', ' + @comment.homepage if @comment.homepage? %>) has been posted to <%= @comment.post.title %> (<%= blog_post_url(@comment.post) %>):</p>
+
+<%= @comment.body %>

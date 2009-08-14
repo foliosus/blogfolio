@@ -1,5 +1,5 @@
 module Captcha
-  CORRECT_ANSWER = 'yes'
+  CORRECT_ANSWER = 'why'
   
   def self.included(base)
     base.class_eval do

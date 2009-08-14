@@ -1,0 +1,7 @@
+<%- render :layout => "layouts/email.html.erb" do -%>
+<h2>New comment</h2>
+
+<p>A new comment by <%= mail_to @comment.email, h(@comment.author) %><%= " from #{@comment.homepage}" if @comment.homepage? %> has been posted to <%= link_to h(@comment.post.title), blog_post_url(@comment.post) %>:</p>
+
+<%= simple_format(h(@comment.body)) %>
+<%- end -%>
