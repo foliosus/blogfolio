@@ -175,12 +175,13 @@ ul.categories { list-style-type: none; margin-left: 0; margin-right: 0; width: 1
 
 .post img { border: 0.1em solid; }
 .post img, .post .image_frame { float: right; margin-left: 1em; margin-bottom: 1em; text-align: center; }
+  .post img.prominent, .post .image_frame.prominent { float: none; margin: 0 0 1em 0; position: relative; left: 50%; }
   .post .image_frame a { border-bottom: none; }
   .post .image_frame img { float: none; margin: 0 auto 1em; }
   .post .image_frame .image_caption { display: block; }
 
 h2.comments { border-top: 0.3333em solid #c9e9ff; padding-top: 0.3333em; }
-ol.comments { list-style-type: none; margin-left: 0; margin-right: 0; }
+ol.comments { list-style-type: none; margin-left: 0; margin-right: 0; clear: both; }
   ol.comments li { margin-bottom: 0; padding: 0.5em 1em 1px; overflow: hidden; position: relative; border: 1px solid #c9e9ff; border-top: none; }
     ol.comments li.first { border-top: 1px solid #c9e9ff; }
     ol.comments li.even { background-color: #c9e9ff; }
