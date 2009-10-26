@@ -21,7 +21,7 @@ blockquote:before, blockquote:after, q:before, q:after {content:"";}
 blockquote, q {quotes:"" "";}
 
 /* typography.css */
-body {font-size:12px;color:#666;background: #ff9c46 url(../images/orange_halftone.png) repeat-x top;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;}
+body {font-size:12px;color:#666;background: #ff9c56 url(../images/orange_halftone.png) repeat-x fixed top;font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;}
 h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#555;}
 h1 {font-size:3em;line-height:1;margin-bottom:0.5em;}
 h2 {font-size:2em;margin-bottom:0.75em;}
