@@ -3,8 +3,8 @@
 development:
   adapter: mysql
   database: blogfolio_development
-  username: rails_user
-  password: Pete5On
+  username: 
+  password: 
   timeout: 5000
 
 # Warning: The database defined as 'test' will be erased and
@@ -13,13 +13,13 @@ development:
 test:
   adapter: mysql
   database: blogfolio_test
-  username: rails_user
-  password: Pete5On
+  username: 
+  password: 
   timeout: 5000
 
 production:
   adapter: mysql
   database: foliosu_blogfolio
-  username: foliosu_rails
-  password: ra1l5_pa55/2
+  username: 
+  password: 
   timeout: 5000
