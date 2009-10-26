@@ -3,7 +3,7 @@ set :domain, 'foliosus.com'
 set :user, 'foliosu'
 
 set :scm_user, 'foliosus'
-set :repository, "https://foliosus@foliosus.svn.beanstalkapp.com/apps/trunk/#{application}"
+set :repository, "svn+ssh://foliosu@foliosus.com/home/foliosu/svn/blogfolio/trunk/#{application}"
 
 set :use_sudo, false
 set :deploy_to, "~/app"
