@@ -33,4 +33,13 @@ class ApplicationController < ActionController::Base
       @photos = Rails.cache.read('photos')
       @plant_photo = Rails.cache.read('plant_photo')
     end
+    
+    def rescue_action_in_public(exception)
+      case exception
+      when ActionController::InvalidAuthenticityToken
+        render_error(401)
+      else
+        super(exception)
+      end
+    end
 end
