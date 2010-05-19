@@ -119,7 +119,7 @@ input.error { color: #666; }
 
 #navigation { position: absolute; top: -84px; right: 20px; padding: 0; list-style-type: none; font-size: 1.5em; margin: 0; font-family: Eurostile, 'Eurostile LT Std', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
   #navigation li { float: left; margin-left: 24px; }
-  #navigation a { border: none; height: 20px; display: block; background-position: top left; background-repeat: no-repeat; text-indent: -9999em; }
+  #navigation a { border: none; height: 20px; display: block; background-position: top left; background-repeat: no-repeat; text-indent: -9999em; overflow: hidden; }
   #navigation a:hover { color: #0074ff; border-bottom: 0.33333em solid; background-position: bottom left; }
   #nav_blog a { background-image: url(../images/nav_blog.png); width: 39px; }
   #nav_services a { background-image: url(../images/nav_services.png); width: 80px; }

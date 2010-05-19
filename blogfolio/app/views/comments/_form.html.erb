@@ -8,6 +8,7 @@
     <%= f.text_field :homepage, :label => 'Home page', :size => 25 %>
     <%= f.text_field :captcha, :label => 'Are you human?', :size => 3, :maxlength => 3, :hint => "Enter the word <strong>#{Captcha::CORRECT_ANSWER}</strong> to confirm that you are a human being"%>
     <%= f.text_area :body, :label => 'Comment', :required => true %>
+    <%= f.hidden_field :cap_size %>
     <%= f.hidden_field :post_id %>
     <%= f.submit "Say it!" %>
   <%- end -%>
