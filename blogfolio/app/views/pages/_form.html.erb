@@ -1,5 +1,5 @@
 <%- f.fieldset 'Metadata' do -%>
-  <%= f.text_field :url, :required => true, :size => 20, :hint => 'Should be something short, like &quot;about_us&quot, with no spaces or slashes' %>
+  <%= f.text_field :url, :required => true, :size => 20, :hint => 'Should be something short, like &quot;about_us&quot;, with no spaces or slashes' %>
   <%= f.text_field :name, :required => true, :size => 20, :hint => 'This short phrase appears in the browser title bar. Use sentence case, not title case.' %>
   <%= f.text_field :description, :hint => "Used in Google to describe the page", :required => true, :size => 60 %>
 <%- end -%>
