@@ -64,5 +64,6 @@ Rails::Initializer.run do |config|
 end
 
 require 'highlight_fix'
+require 'newrelic_rpm'
 
 ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.update(:url => '%Y/%m/%d')
