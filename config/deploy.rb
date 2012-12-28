@@ -1,6 +1,7 @@
 require 'new_relic/recipes'
 require 'bundler/capistrano'
 
+set :rvm_ruby_string, 'ree-1.8.7-2012.02@blogfolio'
 set :rvm_type, :root
 require 'rvm/capistrano'
 
@@ -9,9 +10,9 @@ set :domain, '173.255.255.114' #'foliosus.com'
 set :user, 'deployer'
 
 set :scm, 'git'
-set :repository,  "ssh://#{user}@#{domain}/srv/git/#{application}"
+set :repository,  "git://github.com/foliosus/blogfolio.git"
 set :branch, 'master'
-set :deploy_via, :remote_cache
+# set :deploy_via, :remote_cache
 
 set :use_sudo, false
 set :deploy_to, "~/app"
