@@ -26,18 +26,14 @@ ActiveRecord::Schema.define(:version => 20090212040226) do
   end
 
   create_table "clients", :force => true do |t|
-    t.string   "name",                    :limit => 80,  :null => false
-    t.string   "slug",                    :limit => 80,  :null => false
-    t.text     "teaser",                                 :null => false
-    t.text     "content",                                :null => false
-    t.string   "url",                     :limit => 120
+    t.string   "name",               :limit => 80,  :null => false
+    t.string   "slug",               :limit => 80,  :null => false
+    t.text     "teaser",                            :null => false
+    t.text     "content",                           :null => false
+    t.string   "url",                :limit => 120
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "screenshot_file_name",    :limit => 40
-    t.string   "screenshot_content_type", :limit => 40
-    t.integer  "screenshot_file_size"
-    t.datetime "screenshot_updated_at"
-    t.string   "testimonial_author",      :limit => 60
+    t.string   "testimonial_author", :limit => 60
     t.text     "testimonial_text"
   end
 
