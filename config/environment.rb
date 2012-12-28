@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.3.2' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.3.14' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -59,11 +59,6 @@ Rails::Initializer.run do |config|
 
   # Make Active Record use UTC-base instead of local time
   # config.active_record.default_timezone = :utc
-  
-  config.gem 'hpricot', :version => '0.6.164'
-  config.gem 'flickr-fu', :lib => 'flickr_fu', :version => '0.1.4'
-  config.gem 'syntax', :lib => 'syntax/convertors/html', :version => '1.0.0'
-  config.gem 'mislav-will_paginate', :version => '2.3.7', :lib => 'will_paginate', :source => 'http://gems.github.com'
   
   config.action_mailer.default_url_options = { :host => "foliosus.com" }
 end

@@ -1,13 +1,20 @@
-set :application, 'blogfolio'
-set :domain, 'foliosus.com'
-set :user, 'foliosu'
+require 'new_relic/recipes'
+require 'bundler/capistrano'
 
-set :scm_user, 'foliosus'
-set :repository, "svn+ssh://foliosu@foliosus.com/home/foliosu/svn/blogfolio/trunk/#{application}"
+set :rvm_type, :root
+require 'rvm/capistrano'
+
+set :application, 'blogfolio'
+set :domain, '173.255.255.114' #'foliosus.com'
+set :user, 'deployer'
+
+set :scm, 'git'
+set :repository,  "ssh://#{user}@#{domain}/srv/git/#{application}"
+set :branch, 'master'
+set :deploy_via, :remote_cache
 
 set :use_sudo, false
 set :deploy_to, "~/app"
-set :deploy_via, :checkout
 set :group_writable, false
 set :keep_releases, 3
 
@@ -16,6 +23,8 @@ role :web, domain
 role :db,  domain, :primary => true
 
 namespace :deploy do
+  after 'deploy:update', 'newrelic:notice_deployment'
+  
   task :start, :roles => :app do
     run "touch #{deploy_to}/current/tmp/restart.txt"
   end
@@ -24,9 +33,15 @@ namespace :deploy do
     run "touch #{deploy_to}/current/tmp/restart.txt"
   end
 
-  task :after_symlink, :roles => :app do
-    run "rm -f ~/public_html;ln -s #{deploy_to}/current/public ~/public_html"
+  task :symlink_database_yml, :roles => :app do
     run "ln -s #{deploy_to}/shared/database.yml #{deploy_to}/current/config/database.yml"
     run "ln -s #{deploy_to}/shared/system/clients #{deploy_to}/current/public/clients"
   end
+  after 'deploy:create_symlink', 'deploy:symlink_database_yml'
+  
+  task :restart_delayed_job, :roles => :app do
+    run 'sudo restart delayed_job2'
+  end
+  after 'deploy:start', 'deploy:restart_delayed_job'
+  after 'deploy:restart', 'deploy:restart_delayed_job'
 end
