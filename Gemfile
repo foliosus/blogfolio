@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem 'rails', '~> 2.3.10'
+gem 'rails', '~> 2.3.15'
 gem 'mysql2', '~> 0.2.11'
 gem 'capistrano', '~> 2.12.0'
 gem 'rvm-capistrano', '~> 1.2.7'
@@ -16,7 +16,7 @@ group :development do
 end
 
 group :test do
-  gem 'mocha'
+  gem 'mocha', :name => 'mocha/setup'
   gem 'redgreen'
   gem 'shoulda'
   gem 'factory_girl'

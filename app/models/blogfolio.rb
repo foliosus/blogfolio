@@ -41,6 +41,5 @@ module BlogFolio
 end
 
 Time.class_eval do
-  puts "Loading time"
   include BlogFolio::Time
 end
