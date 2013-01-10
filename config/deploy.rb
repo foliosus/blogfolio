@@ -6,7 +6,7 @@ set :rvm_type, :root
 require 'rvm/capistrano'
 
 set :application, 'blogfolio'
-set :domain, '173.255.255.114' #'foliosus.com'
+set :domain, 'foliosus.com'
 set :user, 'deployer'
 
 set :scm, 'git'
